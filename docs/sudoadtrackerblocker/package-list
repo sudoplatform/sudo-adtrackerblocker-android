@@ -1,0 +1,8 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+
+com.sudoplatform.sudoadtrackerblocker
+com.sudoplatform.sudoadtrackerblocker.blocking
+com.sudoplatform.sudoadtrackerblocker.storage
+com.sudoplatform.sudoadtrackerblocker.types
+
