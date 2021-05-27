@@ -22,6 +22,7 @@ import com.sudoplatform.sudoadtrackerblocker.types.Ruleset
 import com.sudoplatform.sudoadtrackerblocker.types.allRulesets
 import com.sudoplatform.sudologging.Logger
 import com.sudoplatform.sudouser.SudoUserClient
+import com.sudoplatform.sudouser.exceptions.AuthenticationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -358,7 +359,8 @@ internal class DefaultAdTrackerBlockerClient(
             is SudoAdTrackerBlockerException -> exception
             is S3Exception.MetadataException -> SudoAdTrackerBlockerException.DataFormatException(cause = exception)
             is S3Exception -> throw SudoAdTrackerBlockerException.FailedException(cause = exception)
-            is NotAuthorizedException -> throw SudoAdTrackerBlockerException.UnauthorizedUserException(cause = exception)
+            is NotAuthorizedException, is AuthenticationException.NotAuthorizedException ->
+                throw SudoAdTrackerBlockerException.UnauthorizedUserException(cause = exception)
             is IOException -> throw SudoAdTrackerBlockerException.FailedException(cause = exception)
             else -> SudoAdTrackerBlockerException.UnknownException(exception)
         }

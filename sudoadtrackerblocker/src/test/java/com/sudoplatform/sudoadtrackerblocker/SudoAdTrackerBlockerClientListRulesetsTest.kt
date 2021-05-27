@@ -5,16 +5,21 @@
  */
 package com.sudoplatform.sudoadtrackerblocker
 
+import com.amazonaws.services.cognitoidentity.model.NotAuthorizedException
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.atLeastOnce
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.doThrow
 import com.nhaarman.mockitokotlin2.eq
+import com.nhaarman.mockitokotlin2.reset
 import com.nhaarman.mockitokotlin2.stub
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
 import com.sudoplatform.sudoadtrackerblocker.s3.S3Exception
+import com.sudoplatform.sudouser.exceptions.AuthenticationException
+import io.kotlintest.matchers.beInstanceOf
 import io.kotlintest.matchers.collections.shouldHaveSize
+import io.kotlintest.should
 import io.kotlintest.shouldThrow
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -76,6 +81,38 @@ internal class SudoAdTrackerBlockerClientListRulesetsTest : BaseTests() {
 
         shouldThrow<SudoAdTrackerBlockerException.FailedException> {
             adTrackerBlockerClient.listRulesets()
+        }
+
+        verify(mockS3Client, atLeastOnce()).list(eq(DefaultAdTrackerBlockerClient.S3_TOP_PATH), any())
+    }
+
+    @Test
+    fun `listRulesets() should transform s3 client not authorized exception`() = runBlocking<Unit> {
+
+        // SudoUser NotAuthorizedException should be transformed.
+        reset(mockS3Client)
+        mockS3Client.stub {
+            onBlocking { list(anyString(), any()) } doThrow AuthenticationException.NotAuthorizedException("mock")
+        }
+
+        with(shouldThrow<SudoAdTrackerBlockerException.UnauthorizedUserException> {
+            adTrackerBlockerClient.listRulesets()
+        }) {
+            cause should beInstanceOf<AuthenticationException.NotAuthorizedException>()
+        }
+
+        verify(mockS3Client, atLeastOnce()).list(eq(DefaultAdTrackerBlockerClient.S3_TOP_PATH), any())
+
+        // AWS NotAuthorizedException should be transformed.
+        reset(mockS3Client)
+        mockS3Client.stub {
+            onBlocking { list(anyString(), any()) } doThrow NotAuthorizedException("mock")
+        }
+
+        with(shouldThrow<SudoAdTrackerBlockerException.UnauthorizedUserException> {
+            adTrackerBlockerClient.listRulesets()
+        }) {
+            cause should beInstanceOf<NotAuthorizedException>()
         }
 
         verify(mockS3Client, atLeastOnce()).list(eq(DefaultAdTrackerBlockerClient.S3_TOP_PATH), any())
