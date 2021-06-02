@@ -5,12 +5,12 @@
  */
 package com.sudoplatform.sudoadtrackerblocker
 
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.doThrow
-import com.nhaarman.mockitokotlin2.eq
-import com.nhaarman.mockitokotlin2.stub
-import com.nhaarman.mockitokotlin2.verify
-import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
+import org.mockito.kotlin.any
+import org.mockito.kotlin.doThrow
+import org.mockito.kotlin.eq
+import org.mockito.kotlin.stub
+import org.mockito.kotlin.verify
+import org.mockito.kotlin.verifyNoMoreInteractions
 import com.sudoplatform.sudoadtrackerblocker.DefaultAdTrackerBlockerClient.Companion.ADS_FILE
 import com.sudoplatform.sudoadtrackerblocker.DefaultAdTrackerBlockerClient.Companion.PRIVACY_FILE
 import com.sudoplatform.sudoadtrackerblocker.DefaultAdTrackerBlockerClient.Companion.S3_TOP_PATH

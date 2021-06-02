@@ -7,7 +7,7 @@
 package com.sudoplatform.sudoadtrackerblocker.samples
 
 import android.content.Context
-import com.nhaarman.mockitokotlin2.mock
+import org.mockito.kotlin.mock
 import com.sudoplatform.sudoadtrackerblocker.SudoAdTrackerBlockerClient
 import com.sudoplatform.sudoadtrackerblocker.types.Ruleset
 import com.sudoplatform.sudoadtrackerblocker.types.allRulesets

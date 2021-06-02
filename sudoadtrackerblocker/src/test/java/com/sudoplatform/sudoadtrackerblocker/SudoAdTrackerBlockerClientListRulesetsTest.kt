@@ -6,15 +6,15 @@
 package com.sudoplatform.sudoadtrackerblocker
 
 import com.amazonaws.services.cognitoidentity.model.NotAuthorizedException
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.atLeastOnce
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.doThrow
-import com.nhaarman.mockitokotlin2.eq
-import com.nhaarman.mockitokotlin2.reset
-import com.nhaarman.mockitokotlin2.stub
-import com.nhaarman.mockitokotlin2.verify
-import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
+import org.mockito.kotlin.any
+import org.mockito.kotlin.atLeastOnce
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.doThrow
+import org.mockito.kotlin.eq
+import org.mockito.kotlin.reset
+import org.mockito.kotlin.stub
+import org.mockito.kotlin.verify
+import org.mockito.kotlin.verifyNoMoreInteractions
 import com.sudoplatform.sudoadtrackerblocker.s3.S3Exception
 import com.sudoplatform.sudouser.exceptions.AuthenticationException
 import io.kotlintest.matchers.beInstanceOf
@@ -95,9 +95,11 @@ internal class SudoAdTrackerBlockerClientListRulesetsTest : BaseTests() {
             onBlocking { list(anyString(), any()) } doThrow AuthenticationException.NotAuthorizedException("mock")
         }
 
-        with(shouldThrow<SudoAdTrackerBlockerException.UnauthorizedUserException> {
-            adTrackerBlockerClient.listRulesets()
-        }) {
+        with(
+            shouldThrow<SudoAdTrackerBlockerException.UnauthorizedUserException> {
+                adTrackerBlockerClient.listRulesets()
+            }
+        ) {
             cause should beInstanceOf<AuthenticationException.NotAuthorizedException>()
         }
 
@@ -109,9 +111,11 @@ internal class SudoAdTrackerBlockerClientListRulesetsTest : BaseTests() {
             onBlocking { list(anyString(), any()) } doThrow NotAuthorizedException("mock")
         }
 
-        with(shouldThrow<SudoAdTrackerBlockerException.UnauthorizedUserException> {
-            adTrackerBlockerClient.listRulesets()
-        }) {
+        with(
+            shouldThrow<SudoAdTrackerBlockerException.UnauthorizedUserException> {
+                adTrackerBlockerClient.listRulesets()
+            }
+        ) {
             cause should beInstanceOf<NotAuthorizedException>()
         }
 

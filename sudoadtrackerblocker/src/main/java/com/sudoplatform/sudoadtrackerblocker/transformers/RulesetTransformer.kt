@@ -37,7 +37,7 @@ internal object RulesetTransformer {
     fun toRulesetList(s3ObjectInfoList: List<S3Client.S3ObjectInfo>): List<Ruleset> {
         return s3ObjectInfoList.filter {
             !it.key.contains(APPLE_PATH) &&
-            extractRulesetTypeFromMetadata(it.userMetadata) != Ruleset.Type.UNKNOWN
+                extractRulesetTypeFromMetadata(it.userMetadata) != Ruleset.Type.UNKNOWN
         }.map {
             toRuleset(it)
         }

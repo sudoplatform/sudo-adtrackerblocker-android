@@ -26,9 +26,10 @@
         <div id="searchBar"></div>
         <script type="text/javascript" src="../../../scripts/pages.js"></script>
         <script type="text/javascript" src="../../../scripts/main.js"></script>
-        <div id="content" pageIds="com.sudoplatform.sudoadtrackerblocker/SudoAdTrackerBlockerClient///PointingToDeclaration//492885009">
+        <div id="content" pageIds="com.sudoplatform.sudoadtrackerblocker/SudoAdTrackerBlockerClient///PointingToDeclaration//589297214">
           <div class="breadcrumbs"><a href="../../index.html">sudoadtrackerblocker</a>/<a href="../index.html">com.sudoplatform.sudoadtrackerblocker</a>/<a href="index.html">SudoAdTrackerBlockerClient</a></div>
           <div class="cover ">
+            <div class="filter-section" id="filter-section"><button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":sudoadtrackerblocker:dokkaHtml/release">androidJvm</button></div>
             <h1 class="cover"><span>Sudo</span><wbr></wbr><span>Ad</span><wbr></wbr><span>Tracker</span><wbr></wbr><span>Blocker</span><wbr></wbr><span>Client</span></h1>
             <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace">interface <a href="index.html">SudoAdTrackerBlockerClient</a> : <a href="https://developer.android.com/reference/kotlin/java/lang/AutoCloseable.html">AutoCloseable</a><span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M5 4H15V16H5V4ZM17 7H19V18V20H17H8V18H17V7Z" fill="black"/>
@@ -41,7 +42,7 @@
             <div class="tabs-section-body">
               <h2 class="">Samples</h2>
               <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Samples"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="sample-container"><code class="runnablesample monospace" theme="idea"><pre>import android.content.Context
-import com.nhaarman.mockitokotlin2.mock
+import org.mockito.kotlin.mock
 import com.sudoplatform.sudoadtrackerblocker.SudoAdTrackerBlockerClient
 import com.sudoplatform.sudoadtrackerblocker.types.Ruleset
 import com.sudoplatform.sudoadtrackerblocker.types.allRulesets
@@ -81,10 +82,10 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
    //sampleEnd
 }</pre></code></div></div></div>
               <h2 class="">Types</h2>
-              <div class="table" data-togglable="Types"><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Builder%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F492885009" anchor-label="Builder" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Builder%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+              <div class="table" data-togglable="Types"><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Builder%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F589297214" anchor-label="Builder" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Builder%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
                 <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-builder/index.html">Builder</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Builder%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F492885009"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class=""><span class="inline-flex"><a href="-builder/index.html">Builder</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Builder%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F589297214"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
@@ -93,6 +94,9 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
 </svg><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
+                      <div class="platform-tags ">
+                        <div class="platform-tag jvm-like">androidJvm</div>
+                      </div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
@@ -102,15 +106,15 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Builder%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F492885009" anchor-label="Builder" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Builder%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Builder%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F492885009" anchor-label="Builder" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Builder%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Builder used to construct the <a href="index.html">SudoAdTrackerBlockerClient</a>.</div></div>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Builder%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F589297214" anchor-label="Builder" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Builder%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Builder%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F589297214" anchor-label="Builder" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Builder%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Builder used to construct the <a href="index.html">SudoAdTrackerBlockerClient</a>.</div></div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.CheckUrlResult%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F492885009" anchor-label="CheckUrlResult" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.CheckUrlResult%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.CheckUrlResult%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F589297214" anchor-label="CheckUrlResult" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.CheckUrlResult%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
                 <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-check-url-result/index.html">CheckUrlResult</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.CheckUrlResult%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F492885009"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class=""><span class="inline-flex"><a href="-check-url-result/index.html">CheckUrlResult</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.CheckUrlResult%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F589297214"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
@@ -119,6 +123,9 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
 </svg><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
+                      <div class="platform-tags ">
+                        <div class="platform-tag jvm-like">androidJvm</div>
+                      </div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
@@ -133,10 +140,10 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
                     </div>
                   </div>
                 </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Companion%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F492885009" anchor-label="Companion" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Companion%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Companion%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F589297214" anchor-label="Companion" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Companion%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
                 <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-companion/index.html">Companion</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Companion%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F492885009"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class=""><span class="inline-flex"><a href="-companion/index.html">Companion</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.Companion%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F589297214"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
@@ -145,6 +152,9 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
 </svg><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
+                      <div class="platform-tags ">
+                        <div class="platform-tag jvm-like">androidJvm</div>
+                      </div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
@@ -159,10 +169,10 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
                     </div>
                   </div>
                 </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.FilterEngineStatus%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F492885009" anchor-label="FilterEngineStatus" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.FilterEngineStatus%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.FilterEngineStatus%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F589297214" anchor-label="FilterEngineStatus" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.FilterEngineStatus%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
                 <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-filter-engine-status/index.html">FilterEngineStatus</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.FilterEngineStatus%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F492885009"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class=""><span class="inline-flex"><a href="-filter-engine-status/index.html">FilterEngineStatus</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient.FilterEngineStatus%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F589297214"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
@@ -171,6 +181,9 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
 </svg><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
+                      <div class="platform-tags ">
+                        <div class="platform-tag jvm-like">androidJvm</div>
+                      </div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
@@ -187,10 +200,10 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
                 </div>
               </div>
               <h2 class="">Functions</h2>
-              <div class="table" data-togglable="Functions"><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FaddExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="addExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FaddExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+              <div class="table" data-togglable="Functions"><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FaddExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="addExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FaddExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
                 <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="add-exceptions.html">addExceptions</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FaddExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class=""><span class="inline-flex"><a href="add-exceptions.html">addExceptions</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FaddExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
@@ -199,6 +212,9 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
 </svg><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
+                      <div class="platform-tags ">
+                        <div class="platform-tag jvm-like">androidJvm</div>
+                      </div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
@@ -208,15 +224,15 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FaddExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="addExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FaddExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FaddExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="addExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FaddExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Adds an entry to the set of exceptions.</div></div>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FaddExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="addExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FaddExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FaddExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="addExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FaddExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Adds an entry to the set of exceptions.</div></div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FcheckUrl%2F%23kotlin.String%23kotlin.String%3F%23kotlin.String%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="checkUrl" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FcheckUrl%2F%23kotlin.String%23kotlin.String%3F%23kotlin.String%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FcheckUrl%2F%23kotlin.String%23kotlin.String%3F%23kotlin.String%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="checkUrl" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FcheckUrl%2F%23kotlin.String%23kotlin.String%3F%23kotlin.String%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
                 <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="check-url.html">checkUrl</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FcheckUrl%2F%23kotlin.String%23kotlin.String%3F%23kotlin.String%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class=""><span class="inline-flex"><a href="check-url.html">checkUrl</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FcheckUrl%2F%23kotlin.String%23kotlin.String%3F%23kotlin.String%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
@@ -225,6 +241,9 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
 </svg><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
+                      <div class="platform-tags ">
+                        <div class="platform-tag jvm-like">androidJvm</div>
+                      </div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
@@ -234,15 +253,15 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FcheckUrl%2F%23kotlin.String%23kotlin.String%3F%23kotlin.String%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="checkUrl" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FcheckUrl%2F%23kotlin.String%23kotlin.String%3F%23kotlin.String%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FcheckUrl%2F%23kotlin.String%23kotlin.String%3F%23kotlin.String%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="checkUrl" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FcheckUrl%2F%23kotlin.String%23kotlin.String%3F%23kotlin.String%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Checks a URL to determine if it is blocked according to current configuration.</div></div>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FcheckUrl%2F%23kotlin.String%23kotlin.String%3F%23kotlin.String%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="checkUrl" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FcheckUrl%2F%23kotlin.String%23kotlin.String%3F%23kotlin.String%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FcheckUrl%2F%23kotlin.String%23kotlin.String%3F%23kotlin.String%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="checkUrl" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FcheckUrl%2F%23kotlin.String%23kotlin.String%3F%23kotlin.String%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Checks a URL to determine if it is blocked according to current configuration.</div></div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FclearStorage%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="clearStorage" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FclearStorage%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FclearStorage%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="clearStorage" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FclearStorage%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
                 <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="clear-storage.html">clearStorage</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FclearStorage%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class=""><span class="inline-flex"><a href="clear-storage.html">clearStorage</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FclearStorage%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
@@ -251,6 +270,9 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
 </svg><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
+                      <div class="platform-tags ">
+                        <div class="platform-tag jvm-like">androidJvm</div>
+                      </div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
@@ -260,15 +282,15 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FclearStorage%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="clearStorage" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FclearStorage%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FclearStorage%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="clearStorage" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FclearStorage%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Delete all cached data and clear the active <a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html">Ruleset</a>s.</div></div>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FclearStorage%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="clearStorage" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FclearStorage%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FclearStorage%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="clearStorage" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FclearStorage%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Delete all cached data and clear the active <a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html">Ruleset</a>s.</div></div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="%5Bjava.lang%2FAutoCloseable%2Fclose%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="close" id="%5Bjava.lang%2FAutoCloseable%2Fclose%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+<a data-name="%5Bjava.lang%2FAutoCloseable%2Fclose%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="close" id="%5Bjava.lang%2FAutoCloseable%2Fclose%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
                 <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.sudoplatform.sudoadtrackerblocker.blocking/-blocking-provider/index.html#%5Bjava.lang%2FAutoCloseable%2Fclose%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009">close</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bjava.lang%2FAutoCloseable%2Fclose%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class=""><span class="inline-flex"><a href="../../com.sudoplatform.sudoadtrackerblocker.blocking/-blocking-provider/index.html#%5Bjava.lang%2FAutoCloseable%2Fclose%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214">close</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bjava.lang%2FAutoCloseable%2Fclose%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
@@ -277,10 +299,13 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
 </svg><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
+                      <div class="platform-tags ">
+                        <div class="platform-tag jvm-like">androidJvm</div>
+                      </div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="../../com.sudoplatform.sudoadtrackerblocker.blocking/-blocking-provider/index.html#%5Bjava.lang%2FAutoCloseable%2Fclose%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009">close</a>()<span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="../../com.sudoplatform.sudoadtrackerblocker.blocking/-blocking-provider/index.html#%5Bjava.lang%2FAutoCloseable%2Fclose%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214">close</a>()<span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M5 4H15V16H5V4ZM17 7H19V18V20H17H8V18H17V7Z" fill="black"/>
                        </svg></span><div class="copy-popup-wrapper popup-to-left"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
@@ -291,10 +316,10 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
                     </div>
                   </div>
                 </div>
-<a data-name="%5Bkotlin%2FAny%2Fequals%2F%23kotlin.Any%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="equals" id="%5Bkotlin%2FAny%2Fequals%2F%23kotlin.Any%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+<a data-name="%5Bkotlin%2FAny%2Fequals%2F%23kotlin.Any%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="equals" id="%5Bkotlin%2FAny%2Fequals%2F%23kotlin.Any%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
                 <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html#%5Bkotlin%2FAny%2Fequals%2F%23kotlin.Any%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009">equals</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bkotlin%2FAny%2Fequals%2F%23kotlin.Any%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class=""><span class="inline-flex"><a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html#%5Bkotlin%2FAny%2Fequals%2F%23kotlin.Any%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214">equals</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bkotlin%2FAny%2Fequals%2F%23kotlin.Any%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
@@ -303,10 +328,13 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
 </svg><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
+                      <div class="platform-tags ">
+                        <div class="platform-tag jvm-like">androidJvm</div>
+                      </div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace">open operator fun <a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html#%5Bkotlin%2FAny%2Fequals%2F%23kotlin.Any%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009">equals</a>(other: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>?): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace">open operator fun <a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html#%5Bkotlin%2FAny%2Fequals%2F%23kotlin.Any%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214">equals</a>(other: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>?): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M5 4H15V16H5V4ZM17 7H19V18V20H17H8V18H17V7Z" fill="black"/>
                        </svg></span><div class="copy-popup-wrapper popup-to-left"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
@@ -317,10 +345,10 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
                     </div>
                   </div>
                 </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetActiveRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="getActiveRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetActiveRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetActiveRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="getActiveRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetActiveRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
                 <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="get-active-rulesets.html">getActiveRulesets</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetActiveRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class=""><span class="inline-flex"><a href="get-active-rulesets.html">getActiveRulesets</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetActiveRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
@@ -329,6 +357,9 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
 </svg><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
+                      <div class="platform-tags ">
+                        <div class="platform-tag jvm-like">androidJvm</div>
+                      </div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
@@ -338,15 +369,15 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetActiveRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="getActiveRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetActiveRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetActiveRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="getActiveRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetActiveRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Returns the active <a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html">Ruleset</a>s.</div></div>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetActiveRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="getActiveRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetActiveRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetActiveRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="getActiveRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetActiveRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Returns the active <a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html">Ruleset</a>s.</div></div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="getExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="getExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
                 <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="get-exceptions.html">getExceptions</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class=""><span class="inline-flex"><a href="get-exceptions.html">getExceptions</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
@@ -355,6 +386,9 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
 </svg><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
+                      <div class="platform-tags ">
+                        <div class="platform-tag jvm-like">androidJvm</div>
+                      </div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
@@ -364,15 +398,15 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="getExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="getExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Gets the set of blocking exceptions that prevent URLs from being blocked.</div></div>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="getExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="getExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FgetExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Gets the set of blocking exceptions that prevent URLs from being blocked.</div></div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="%5Bkotlin%2FAny%2FhashCode%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="hashCode" id="%5Bkotlin%2FAny%2FhashCode%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+<a data-name="%5Bkotlin%2FAny%2FhashCode%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="hashCode" id="%5Bkotlin%2FAny%2FhashCode%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
                 <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html#%5Bkotlin%2FAny%2FhashCode%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009">hashCode</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bkotlin%2FAny%2FhashCode%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class=""><span class="inline-flex"><a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html#%5Bkotlin%2FAny%2FhashCode%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214">hashCode</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bkotlin%2FAny%2FhashCode%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
@@ -381,10 +415,13 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
 </svg><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
+                      <div class="platform-tags ">
+                        <div class="platform-tag jvm-like">androidJvm</div>
+                      </div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace">open fun <a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html#%5Bkotlin%2FAny%2FhashCode%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009">hashCode</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace">open fun <a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html#%5Bkotlin%2FAny%2FhashCode%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214">hashCode</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M5 4H15V16H5V4ZM17 7H19V18V20H17H8V18H17V7Z" fill="black"/>
                        </svg></span><div class="copy-popup-wrapper popup-to-left"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
@@ -395,10 +432,10 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
                     </div>
                   </div>
                 </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FlistRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="listRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FlistRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FlistRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="listRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FlistRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
                 <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="list-rulesets.html">listRulesets</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FlistRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class=""><span class="inline-flex"><a href="list-rulesets.html">listRulesets</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FlistRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
@@ -407,6 +444,9 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
 </svg><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
+                      <div class="platform-tags ">
+                        <div class="platform-tag jvm-like">androidJvm</div>
+                      </div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
@@ -416,15 +456,15 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FlistRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="listRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FlistRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FlistRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="listRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FlistRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>List the available <a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html">Ruleset</a>s from the service.</div></div>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FlistRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="listRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FlistRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FlistRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="listRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FlistRulesets%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>List the available <a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html">Ruleset</a>s from the service.</div></div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveAllExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="removeAllExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveAllExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveAllExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="removeAllExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveAllExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
                 <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="remove-all-exceptions.html">removeAllExceptions</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveAllExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class=""><span class="inline-flex"><a href="remove-all-exceptions.html">removeAllExceptions</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveAllExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
@@ -433,6 +473,9 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
 </svg><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
+                      <div class="platform-tags ">
+                        <div class="platform-tag jvm-like">androidJvm</div>
+                      </div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
@@ -442,15 +485,15 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveAllExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="removeAllExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveAllExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveAllExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="removeAllExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveAllExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Removes all the entries from the set of exceptions.</div></div>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveAllExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="removeAllExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveAllExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveAllExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="removeAllExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveAllExceptions%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Removes all the entries from the set of exceptions.</div></div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="removeExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="removeExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
                 <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="remove-exceptions.html">removeExceptions</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class=""><span class="inline-flex"><a href="remove-exceptions.html">removeExceptions</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
@@ -459,6 +502,9 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
 </svg><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
+                      <div class="platform-tags ">
+                        <div class="platform-tag jvm-like">androidJvm</div>
+                      </div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
@@ -468,15 +514,15 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="removeExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="removeExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Removes an entry from the set of exceptions.</div></div>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="removeExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="removeExceptions" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FremoveExceptions%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.BlockingException%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Removes an entry from the set of exceptions.</div></div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%2C+com.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23com.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="setActiveRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%2C+com.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23com.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%2C+com.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23com.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="setActiveRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%2C+com.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23com.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
                 <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="set-active-rulesets.html">setActiveRulesets</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%2C+com.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23com.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class=""><span class="inline-flex"><a href="set-active-rulesets.html">setActiveRulesets</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%2C+com.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23com.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
@@ -485,6 +531,9 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
 </svg><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
+                      <div class="platform-tags ">
+                        <div class="platform-tag jvm-like">androidJvm</div>
+                      </div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
@@ -494,7 +543,7 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="setActiveRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="setActiveRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Sets which <a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html">Ruleset</a>s are active.</div></div>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="setActiveRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="setActiveRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Sets which <a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html">Ruleset</a>s are active.</div></div>
 <div class="divergent-group" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
@@ -504,15 +553,15 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23com.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="setActiveRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23com.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23com.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="setActiveRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23com.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Sets which <a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html">Ruleset</a>s are active.</div></div>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23com.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="setActiveRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23com.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23com.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="setActiveRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FsetActiveRulesets%2F%23com.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Sets which <a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html">Ruleset</a>s are active.</div></div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="%5Bkotlin%2FAny%2FtoString%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="toString" id="%5Bkotlin%2FAny%2FtoString%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+<a data-name="%5Bkotlin%2FAny%2FtoString%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="toString" id="%5Bkotlin%2FAny%2FtoString%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
                 <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html#%5Bkotlin%2FAny%2FtoString%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009">toString</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bkotlin%2FAny%2FtoString%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class=""><span class="inline-flex"><a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html#%5Bkotlin%2FAny%2FtoString%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214">toString</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bkotlin%2FAny%2FtoString%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
@@ -521,10 +570,13 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
 </svg><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
+                      <div class="platform-tags ">
+                        <div class="platform-tag jvm-like">androidJvm</div>
+                      </div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace">open fun <a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html#%5Bkotlin%2FAny%2FtoString%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009">toString</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace">open fun <a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html#%5Bkotlin%2FAny%2FtoString%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214">toString</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M5 4H15V16H5V4ZM17 7H19V18V20H17H8V18H17V7Z" fill="black"/>
                        </svg></span><div class="copy-popup-wrapper popup-to-left"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
@@ -535,10 +587,10 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
                     </div>
                   </div>
                 </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FupdateRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="updateRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FupdateRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FupdateRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="updateRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FupdateRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
                 <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="update-rulesets.html">updateRulesets</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FupdateRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class=""><span class="inline-flex"><a href="update-rulesets.html">updateRulesets</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FupdateRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
@@ -547,6 +599,9 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
 </svg><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
+                      <div class="platform-tags ">
+                        <div class="platform-tag jvm-like">androidJvm</div>
+                      </div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
@@ -556,17 +611,17 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
     <path d="M18 9C18 14 14 18 9 18C4 18 0 14 0 9C0 4 4 0 9 0C14 0 18 4 18 9ZM14.2 6.2L12.8 4.8L7.5 10.1L5.3 7.8L3.8 9.2L7.5 13L14.2 6.2Z" fill="#4DBB5F"/>
 </svg><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FupdateRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="updateRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FupdateRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FupdateRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" anchor-label="updateRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FupdateRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Request the <a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html">Ruleset</a>s are updated from the service.</div></div>
+<a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FupdateRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="updateRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FupdateRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a><div class="brief "><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FupdateRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" anchor-label="updateRulesets" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2FupdateRulesets%2F%23kotlin.Array%5Bcom.sudoplatform.sudoadtrackerblocker.types.Ruleset.Type%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>Request the <a href="../../com.sudoplatform.sudoadtrackerblocker.types/-ruleset/index.html">Ruleset</a>s are updated from the service.</div></div>
 </div>
                     </div>
                   </div>
                 </div>
               </div>
               <h2 class="">Properties</h2>
-              <div class="table" data-togglable="Properties"><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2Fstatus%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F492885009" anchor-label="status" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2Fstatus%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F492885009" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+              <div class="table" data-togglable="Properties"><a data-name="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2Fstatus%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F589297214" anchor-label="status" id="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2Fstatus%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F589297214" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
                 <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="status.html">status</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2Fstatus%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F492885009"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class=""><span class="inline-flex"><a href="status.html">status</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.sudoplatform.sudoadtrackerblocker%2FSudoAdTrackerBlockerClient%2Fstatus%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F589297214"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2496 5.3C20.3496 4.5 19.2496 4 18.0496 4C16.8496 4 15.6496 4.5 14.8496 5.3L10.3496 9.8L11.7496 11.2L16.2496 6.7C17.2496 5.7 18.8496 5.7 19.8496 6.7C20.8496 7.7 20.8496 9.3 19.8496 10.3L15.3496 14.8L16.7496 16.2L21.2496 11.7C22.1496 10.8 22.5496 9.7 22.5496 8.5C22.5496 7.3 22.1496 6.2 21.2496 5.3Z"/>
     <path d="M8.35 16.7998C7.35 17.7998 5.75 17.7998 4.75 16.7998C3.75 15.7998 3.75 14.1998 4.75 13.1998L9.25 8.6998L7.85 7.2998L3.35 11.7998C1.55 13.5998 1.55 16.3998 3.35 18.1998C4.25 19.0998 5.35 19.4998 6.55 19.4998C7.75 19.4998 8.85 19.0998 9.75 18.1998L14.25 13.6998L12.85 12.2998L8.35 16.7998Z"/>
 </svg></span>
@@ -575,6 +630,9 @@ val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
 </svg><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
+                      <div class="platform-tags ">
+                        <div class="platform-tag jvm-like">androidJvm</div>
+                      </div>
                       <div class="title">
                         <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace">abstract val <a href="status.html">status</a>: <a href="-filter-engine-status/index.html">SudoAdTrackerBlockerClient.FilterEngineStatus</a><span class="top-right-position"><span class="copy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M5 4H15V16H5V4ZM17 7H19V18V20H17H8V18H17V7Z" fill="black"/>

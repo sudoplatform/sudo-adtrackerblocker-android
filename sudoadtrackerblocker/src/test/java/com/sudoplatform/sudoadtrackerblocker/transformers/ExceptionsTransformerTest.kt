@@ -43,7 +43,7 @@ internal class ExceptionsTransformerTest {
             "http://foo.com/about-us" to "|http://foo.com/about-us^\n|https://foo.com/about-us^\n",
             "https://foo.bar.com/contact/external?type=phone"
                 to
-                "|http://foo.bar.com/contact/external^\n|https://foo.bar.com/contact/external^\n"
+                    "|http://foo.bar.com/contact/external^\n|https://foo.bar.com/contact/external^\n"
         )
         for ((url, result) in testCases) {
             val exc = toPageException(url)

@@ -73,7 +73,8 @@ internal class DefaultBlockingProvider(private val logger: Logger) : BlockingPro
         synchronized(adBlockEngines) {
 
             if (!sourceUrl.isNullOrBlank() &&
-                isInExceptionList(sourceUrl, resourceType, requestHost, sourceHost)) {
+                isInExceptionList(sourceUrl, resourceType, requestHost, sourceHost)
+            ) {
                 return false
             }
 
@@ -107,11 +108,11 @@ internal class DefaultBlockingProvider(private val logger: Logger) : BlockingPro
         // match the exception list. Therefore if the exception engine says it's OK to load
         // a URL that means the URL is not in the exception list.
         return !exceptionEngine.shouldLoad(
-                currentUrl,
-                "",
-                resourceType,
-                requestHost,
-                sourceHost
-            )
+            currentUrl,
+            "",
+            resourceType,
+            requestHost,
+            sourceHost
+        )
     }
 }
