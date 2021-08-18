@@ -1,11 +1,24 @@
-  ## 1.0.0
+## 1.2.0
+Released Aug 17, 2021
 
-  Released Jan 18, 2021.
+### New
 
-  ### New
+- Update to be compatible with latest version of sudoplatformconfig.json
+- Replace android extensions
+- Remove jcenter and update some dependencies
 
-  - Initial Release.
+### Fixed
 
-  ### Fixed
+- None
 
-  - None.
+## 1.0.0
+
+Released Jan 18, 2021.
+
+### New
+
+- Initial Release.
+
+### Fixed
+
+- None.

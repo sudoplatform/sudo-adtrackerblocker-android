@@ -79,7 +79,7 @@ interface SudoAdTrackerBlockerClient : AutoCloseable {
          * Construct the [SudoAdTrackerBlockerClient]. Will throw a [NullPointerException] if
          * the [context] or [sudoUserClient] have not been provided or [ConfigurationException]
          * if the sudoplatformconfig.json file is missing the region or bucket item in the
-         * identityService stanza.
+         * adTrackerBlockerService stanza.
          */
         @Throws(NullPointerException::class, SudoAdTrackerBlockerException.ConfigurationException::class)
         fun build(): SudoAdTrackerBlockerClient {

@@ -13,9 +13,9 @@ import com.sudoplatform.sudoconfigmanager.SudoConfigManager
 import com.sudoplatform.sudologging.Logger
 import org.json.JSONException
 
-private const val CONFIG_IDENTITY_SERVICE = "identityService"
+private const val CONFIG_AD_TRACKER_BLOCKER_SERVICE = "adTrackerBlockerService"
 private const val CONFIG_REGION = "region"
-private const val CONFIG_STATIC_DATA_BUCKET = "staticDataBucket"
+private const val CONFIG_STATIC_DATA_BUCKET = "bucket"
 
 internal data class S3Configuration(
     val region: String,
@@ -33,10 +33,10 @@ internal fun readS3Configuration(
 ): S3Configuration {
 
     val preamble = "sudoplatformconfig.json does not contain"
-    val postamble = "the $CONFIG_IDENTITY_SERVICE stanza"
+    val postamble = "the $CONFIG_AD_TRACKER_BLOCKER_SERVICE stanza"
 
     val identityConfig = try {
-        configManager.getConfigSet(CONFIG_IDENTITY_SERVICE)
+        configManager.getConfigSet(CONFIG_AD_TRACKER_BLOCKER_SERVICE)
     } catch (e: JSONException) {
         throw SudoAdTrackerBlockerException.ConfigurationException("$preamble $postamble", e)
     }

@@ -67,7 +67,7 @@ internal class DefaultAdTrackerBlockerClient(
         @VisibleForTesting
         internal const val SOCIAL_SUBPATH = "adblock-plus/SOCIAL"
         @VisibleForTesting
-        internal const val S3_TOP_PATH = "/ad-tracker-blocker/filter-lists"
+        internal const val S3_TOP_PATH = "/filter-lists"
 
         private val EPOCH = Date(0L)
 
