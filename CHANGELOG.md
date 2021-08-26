@@ -1,4 +1,18 @@
+## 1.2.1
+
+Released Aug 26, 2021
+
+### New
+
+- Exposed Entitlement Name
+- Updated Tests
+
+### Fixed
+
+- None.
+
 ## 1.2.0
+
 Released Aug 17, 2021
 
 ### New

@@ -49,23 +49,30 @@ internal class DefaultAdTrackerBlockerClient(
     @VisibleForTesting
     private val s3Client: S3Client = DefaultS3Client(context, sudoUserClient, region, bucket, logger),
     @VisibleForTesting
-    private val blockingProvider: BlockingProvider = DefaultBlockingProvider(logger)
+    private val blockingProvider: BlockingProvider = DefaultBlockingProvider(logger),
+    override val ENTITLEMENT_NAME: String = "sudoplatform.atb.atbUserEntitled"
 ) : SudoAdTrackerBlockerClient, CoroutineScope {
 
     companion object {
         /** Deny lists file names and paths */
         @VisibleForTesting
         internal const val ADS_FILE = "easylist.txt"
+
         @VisibleForTesting
         internal const val PRIVACY_FILE = "easyprivacy.txt"
+
         @VisibleForTesting
         internal const val SOCIAL_FILE = "fanboy-social.txt"
+
         @VisibleForTesting
         internal const val ADS_SUBPATH = "adblock-plus/AD"
+
         @VisibleForTesting
         internal const val PRIVACY_SUBPATH = "adblock-plus/PRIVACY"
+
         @VisibleForTesting
         internal const val SOCIAL_SUBPATH = "adblock-plus/SOCIAL"
+
         @VisibleForTesting
         internal const val S3_TOP_PATH = "/filter-lists"
 
@@ -85,6 +92,7 @@ internal class DefaultAdTrackerBlockerClient(
     private val blockingExceptions = BlockingExceptions(storageProvider)
 
     private val deferredSetup: Deferred<Unit>
+
     init {
         deferredSetup = async {
             setupBlockingProvider()

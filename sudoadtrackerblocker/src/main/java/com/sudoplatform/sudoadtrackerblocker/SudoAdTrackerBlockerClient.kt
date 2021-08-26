@@ -27,6 +27,7 @@ import java.util.Objects
  * @since 2020-11-17
  */
 interface SudoAdTrackerBlockerClient : AutoCloseable {
+    val ENTITLEMENT_NAME: String
 
     companion object {
         /** Create a [Builder] for [SudoAdTrackerBlockerClient]. */
@@ -200,8 +201,10 @@ interface SudoAdTrackerBlockerClient : AutoCloseable {
     enum class FilterEngineStatus {
         /** The filter engine is (re)initializing */
         PREPARING,
+
         /** The filter engine is ready to be used */
         READY,
+
         /** The filter engine failed to update or initialize correctly */
         ERROR,
         UNKNOWN
@@ -213,6 +216,7 @@ interface SudoAdTrackerBlockerClient : AutoCloseable {
     enum class CheckUrlResult {
         /** The URL is blocked by the active rulesets and no exception is applicable */
         BLOCKED,
+
         /** The URL is not blocked and should be used or loaded. */
         ALLOWED
     }

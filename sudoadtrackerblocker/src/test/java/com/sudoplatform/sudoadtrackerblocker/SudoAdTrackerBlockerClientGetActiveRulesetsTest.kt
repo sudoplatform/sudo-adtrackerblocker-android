@@ -120,4 +120,11 @@ internal class SudoAdTrackerBlockerClientGetActiveRulesetsTest : BaseTests() {
 
         verify(mockStorageProvider, atLeastOnce()).readPreferences()
     }
+
+    @Test
+    fun `ENTITLEMENT_NAME should not be null and should have the correct value`() = runBlocking {
+        val entitlementName: String = adTrackerBlockerClient.ENTITLEMENT_NAME
+        entitlementName shouldNotBe null
+        entitlementName shouldBe "sudoplatform.atb.atbUserEntitled"
+    }
 }
