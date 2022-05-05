@@ -10,6 +10,7 @@ import com.sudoplatform.sudoadtrackerblocker.BaseTests
 import com.sudoplatform.sudoadtrackerblocker.SudoAdTrackerBlockerException
 import com.sudoplatform.sudoadtrackerblocker.logging.LogConstants
 import com.sudoplatform.sudoconfigmanager.SudoConfigManager
+import com.sudoplatform.sudoconfigmanager.ValidationResult
 import com.sudoplatform.sudologging.AndroidUtilsLogDriver
 import com.sudoplatform.sudologging.LogLevel
 import io.kotlintest.shouldThrow
@@ -33,6 +34,10 @@ internal class S3ConfigurationTest : BaseTests() {
                     return JSONObject(configJson)
                 }
                 return null
+            }
+
+            override suspend fun validateConfig(): ValidationResult {
+                return ValidationResult(listOf(), listOf())
             }
         }
     }

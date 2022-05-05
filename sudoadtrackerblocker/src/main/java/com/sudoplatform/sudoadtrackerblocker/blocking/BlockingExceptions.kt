@@ -54,9 +54,9 @@ internal class BlockingExceptions(private val storageProvider: StorageProvider) 
         out.bufferedWriter().use { writer ->
             for (exception in exceptions) {
                 if (exception.type == BlockingException.Type.PAGE) {
-                    writer.append(exception.source).appendln(PAGE_EXCEPTION_SUFFIX)
+                    writer.append(exception.source).appendLine(PAGE_EXCEPTION_SUFFIX)
                 } else {
-                    writer.appendln(exception.source)
+                    writer.appendLine(exception.source)
                 }
             }
         }

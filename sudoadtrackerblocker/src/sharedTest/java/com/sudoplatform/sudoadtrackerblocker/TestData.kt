@@ -70,7 +70,7 @@ internal object TestData {
     )
 
     val PRIVACY_VIOLATORS = mapOf(
-        "google-analytics.com/collect" to "google-analytics.com",
+        "youtube.com/ptracking?" to "youtube.com",
     )
     val ADVERTISERS = mapOf(
         "gadsabz.com?ad=shinything" to "gadsabz.com"

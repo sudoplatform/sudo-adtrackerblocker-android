@@ -11,4 +11,8 @@
 /sudoadtrackerblocker/src/main/assets/register_key.id
 /sudoadtrackerblocker/src/main/assets/register_key.private
 /sudoadtrackerblocker/src/main/assets/sudoplatformconfig.json
+/sudoadtrackerblocker/src/androidTest/assets/register_key.id
+/sudoadtrackerblocker/src/androidTest/assets/register_key.private
+/sudoadtrackerblocker/src/androidTest/assets/sudoplatformconfig.json
+
 /.editorconfig

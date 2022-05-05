@@ -38,12 +38,12 @@ internal object ExceptionsTransformer {
             }
             if (exception.type == BlockingException.Type.HOST) {
                 // Match by host
-                rules.appendln("|http://${uri.host}^")
-                rules.appendln("|https://${uri.host}^")
+                rules.appendLine("|http://${uri.host}^")
+                rules.appendLine("|https://${uri.host}^")
             } else {
                 // Match by host and path
-                rules.appendln("|http://${uri.host}${uri.path}^")
-                rules.appendln("|https://${uri.host}${uri.path}^")
+                rules.appendLine("|http://${uri.host}${uri.path}^")
+                rules.appendLine("|https://${uri.host}${uri.path}^")
             }
         }
         return rules.toString().toByteArray(Charsets.UTF_8)

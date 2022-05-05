@@ -34,7 +34,7 @@ export BUILD_DIR=build/adblock
 
 clone_repo() {
   mkdir -p $BUILD_DIR
-  git clone git@github.com:brave/adblock-rust-ffi.git $BUILD_DIR/adblock-rust-ffi
+  git clone git@github.com:cobear25/adblock-rust-ffi.git $BUILD_DIR/adblock-rust-ffi
 }
 
 # Change the Cargo.toml file so that only the static library is built, otherwise the rust library
