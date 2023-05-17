@@ -1,8 +1,9 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
+
 package com.sudoplatform.sudoadtrackerblocker.blocking
 
 import android.net.Uri
@@ -12,8 +13,6 @@ import java.util.concurrent.CancellationException
 
 /**
  * Default implementation of a provider of ad and tracker detection and blocking.
- *
- * @since 2020-12-02
  */
 internal class DefaultBlockingProvider(private val logger: Logger) : BlockingProvider {
 

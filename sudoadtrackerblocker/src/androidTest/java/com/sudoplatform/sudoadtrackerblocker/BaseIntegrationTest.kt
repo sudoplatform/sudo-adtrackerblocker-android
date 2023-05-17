@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -21,8 +21,6 @@ internal fun String.toUrl() = "http://$this"
 
 /**
  * Base class of the integration tests of the Sudo Password Manager SDK.
- *
- * @since 2020-11-12
  */
 abstract class BaseIntegrationTest {
 

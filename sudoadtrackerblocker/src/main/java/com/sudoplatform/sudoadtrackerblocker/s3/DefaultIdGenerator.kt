@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -12,8 +12,6 @@ import java.util.UUID
 
 /**
  * Generates unique identifiers for S3 objects
- *
- * @since 2020-11-17
  */
 internal class DefaultIdGenerator : IdGenerator {
     override fun generateId(): String {

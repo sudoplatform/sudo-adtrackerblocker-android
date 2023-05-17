@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -26,13 +26,13 @@ import kotlin.coroutines.suspendCoroutine
 /**
  * Default S3 client implementation.
  *
- * @param context Android app context.
- * @param sudoUserClient [com.sudoplatform.sudouser.SudoUserClient] used for authenticating to AWS S3.
- * @param region The AWS region in which the bucket resides
- * @param bucket The identifier of the S3 bucket
- * @param timeoutMs The timeout in milliseconds of S3 connections
- * @param logger The Sudo logger for complaints
- * @param idGenerator Generator of unique identifiers for files and S3 objects
+ * @property context [Context] Android app context.
+ * @property sudoUserClient [SudoUserClient] used for authenticating to AWS S3.
+ * @property region [String] The AWS region in which the bucket resides
+ * @property bucket [String] The identifier of the S3 bucket
+ * @property logger [Logger] The Sudo logger for complaints
+ * @property timeoutMs [Int] The timeout in milliseconds of S3 connections
+ * @property idGenerator [IdGenerator] Generator of unique identifiers for files and S3 objects
  */
 internal class DefaultS3Client(
     context: Context,

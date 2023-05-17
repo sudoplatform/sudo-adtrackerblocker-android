@@ -1,8 +1,9 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
+
 package com.sudoplatform.sudoadtrackerblocker.blocking
 
 import com.google.common.base.Stopwatch
@@ -25,8 +26,6 @@ private const val MAX_URL_BLOCKING_MS = 50L
 
 /**
  * Test the operation of [DefaultBlockingProvider] on a Android device or emulator.
- *
- * @since 2020-12-02
  */
 class BlockingProviderTest : BaseIntegrationTest() {
 

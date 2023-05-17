@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -20,32 +20,33 @@ import java.util.UUID
 
 /**
  * Data common to many tests.
- *
- * @since 2020-11-12
  */
 internal object TestData {
 
     const val USER_ID = "slartibartfast"
     val USER_SUBJECT = UUID.randomUUID().toString()
 
-    val S3_PATH_ADS = "$S3_TOP_PATH/$ADS_SUBPATH/$ADS_FILE"
-    val S3_PATH_PRIVACY = "$S3_TOP_PATH/$PRIVACY_SUBPATH/$PRIVACY_FILE"
-    val S3_PATH_SOCIAL = "$S3_TOP_PATH/$SOCIAL_SUBPATH/$SOCIAL_FILE"
+    const val S3_PATH_ADS = "$S3_TOP_PATH/$ADS_SUBPATH/$ADS_FILE"
+    const val S3_PATH_PRIVACY = "$S3_TOP_PATH/$PRIVACY_SUBPATH/$PRIVACY_FILE"
+    const val S3_PATH_SOCIAL = "$S3_TOP_PATH/$SOCIAL_SUBPATH/$SOCIAL_FILE"
 
     val S3_AD_OBJECT_USER_METADATA = mapOf(
         RulesetTransformer.METADATA_BLOB to """{
             "${RulesetTransformer.METADATA_TYPE}": "${RulesetTransformer.METADATA_CATEGORY_AD}"
-        }"""
+        }
+        """
     )
-    val S3_PRIVACY_OBJECT_USER_METADATA = mapOf(
+    private val S3_PRIVACY_OBJECT_USER_METADATA = mapOf(
         RulesetTransformer.METADATA_BLOB to """{
             "${RulesetTransformer.METADATA_TYPE}": "${RulesetTransformer.METADATA_CATEGORY_PRIVACY}"
-        }"""
+        }
+        """
     )
-    val S3_SOCIAL_OBJECT_USER_METADATA = mapOf(
+    private val S3_SOCIAL_OBJECT_USER_METADATA = mapOf(
         RulesetTransformer.METADATA_BLOB to """{
             "${RulesetTransformer.METADATA_TYPE}": "${RulesetTransformer.METADATA_CATEGORY_SOCIAL}"
-        }"""
+        }
+        """
     )
 
     val S3_OBJECTS = listOf(
@@ -73,7 +74,7 @@ internal object TestData {
         "youtube.com/ptracking?" to "youtube.com",
     )
     val ADVERTISERS = mapOf(
-        "gadsabz.com?ad=shinything" to "gadsabz.com"
+        "consultant-adwords.com" to "consultant-adwords.com"
     )
     val SHOULD_NOT_BE_BLOCKED = mapOf(
         "anonyome.com/about.js" to "anonyome.com",

@@ -1,8 +1,9 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
+
 package com.sudoplatform.sudoadtrackerblocker
 
 import org.mockito.kotlin.doThrow
@@ -21,8 +22,6 @@ import java.util.concurrent.CancellationException
 
 /**
  * Test the operation of [SudoAdTrackerBlockerClient.close] using mocks and spies.
- *
- * @since 2020-12-03
  */
 @RunWith(RobolectricTestRunner::class)
 internal class SudoAdTrackerBlockerClientCloseTest : BaseTests() {

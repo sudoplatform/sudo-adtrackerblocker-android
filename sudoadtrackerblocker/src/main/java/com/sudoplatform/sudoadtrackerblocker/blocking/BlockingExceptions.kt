@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -14,8 +14,6 @@ import java.io.ByteArrayOutputStream
 
 /**
  * Exceptions to the blocking rules are maintained in a set which is stored in a file.
- *
- * @since 2020-12-03
  */
 internal class BlockingExceptions(private val storageProvider: StorageProvider) {
 

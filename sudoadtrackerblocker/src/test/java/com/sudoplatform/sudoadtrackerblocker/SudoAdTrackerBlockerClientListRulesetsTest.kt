@@ -1,8 +1,9 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
+
 package com.sudoplatform.sudoadtrackerblocker
 
 import com.amazonaws.services.cognitoidentity.model.NotAuthorizedException
@@ -31,8 +32,6 @@ import java.util.concurrent.CancellationException
 
 /**
  * Test the operation of [SudoAdTrackerBlockerClient.listRulesets] using mocks and spies.
- *
- * @since 2020-11-25
  */
 @RunWith(RobolectricTestRunner::class)
 internal class SudoAdTrackerBlockerClientListRulesetsTest : BaseTests() {

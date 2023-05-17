@@ -1,8 +1,9 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
+
 package com.sudoplatform.sudoadtrackerblocker.s3
 
 import com.sudoplatform.sudoadtrackerblocker.BaseIntegrationTest
@@ -19,8 +20,6 @@ import timber.log.Timber
 
 /**
  * Test the operation of the [DefaultS3Client].
- *
- * @since 2020-11-18
  */
 class S3ClientIntegrationTest : BaseIntegrationTest() {
 

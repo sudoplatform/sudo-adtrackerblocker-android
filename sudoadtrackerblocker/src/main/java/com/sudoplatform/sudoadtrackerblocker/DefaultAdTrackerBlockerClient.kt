@@ -1,8 +1,9 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
+
 package com.sudoplatform.sudoadtrackerblocker
 
 import android.content.Context
@@ -36,8 +37,6 @@ import kotlin.coroutines.CoroutineContext
 
 /**
  * The default implementation of [SudoAdTrackerBlockerClient] provided by this SDK.
- *
- * @since 2020-11-12
  */
 internal class DefaultAdTrackerBlockerClient(
     context: Context,

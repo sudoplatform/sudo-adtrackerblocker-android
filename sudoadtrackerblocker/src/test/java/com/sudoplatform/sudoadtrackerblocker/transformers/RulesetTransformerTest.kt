@@ -1,8 +1,9 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
+
 package com.sudoplatform.sudoadtrackerblocker.transformers
 
 import com.sudoplatform.sudoadtrackerblocker.s3.S3Client
@@ -17,8 +18,6 @@ import java.util.Locale
 
 /**
  * Test the operation of [RulesetTransformer].
- *
- * @since 2020-11-18
  */
 class RulesetTransformerTest {
 
@@ -63,7 +62,8 @@ class RulesetTransformerTest {
                 userMetadata = mapOf(
                     RulesetTransformer.METADATA_BLOB to """{
                         "${RulesetTransformer.METADATA_TYPE}": "AD"
-                    }"""
+                    }
+                    """
                 )
             ),
             S3Client.S3ObjectInfo(
@@ -73,7 +73,8 @@ class RulesetTransformerTest {
                 userMetadata = mapOf(
                     RulesetTransformer.METADATA_BLOB to """{
                         "${RulesetTransformer.METADATA_TYPE}": "unsupported"
-                    }"""
+                    }
+                    """
                 )
             ),
             S3Client.S3ObjectInfo(

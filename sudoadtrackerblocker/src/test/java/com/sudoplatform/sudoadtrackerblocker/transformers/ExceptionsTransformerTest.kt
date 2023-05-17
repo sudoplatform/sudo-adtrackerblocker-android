@@ -1,8 +1,9 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
+
 package com.sudoplatform.sudoadtrackerblocker.transformers
 
 import com.sudoplatform.sudoadtrackerblocker.types.toHostException
@@ -14,8 +15,6 @@ import org.robolectric.RobolectricTestRunner
 
 /**
  * Test the operation of [ExceptionsTransformer].
- *
- * @since 2020-12-03
  */
 @RunWith(RobolectricTestRunner::class)
 internal class ExceptionsTransformerTest {

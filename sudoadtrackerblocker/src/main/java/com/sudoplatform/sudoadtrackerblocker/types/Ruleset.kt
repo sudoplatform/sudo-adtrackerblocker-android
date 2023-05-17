@@ -1,6 +1,9 @@
 /*
- * Copyright 2020 Anonyome Labs Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
+ *
+ * SPDX-License-Identifier: Apache-2.0
  */
+
 package com.sudoplatform.sudoadtrackerblocker.types
 
 import android.os.Parcelable
@@ -11,8 +14,6 @@ import java.util.Date
  * A set of rules that provide:
  * - rules to detect requests for URLs by a browser that are for advertising or user tracking
  * - rules to detect URLs involving social media
- *
- * @since 2020-11-17
  */
 @Parcelize
 data class Ruleset(

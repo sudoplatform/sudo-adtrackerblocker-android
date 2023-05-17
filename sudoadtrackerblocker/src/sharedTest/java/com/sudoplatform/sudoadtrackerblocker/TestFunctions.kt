@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -16,8 +16,6 @@ import java.util.concurrent.TimeUnit
 
 /**
  * Test functions.
- *
- * @since 2020-11-25
  */
 fun checkEasyList(easyListBytes: ByteArray?) {
     easyListBytes shouldNotBe null

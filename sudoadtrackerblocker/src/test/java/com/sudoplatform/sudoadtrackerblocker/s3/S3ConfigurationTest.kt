@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020 - Anonyome Labs, Inc. - All rights reserved
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -21,8 +21,6 @@ import org.robolectric.RobolectricTestRunner
 
 /**
  * Test the handling of the JSON config items.
- *
- * @since 2020-11-18
  */
 @RunWith(RobolectricTestRunner::class)
 internal class S3ConfigurationTest : BaseTests() {

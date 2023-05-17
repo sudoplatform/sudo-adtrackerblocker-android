@@ -1,7 +1,7 @@
 # Ad/Tracker Blocker Android
 The Android Advertising and Tracker Blocker SDK for the Sudo Platform
 
-## Overvieww
+## Overview
 The Sudo Platform makes it effortless to block web content within your existing or new products.
 
 Please see the [Sudo Platform Developer Docs](https://docs.sudoplatform.com) for an overview of Ad/Tracker Blocker in the Sudo Platform.
@@ -10,7 +10,7 @@ Please see the [Sudo Platform Developer Docs](https://docs.sudoplatform.com) for
 | Technology             | Supported version |
 | ---------------------- | ----------------- |
 | Min. Deployment Target | 23                |
-| Kotlin version         | 1.3+              |
+| Kotlin version         | 1.6+              |
 
 ## Integration Instructions
 Visit the [Ad/Tracker Blocker section](https://docs.sudoplatform.com/guides/ad-tracker-blocker) of the Sudo Platform Developer Docs for SDK integration instructions.

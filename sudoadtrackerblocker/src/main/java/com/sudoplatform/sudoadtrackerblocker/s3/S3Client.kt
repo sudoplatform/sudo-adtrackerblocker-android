@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -12,8 +12,6 @@ import java.util.Date
  * S3 client wrapper mainly used for providing an abstraction layer on top of AWS S3 SDK.
  * This is a clone of the class of the same name in SudoProfiles and enhanced to be able to list
  * the contents of an S3 bucket.
- *
- * @since 2020-11-17
  */
 internal interface S3Client {
 

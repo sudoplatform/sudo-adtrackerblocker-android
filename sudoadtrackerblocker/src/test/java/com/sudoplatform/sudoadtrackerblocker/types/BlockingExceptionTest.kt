@@ -1,8 +1,9 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
+
 package com.sudoplatform.sudoadtrackerblocker.types
 
 import com.sudoplatform.sudoadtrackerblocker.SudoAdTrackerBlockerException
@@ -14,8 +15,6 @@ import org.robolectric.RobolectricTestRunner
 
 /**
  * Test the correction operation of the [BlockingException] factory methods.
- *
- * @since 2020-12-08
  */
 @RunWith(RobolectricTestRunner::class)
 class BlockingExceptionTest {

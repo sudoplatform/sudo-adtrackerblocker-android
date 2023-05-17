@@ -1,1 +1,1 @@
-sourceset_dependencies = '{":sudoadtrackerblocker:dokkaHtml/androidTestRelease": [], ":sudoadtrackerblocker:dokkaHtml/debug": [], ":sudoadtrackerblocker:dokkaHtml/main": [], ":sudoadtrackerblocker:dokkaHtml/release": []}'
+sourceset_dependencies='{":sudoadtrackerblocker:dokkaHtml/androidTestRelease":[],":sudoadtrackerblocker:dokkaHtml/debug":[],":sudoadtrackerblocker:dokkaHtml/main":[],":sudoadtrackerblocker:dokkaHtml/release":[]}'

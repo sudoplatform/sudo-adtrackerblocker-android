@@ -1,8 +1,9 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
+
 package com.sudoplatform.sudoadtrackerblocker
 
 import android.content.Context
@@ -23,8 +24,6 @@ import java.util.Objects
 /**
  * Interface encapsulating a library for interacting with the Sudo Ad Tracker Blocker service.
  * @sample com.sudoplatform.sudoadtrackerblocker.samples.Samples.buildClient
- *
- * @since 2020-11-17
  */
 interface SudoAdTrackerBlockerClient : AutoCloseable {
     val ENTITLEMENT_NAME: String

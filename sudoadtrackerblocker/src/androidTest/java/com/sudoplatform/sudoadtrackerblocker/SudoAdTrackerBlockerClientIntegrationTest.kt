@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -32,8 +32,6 @@ import timber.log.Timber
 
 /**
  * Test the operation of the [SudoAdTrackerBlockerClient].
- *
- * @since 2020-11-12
  */
 @RunWith(AndroidJUnit4::class)
 class SudoAdTrackerBlockerClientIntegrationTest : BaseIntegrationTest() {

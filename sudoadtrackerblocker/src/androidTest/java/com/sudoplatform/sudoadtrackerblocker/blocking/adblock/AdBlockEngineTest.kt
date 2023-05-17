@@ -1,6 +1,9 @@
 /*
- * Copyright 2020 Anonyome Labs Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
+ *
+ * SPDX-License-Identifier: Apache-2.0
  */
+
 package com.sudoplatform.sudoadtrackerblocker.blocking.adblock
 
 import com.sudoplatform.sudoadtrackerblocker.BaseIntegrationTest
@@ -17,8 +20,6 @@ import timber.log.Timber
 
 /**
  * Test the operation of [AdBlockEngine] on a Android device or emulator.
- *
- * @since 2020-11-23
  */
 class AdBlockEngineTest : BaseIntegrationTest() {
 

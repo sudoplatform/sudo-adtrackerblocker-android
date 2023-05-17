@@ -1,16 +1,15 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
+
 package com.sudoplatform.sudoadtrackerblocker.blocking
 
 import com.sudoplatform.sudoadtrackerblocker.SudoAdTrackerBlockerException
 
 /**
  * Provide ad and tracker detection and blocking.
- *
- * @since 2020-12-02
  */
 interface BlockingProvider : AutoCloseable {
 

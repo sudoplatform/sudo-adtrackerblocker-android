@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -20,8 +20,6 @@ import com.sudoplatform.sudoadtrackerblocker.types.BlockingException
  *
  * https://help.eyeo.com/en/adblockplus/how-to-write-filters
  * https://adblockplus.org/en/filter-cheatsheet
- *
- * @since 2020-12-03
  */
 internal object ExceptionsTransformer {
 

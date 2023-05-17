@@ -1,8 +1,9 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
+
 package com.sudoplatform.sudoadtrackerblocker.storage
 
 import androidx.annotation.VisibleForTesting
@@ -11,8 +12,6 @@ import java.io.IOException
 /**
  * Storage services are provided to the [SudoAdTrackerBlockerClient] by classes that implement
  * this interface.
- *
- * @since 2020-11-19
  */
 interface StorageProvider {
 

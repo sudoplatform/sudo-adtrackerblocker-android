@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -14,8 +14,6 @@ import org.json.JSONObject
 
 /**
  * Transform from S3 types to publicly exposed [Ruleset]s and vice-versa.
- *
- * @since 2020-11-18
  */
 internal object RulesetTransformer {
 

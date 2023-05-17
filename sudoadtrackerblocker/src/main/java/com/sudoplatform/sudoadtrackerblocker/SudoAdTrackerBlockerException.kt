@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -9,9 +9,8 @@ package com.sudoplatform.sudoadtrackerblocker
 /**
  * Defines the exceptions thrown by the methods of the [SudoAdTrackerBlockerClient].
  *
- * @property message Accompanying message for the exception.
- * @property cause The cause for the exception.
- * @since 2020-11-12
+ * @property message [String] Accompanying message for the exception.
+ * @property cause [Throwable] The cause for the exception.
  */
 sealed class SudoAdTrackerBlockerException(message: String? = null, cause: Throwable? = null) : RuntimeException(message, cause) {
     /** A configuration item that is needed is missing */

@@ -1,8 +1,9 @@
 /*
- * Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+ * Copyright © 2022 Anonyome Labs, Inc. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
+
 package com.sudoplatform.sudoadtrackerblocker.blocking.adblock
 
 import androidx.annotation.Keep
@@ -11,8 +12,6 @@ import java.io.IOException
 
 /**
  * The JNI interface to the Adblock Rust FFI blocking engine.
- *
- * @since 2020-11-20
  */
 @Keep
 internal class AdBlockEngine : AutoCloseable {
