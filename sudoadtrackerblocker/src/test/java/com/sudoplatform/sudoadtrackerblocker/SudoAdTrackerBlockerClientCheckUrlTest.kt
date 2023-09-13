@@ -6,16 +6,16 @@
 
 package com.sudoplatform.sudoadtrackerblocker
 
-import org.mockito.kotlin.doThrow
-import org.mockito.kotlin.stub
-import org.mockito.kotlin.verify
-import org.mockito.kotlin.verifyNoMoreInteractions
 import io.kotlintest.shouldThrow
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers.anyString
+import org.mockito.kotlin.doThrow
+import org.mockito.kotlin.stub
+import org.mockito.kotlin.verify
+import org.mockito.kotlin.verifyNoMoreInteractions
 import org.robolectric.RobolectricTestRunner
 import java.util.concurrent.CancellationException
 
@@ -24,7 +24,6 @@ import java.util.concurrent.CancellationException
  */
 @RunWith(RobolectricTestRunner::class)
 internal class SudoAdTrackerBlockerClientCheckUrlTest : BaseTests() {
-
     @After
     fun fini() {
         verifyMocksUsedInClientInit()
@@ -42,15 +41,12 @@ internal class SudoAdTrackerBlockerClientCheckUrlTest : BaseTests() {
 
     @Test
     fun `checkUrl() should call blocking provider`() = runBlocking<Unit> {
-
         adTrackerBlockerClient.checkUrl("a", "b", "c")
-
         verify(mockBlockingProvider).checkIsUrlBlocked(anyString(), anyString(), anyString())
     }
 
     @Test
     fun `checkUrl() should throw when blocking provider not ready`() = runBlocking<Unit> {
-
         adTrackerBlockerClient.actualStatus = SudoAdTrackerBlockerClient.FilterEngineStatus.PREPARING
 
         shouldThrow<SudoAdTrackerBlockerException.FilterEngineNotReadyException> {
@@ -63,7 +59,6 @@ internal class SudoAdTrackerBlockerClientCheckUrlTest : BaseTests() {
 
     @Test
     fun `checkUrl() should throw when blocking provider throws`() = runBlocking<Unit> {
-
         mockBlockingProvider.stub {
             onBlocking {
                 checkIsUrlBlocked(anyString(), anyString(), anyString())
@@ -79,7 +74,6 @@ internal class SudoAdTrackerBlockerClientCheckUrlTest : BaseTests() {
 
     @Test
     fun `checkUrl() should not block coroutine cancellation exception`() = runBlocking<Unit> {
-
         mockBlockingProvider.stub {
             onBlocking { checkIsUrlBlocked(anyString(), anyString(), anyString()) } doThrow CancellationException("mock")
         }

@@ -6,12 +6,6 @@
 
 package com.sudoplatform.sudoadtrackerblocker
 
-import org.mockito.kotlin.any
-import org.mockito.kotlin.doThrow
-import org.mockito.kotlin.eq
-import org.mockito.kotlin.stub
-import org.mockito.kotlin.verify
-import org.mockito.kotlin.verifyNoMoreInteractions
 import com.sudoplatform.sudoadtrackerblocker.DefaultAdTrackerBlockerClient.Companion.ADS_FILE
 import com.sudoplatform.sudoadtrackerblocker.DefaultAdTrackerBlockerClient.Companion.PRIVACY_FILE
 import com.sudoplatform.sudoadtrackerblocker.DefaultAdTrackerBlockerClient.Companion.S3_TOP_PATH
@@ -28,6 +22,12 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers.anyInt
 import org.mockito.ArgumentMatchers.anyString
+import org.mockito.kotlin.any
+import org.mockito.kotlin.doThrow
+import org.mockito.kotlin.eq
+import org.mockito.kotlin.stub
+import org.mockito.kotlin.verify
+import org.mockito.kotlin.verifyNoMoreInteractions
 import org.robolectric.RobolectricTestRunner
 import java.util.concurrent.CancellationException
 
@@ -54,7 +54,6 @@ internal class SudoAdTrackerBlockerClientUpdateRulesetsTest : BaseTests() {
 
     @Test
     fun `updateRulesets() should call S3 client`() = runBlocking<Unit> {
-
         adTrackerBlockerClient.updateRulesets()
 
         verify(mockS3Client).list(eq(S3_TOP_PATH), anyInt())
@@ -81,7 +80,6 @@ internal class SudoAdTrackerBlockerClientUpdateRulesetsTest : BaseTests() {
 
     @Test
     fun `updateRulesets() should return null when s3 client download fails`() = runBlocking<Unit> {
-
         mockS3Client.stub {
             onBlocking { download(anyString()) } doThrow S3Exception.DownloadException("mock")
         }
@@ -95,7 +93,6 @@ internal class SudoAdTrackerBlockerClientUpdateRulesetsTest : BaseTests() {
 
     @Test
     fun `updateRulesets() should throw when s3 client throws`() = runBlocking<Unit> {
-
         mockS3Client.stub {
             onBlocking { download(anyString()) } doThrow IllegalStateException("mock")
         }
@@ -111,7 +108,6 @@ internal class SudoAdTrackerBlockerClientUpdateRulesetsTest : BaseTests() {
 
     @Test
     fun `updateRulesets() should not block coroutine cancellation exception`() = runBlocking<Unit> {
-
         mockS3Client.stub {
             onBlocking { download(anyString()) } doThrow CancellationException("Mock")
         }

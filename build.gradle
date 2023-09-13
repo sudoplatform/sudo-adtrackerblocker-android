@@ -1,10 +1,11 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.6.20'
-    ext.coroutine_version = '1.6.0'
-    ext.dokka_version = '1.6.10'
-    ext.aws_version = '2.42.0'
+    ext.kotlin_version = '1.8.21'
+    ext.aws_version = '2.72.0'
+    ext.appsync_version = '3.4.0'
+    ext.dokka_version = '1.8.10'
+    ext.coroutine_version = '1.7.1'
 
     repositories {
         google()
@@ -12,16 +13,16 @@ buildscript {
         maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath 'com.android.tools.build:gradle:8.0.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'org.owasp:dependency-check-gradle:6.5.3'
+        classpath 'org.owasp:dependency-check-gradle:8.2.1'
         classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.21.2"
         classpath "org.jetbrains.dokka:dokka-gradle-plugin:$dokka_version"
         if (project.file("${rootProject.projectDir}/util/sonarqube.gradle").exists()) {
             classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3"
         }
         classpath "com.cookpad.android.licensetools:license-tools-plugin:1.7.0"
-        classpath "org.jmailen.gradle:kotlinter-gradle:3.9.0"
+        classpath "org.jmailen.gradle:kotlinter-gradle:3.13.0"
     }
 }
 
@@ -45,6 +46,19 @@ else {
     ext["internalReleaseRepoName"] = ""
     ext["sonatypeStagingProfileId"] = ""
 }
+
+if (project.hasProperty("ossIndexUsername")) {
+    ext["ossIndexUsername"] = "$ossIndexUsername"
+} else {
+    ext["ossIndexUsername"] = ""
+}
+
+if (project.hasProperty("ossIndexPassword")) {
+    ext["ossIndexPassword"] = "$ossIndexPassword"
+} else {
+    ext["ossIndexPassword"] = ""
+}
+
 
 if (project.findProperty("tag") && sonatypeStagingProfileId) {
     nexusPublishing {

@@ -1,224 +1,261 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>StorageProvider</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
-const savedDarkMode = storage ? JSON.parse(storage) : false
-if(savedDarkMode === true){
-    document.getElementsByTagName("html")[0].classList.add("theme-dark")
-}</script>
-<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><link href="../../../styles/prism.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script><script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>  </head>
-  <body>
-    <div class="navigation-wrapper" id="navigation-wrapper">
-      <div id="leftToggler"><span class="icon-toggler"></span></div>
-      <div class="library-name"><a href="../../../index.html">sudoadtrackerblocker</a></div>
-      <div></div>
-      <div class="pull-right d-flex"><button id="theme-toggle-button"><span id="theme-toggle"></span></button>
-        <div id="searchBar"></div>
-      </div>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>sudoadtrackerblocker</span>
+            </a>
     </div>
-    <div id="container">
-      <div id="leftColumn">
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":sudoadtrackerblocker:dokkaHtml/release">androidJvm</button>
+        </div>
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
         <div id="sideMenu"></div>
-      </div>
-      <div id="main">
-        <div class="main-content" id="content" pageIds="sudoadtrackerblocker::com.sudoplatform.sudoadtrackerblocker.storage/StorageProvider///PointingToDeclaration//-374265660">
-          <div class="breadcrumbs"><a href="../../../index.html">sudoadtrackerblocker</a>/<a href="../index.html">com.sudoplatform.sudoadtrackerblocker.storage</a>/<a href="index.html">StorageProvider</a></div>
-          <div class="cover ">
-            <h1 class="cover"><span>Storage</span><wbr></wbr><span><span>Provider</span></span></h1>
-            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">StorageProvider</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Storage services are provided to the SudoAdTrackerBlockerClient by classes that implement this interface.</p></div></div>
-          </div>
-          <div class="tabbedcontent">
-            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Functions">Functions</button></div>
-            <div class="tabs-section-body">
-              <h2 class="">Functions</h2>
-              <div class="table" data-togglable="Functions"><a data-name="-2032918396%2FFunctions%2F-374265660" anchor-label="delete" id="-2032918396%2FFunctions%2F-374265660" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="delete.html"><span><span>delete</span></span></a></div>
+    </div>
+    <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="sudoadtrackerblocker::com.sudoplatform.sudoadtrackerblocker.storage/StorageProvider///PointingToDeclaration//-374265660">
+  <div class="breadcrumbs"><a href="../../../index.html">sudoadtrackerblocker</a><span class="delimiter">/</span><a href="../index.html">com.sudoplatform.sudoadtrackerblocker.storage</a><span class="delimiter">/</span><span class="current">StorageProvider</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Storage</span><wbr></wbr><span><span>Provider</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">StorageProvider</a></div><p class="paragraph">Storage services are provided to the SudoAdTrackerBlockerClient by classes that implement this interface.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,FUNCTION,PROPERTY">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-2032918396%2FFunctions%2F-374265660" anchor-label="delete" id="-2032918396%2FFunctions%2F-374265660" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="delete.html"><span><span>delete</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2032918396%2FFunctions%2F-374265660"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="delete.html"><span class="token function">delete</span></a><span class="token punctuation">(</span>fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Delete a file.</p></div></div></div>
-                      </div>
-                    </div>
-                  </div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="delete.html"><span class="token function">delete</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Delete a file.</p></div></div></div>
                 </div>
+              </div>
+            </div>
+          </div>
 <a data-name="1675331445%2FFunctions%2F-374265660" anchor-label="deleteFileETag" id="1675331445%2FFunctions%2F-374265660" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="delete-file-e-tag.html"><span>delete</span><wbr></wbr><span>File</span><wbr></wbr><span><span>ETag</span></span></a></div>
+          <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="delete-file-e-tag.html"><span>delete</span><wbr></wbr><span>File</span><wbr></wbr><span><span>ETag</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1675331445%2FFunctions%2F-374265660"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="delete-file-e-tag.html"><span class="token function">deleteFileETag</span></a><span class="token punctuation">(</span>fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Delete the eTag of a file.</p></div></div></div>
-                      </div>
-                    </div>
-                  </div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="delete-file-e-tag.html"><span class="token function">deleteFileETag</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Delete the eTag of a file.</p></div></div></div>
                 </div>
+              </div>
+            </div>
+          </div>
 <a data-name="2118909624%2FFunctions%2F-374265660" anchor-label="deleteFileETags" id="2118909624%2FFunctions%2F-374265660" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="delete-file-e-tags.html"><span>delete</span><wbr></wbr><span>File</span><wbr></wbr><span><span>ETags</span></span></a></div>
+          <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="delete-file-e-tags.html"><span>delete</span><wbr></wbr><span>File</span><wbr></wbr><span><span>ETags</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2118909624%2FFunctions%2F-374265660"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="delete-file-e-tags.html"><span class="token function">deleteFileETags</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Delete all the file eTags managed by the <a href="index.html">StorageProvider</a>.</p></div></div></div>
-                      </div>
-                    </div>
-                  </div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="delete-file-e-tags.html"><span class="token function">deleteFileETags</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Delete all the file eTags managed by the <a href="index.html">StorageProvider</a>.</p></div></div></div>
                 </div>
+              </div>
+            </div>
+          </div>
 <a data-name="2049162851%2FFunctions%2F-374265660" anchor-label="deleteFiles" id="2049162851%2FFunctions%2F-374265660" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="delete-files.html"><span>delete</span><wbr></wbr><span><span>Files</span></span></a></div>
+          <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="delete-files.html"><span>delete</span><wbr></wbr><span><span>Files</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2049162851%2FFunctions%2F-374265660"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="delete-files.html"><span class="token function">deleteFiles</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Delete all the files managed by the <a href="index.html">StorageProvider</a>.</p></div></div></div>
-                      </div>
-                    </div>
-                  </div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="delete-files.html"><span class="token function">deleteFiles</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Delete all the files managed by the <a href="index.html">StorageProvider</a>.</p></div></div></div>
                 </div>
+              </div>
+            </div>
+          </div>
 <a data-name="778984258%2FFunctions%2F-374265660" anchor-label="deletePreferences" id="778984258%2FFunctions%2F-374265660" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="delete-preferences.html"><span>delete</span><wbr></wbr><span><span>Preferences</span></span></a></div>
+          <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="delete-preferences.html"><span>delete</span><wbr></wbr><span><span>Preferences</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="778984258%2FFunctions%2F-374265660"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="delete-preferences.html"><span class="token function">deletePreferences</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Delete the set of preferences.</p></div></div></div>
-                      </div>
-                    </div>
-                  </div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="delete-preferences.html"><span class="token function">deletePreferences</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Delete the set of preferences.</p></div></div></div>
                 </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-736886122%2FFunctions%2F-374265660" anchor-label="listFiles" id="-736886122%2FFunctions%2F-374265660" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="list-files.html"><span>list</span><wbr></wbr><span><span>Files</span></span></a></div>
+          <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="list-files.html"><span>list</span><wbr></wbr><span><span>Files</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-736886122%2FFunctions%2F-374265660"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="list-files.html"><span class="token function">listFiles</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">List all the files in the storage provider.</p></div></div></div>
-                      </div>
-                    </div>
-                  </div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="list-files.html"><span class="token function">listFiles</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">List all the files in the storage provider.</p></div></div></div>
                 </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-241782609%2FFunctions%2F-374265660" anchor-label="read" id="-241782609%2FFunctions%2F-374265660" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="read.html"><span><span>read</span></span></a></div>
+          <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read.html"><span><span>read</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-241782609%2FFunctions%2F-374265660"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="read.html"><span class="token function">read</span></a><span class="token punctuation">(</span>fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html">ByteArray</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Reads all the bytes from a file.</p></div></div></div>
-                      </div>
-                    </div>
-                  </div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="read.html"><span class="token function">read</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html">ByteArray</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Reads all the bytes from a file.</p></div></div></div>
                 </div>
+              </div>
+            </div>
+          </div>
 <a data-name="1384955040%2FFunctions%2F-374265660" anchor-label="readFileETag" id="1384955040%2FFunctions%2F-374265660" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="read-file-e-tag.html"><span>read</span><wbr></wbr><span>File</span><wbr></wbr><span><span>ETag</span></span></a></div>
+          <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-file-e-tag.html"><span>read</span><wbr></wbr><span>File</span><wbr></wbr><span><span>ETag</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1384955040%2FFunctions%2F-374265660"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="read-file-e-tag.html"><span class="token function">readFileETag</span></a><span class="token punctuation">(</span>fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Reads the eTag of a file, returns null if the file does not exist.</p></div></div></div>
-                      </div>
-                    </div>
-                  </div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="read-file-e-tag.html"><span class="token function">readFileETag</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Reads the eTag of a file, returns null if the file does not exist.</p></div></div></div>
                 </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-631440851%2FFunctions%2F-374265660" anchor-label="readPreferences" id="-631440851%2FFunctions%2F-374265660" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="read-preferences.html"><span>read</span><wbr></wbr><span><span>Preferences</span></span></a></div>
+          <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-preferences.html"><span>read</span><wbr></wbr><span><span>Preferences</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-631440851%2FFunctions%2F-374265660"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="read-preferences.html"><span class="token function">readPreferences</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Reads the preferences from storage. Preference storage might be restricted by implementations to a maximum size. It should not be considered appropriate to store large amounts of data in the preferences.</p></div></div></div>
-                      </div>
-                    </div>
-                  </div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="read-preferences.html"><span class="token function">readPreferences</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Reads the preferences from storage. Preference storage might be restricted by implementations to a maximum size. It should not be considered appropriate to store large amounts of data in the preferences.</p></div></div></div>
                 </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1408321785%2FFunctions%2F-374265660" anchor-label="write" id="-1408321785%2FFunctions%2F-374265660" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="write.html"><span><span>write</span></span></a></div>
+          <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write.html"><span><span>write</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1408321785%2FFunctions%2F-374265660"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="write.html"><span class="token function">write</span></a><span class="token punctuation">(</span>fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span>data<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html">ByteArray</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Writes all the bytes to a file.</p></div></div></div>
-                      </div>
-                    </div>
-                  </div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="write.html"><span class="token function">write</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">data<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html">ByteArray</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Writes all the bytes to a file.</p></div></div></div>
                 </div>
+              </div>
+            </div>
+          </div>
 <a data-name="1010074410%2FFunctions%2F-374265660" anchor-label="writeFileETag" id="1010074410%2FFunctions%2F-374265660" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="write-file-e-tag.html"><span>write</span><wbr></wbr><span>File</span><wbr></wbr><span><span>ETag</span></span></a></div>
+          <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-file-e-tag.html"><span>write</span><wbr></wbr><span>File</span><wbr></wbr><span><span>ETag</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1010074410%2FFunctions%2F-374265660"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="write-file-e-tag.html"><span class="token function">writeFileETag</span></a><span class="token punctuation">(</span>fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span>eTag<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Writes the eTag of a file.</p></div></div></div>
-                      </div>
-                    </div>
-                  </div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="write-file-e-tag.html"><span class="token function">writeFileETag</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">eTag<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Writes the eTag of a file.</p></div></div></div>
                 </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1805602754%2FFunctions%2F-374265660" anchor-label="writePreferences" id="-1805602754%2FFunctions%2F-374265660" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="write-preferences.html"><span>write</span><wbr></wbr><span><span>Preferences</span></span></a></div>
+          <div class="table-row" data-filterable-current=":sudoadtrackerblocker:dokkaHtml/release" data-filterable-set=":sudoadtrackerblocker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-preferences.html"><span>write</span><wbr></wbr><span><span>Preferences</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1805602754%2FFunctions%2F-374265660"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="write-preferences.html"><span class="token function">writePreferences</span></a><span class="token punctuation">(</span>preferences<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Writes the preferences to storage. Preference storage might be restricted by implementations to a maximum size. It should not be considered appropriate to store large amounts of data in the preferences.</p></div></div></div>
-                      </div>
-                    </div>
-                  </div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sudoadtrackerblocker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="write-preferences.html"><span class="token function">writePreferences</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">preferences<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Writes the preferences to storage. Preference storage might be restricted by implementations to a maximum size. It should not be considered appropriate to store large amounts of data in the preferences.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
       </div>
     </div>
-  </body>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
 </html>
-

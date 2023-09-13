@@ -14,7 +14,6 @@ import io.kotlintest.matchers.collections.shouldHaveSize
 import io.kotlintest.shouldBe
 import org.junit.Test
 import java.util.Date
-import java.util.Locale
 
 /**
  * Test the operation of [RulesetTransformer].
@@ -31,7 +30,7 @@ class RulesetTransformerTest {
         val types = Ruleset.Type.values().toList()
         testCases.forEach { testCase ->
             testCase.toRulesetType() shouldBeOneOf types
-            testCase.toLowerCase(Locale.ROOT).toRulesetType() shouldBeOneOf types
+            testCase.lowercase().toRulesetType() shouldBeOneOf types
             " $testCase ".toRulesetType() shouldBeOneOf types
         }
     }
@@ -47,7 +46,7 @@ class RulesetTransformerTest {
         )
         testCases.forEach { testCase ->
             testCase.toRulesetType() shouldBe Ruleset.Type.UNKNOWN
-            testCase.toLowerCase(Locale.ROOT).toRulesetType() shouldBe Ruleset.Type.UNKNOWN
+            testCase.lowercase().toRulesetType() shouldBe Ruleset.Type.UNKNOWN
             " $testCase ".toRulesetType() shouldBe Ruleset.Type.UNKNOWN
         }
     }

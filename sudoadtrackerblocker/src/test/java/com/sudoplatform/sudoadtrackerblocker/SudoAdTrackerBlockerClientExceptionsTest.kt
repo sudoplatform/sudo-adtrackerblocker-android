@@ -6,12 +6,6 @@
 
 package com.sudoplatform.sudoadtrackerblocker
 
-import org.mockito.kotlin.any
-import org.mockito.kotlin.doThrow
-import org.mockito.kotlin.stub
-import org.mockito.kotlin.times
-import org.mockito.kotlin.verify
-import org.mockito.kotlin.verifyNoMoreInteractions
 import com.sudoplatform.sudoadtrackerblocker.blocking.BlockingExceptions
 import com.sudoplatform.sudoadtrackerblocker.types.toHostException
 import io.kotlintest.shouldThrow
@@ -20,6 +14,12 @@ import org.junit.After
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers.anyString
+import org.mockito.kotlin.any
+import org.mockito.kotlin.doThrow
+import org.mockito.kotlin.stub
+import org.mockito.kotlin.times
+import org.mockito.kotlin.verify
+import org.mockito.kotlin.verifyNoMoreInteractions
 import org.robolectric.RobolectricTestRunner
 import java.io.IOException
 import java.util.concurrent.CancellationException
@@ -59,7 +59,6 @@ internal class SudoAdTrackerBlockerClientExceptionsTest : BaseTests() {
 
     @Test
     fun `addExceptions() should call storage and blocking provider`() = runBlocking<Unit> {
-
         adTrackerBlockerClient.addExceptions(hostException)
 
         verifyReadAndWriteOfExceptionsFile()
@@ -68,7 +67,6 @@ internal class SudoAdTrackerBlockerClientExceptionsTest : BaseTests() {
 
     @Test
     fun `addExceptions() should throw when storage provider throws`() = runBlocking<Unit> {
-
         mockStorageProvider.stub {
             onBlocking { write(anyString(), any()) } doThrow IOException("mock")
         }
@@ -82,7 +80,6 @@ internal class SudoAdTrackerBlockerClientExceptionsTest : BaseTests() {
 
     @Test
     fun `addExceptions() should not block coroutine cancellation exception`() = runBlocking<Unit> {
-
         mockStorageProvider.stub {
             onBlocking { read(anyString()) } doThrow CancellationException("Mock")
         }
@@ -100,7 +97,6 @@ internal class SudoAdTrackerBlockerClientExceptionsTest : BaseTests() {
 
     @Test
     fun `removeExceptions() should call storage and blocking provider`() = runBlocking<Unit> {
-
         adTrackerBlockerClient.removeExceptions(hostException)
 
         verifyReadAndWriteOfExceptionsFile()
@@ -109,7 +105,6 @@ internal class SudoAdTrackerBlockerClientExceptionsTest : BaseTests() {
 
     @Test
     fun `removeExceptions() should throw when storage provider throws`() = runBlocking<Unit> {
-
         mockStorageProvider.stub {
             onBlocking { write(anyString(), any()) } doThrow IOException("mock")
         }
@@ -123,7 +118,6 @@ internal class SudoAdTrackerBlockerClientExceptionsTest : BaseTests() {
 
     @Test
     fun `removeExceptions() should not block coroutine cancellation exception`() = runBlocking<Unit> {
-
         mockStorageProvider.stub {
             onBlocking { read(anyString()) } doThrow CancellationException("Mock")
         }
@@ -141,7 +135,6 @@ internal class SudoAdTrackerBlockerClientExceptionsTest : BaseTests() {
 
     @Test
     fun `removeAllExceptions() should call storage and blocking provider`() = runBlocking<Unit> {
-
         adTrackerBlockerClient.removeAllExceptions()
 
         verify(mockStorageProvider).delete(BlockingExceptions.EXCEPTIONS_FILE)
@@ -150,7 +143,6 @@ internal class SudoAdTrackerBlockerClientExceptionsTest : BaseTests() {
 
     @Test
     fun `removeAllExceptions() should throw when storage provider throws`() = runBlocking<Unit> {
-
         mockStorageProvider.stub {
             onBlocking { delete(anyString()) } doThrow IOException("mock")
         }
@@ -164,7 +156,6 @@ internal class SudoAdTrackerBlockerClientExceptionsTest : BaseTests() {
 
     @Test
     fun `removeAllExceptions() should not block coroutine cancellation exception`() = runBlocking<Unit> {
-
         mockStorageProvider.stub {
             onBlocking { delete(anyString()) } doThrow CancellationException("Mock")
         }
@@ -182,7 +173,6 @@ internal class SudoAdTrackerBlockerClientExceptionsTest : BaseTests() {
 
     @Test
     fun `getExceptions() should call storage and blocking provider`() = runBlocking<Unit> {
-
         adTrackerBlockerClient.getExceptions()
 
         verify(mockStorageProvider).read(BlockingExceptions.EXCEPTIONS_FILE)
@@ -190,7 +180,6 @@ internal class SudoAdTrackerBlockerClientExceptionsTest : BaseTests() {
 
     @Test
     fun `getExceptions() should throw when storage provider throws`() = runBlocking<Unit> {
-
         mockStorageProvider.stub {
             onBlocking { read(anyString()) } doThrow IOException("mock")
         }
@@ -204,7 +193,6 @@ internal class SudoAdTrackerBlockerClientExceptionsTest : BaseTests() {
 
     @Test
     fun `getExceptions() should not block coroutine cancellation exception`() = runBlocking<Unit> {
-
         mockStorageProvider.stub {
             onBlocking { read(anyString()) } doThrow CancellationException("Mock")
         }

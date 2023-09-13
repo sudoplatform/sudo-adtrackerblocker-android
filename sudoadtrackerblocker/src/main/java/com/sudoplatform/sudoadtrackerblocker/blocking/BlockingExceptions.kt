@@ -20,6 +20,7 @@ internal class BlockingExceptions(private val storageProvider: StorageProvider) 
     companion object {
         @VisibleForTesting
         internal const val EXCEPTIONS_FILE = "exceptions.txt"
+
         @VisibleForTesting
         internal const val PAGE_EXCEPTION_SUFFIX = "/"
     }

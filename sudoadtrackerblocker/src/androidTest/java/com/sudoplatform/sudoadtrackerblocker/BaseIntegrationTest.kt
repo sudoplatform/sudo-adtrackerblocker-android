@@ -8,6 +8,7 @@ package com.sudoplatform.sudoadtrackerblocker
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
+import androidx.test.platform.app.InstrumentationRegistry
 import com.sudoplatform.sudokeymanager.KeyManagerFactory
 import com.sudoplatform.sudologging.AndroidUtilsLogDriver
 import com.sudoplatform.sudologging.LogLevel
@@ -44,7 +45,7 @@ abstract class BaseIntegrationTest {
     private suspend fun registerUser() {
         userClient.isRegistered() shouldBe false
 
-        val privateKey = readTextFile("register_key.private")
+        val privateKey = readArgument("REGISTER_KEY", "register_key.private")
         val keyId = readTextFile("register_key.id")
 
         val authProvider = TESTAuthenticationProvider(
@@ -56,6 +57,18 @@ abstract class BaseIntegrationTest {
         )
 
         userClient.registerWithAuthenticationProvider(authProvider, "atb-client-test")
+    }
+
+    protected fun readArgument(argumentName: String, fallbackFileName: String?): String {
+        val argumentValue =
+            InstrumentationRegistry.getArguments().getString(argumentName)?.trim()
+        if (argumentValue != null) {
+            return argumentValue
+        }
+        if (fallbackFileName != null) {
+            return readTextFile(fallbackFileName)
+        }
+        throw IllegalArgumentException("$argumentName property not found")
     }
 
     protected fun readTextFile(fileName: String): String {
@@ -85,11 +98,9 @@ abstract class BaseIntegrationTest {
 
     protected fun clientConfigFilesPresent(): Boolean {
         val configFiles = context.assets.list("")?.filter { fileName ->
-            fileName == "sudoplatformconfig.json" ||
-                fileName == "register_key.private" ||
-                fileName == "register_key.id"
+            fileName == "sudoplatformconfig.json"
         } ?: emptyList()
         Timber.d("config files present ${configFiles.size}")
-        return configFiles.size == 3
+        return configFiles.size == 1
     }
 }

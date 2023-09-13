@@ -21,14 +21,19 @@ internal object RulesetTransformer {
     // {sudoplatformblob={"categoryEnum":"AD","name.en":"EasyList"}}
     @VisibleForTesting
     const val METADATA_BLOB = "sudoplatformblob"
+
     @VisibleForTesting
     const val METADATA_TYPE = "categoryEnum"
+
     @VisibleForTesting
     const val METADATA_CATEGORY_AD = "AD"
+
     @VisibleForTesting
     const val METADATA_CATEGORY_PRIVACY = "PRIVACY"
+
     @VisibleForTesting
     const val METADATA_CATEGORY_SOCIAL = "SOCIAL"
+
     @VisibleForTesting
     const val APPLE_PATH = "/apple/"
 

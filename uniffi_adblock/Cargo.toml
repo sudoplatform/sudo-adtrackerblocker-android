@@ -1,0 +1,24 @@
+[package]
+name = "adblock_bindings"
+version = "0.1.0"
+edition = "2018"
+build = "build.rs"
+
+[lib]
+crate-type = ["staticlib", "cdylib", "lib"]
+name = "filter_engine"
+path = "src/lib.rs"
+
+# This works around an issue where uniffi isn't "installed" so the binary is built locally
+# See https://mozilla.github.io/uniffi-rs/tutorial/foreign_language_bindings.html#creating-the-bindgen-binary
+[[bin]]
+name = "uniffi-bindgen"
+path = "uniffi-bindgen.rs"
+
+[dependencies]
+adblock = { version = "0.8.0", default-features = false, features = ["full-regex-handling", "css-validation", "embedded-domain-resolver"] }
+# Using anonyome fork which makes the kotlin output internal instead of public so we don't expose to consumers.
+uniffi = { git="https://github.com/anonyome/uniffi-rs.git", tag="v0.2400.302" }
+
+[build-dependencies]
+uniffi = { git="https://github.com/anonyome/uniffi-rs.git", tag="v0.2400.302", features = ["build", "cli"] }

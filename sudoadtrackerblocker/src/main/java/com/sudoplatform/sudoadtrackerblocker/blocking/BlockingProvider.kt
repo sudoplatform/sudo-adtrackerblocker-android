@@ -19,7 +19,7 @@ interface BlockingProvider : AutoCloseable {
      * @param blockingRules The sets of blocking rules to use.
      * @param exceptionRules The exceptions to the blocking rules.
      */
-    suspend fun setRules(blockingRules: List<ByteArray>, exceptionRules: ByteArray? = null)
+    suspend fun setRules(blockingRules: List<String>, exceptionRules: String? = null)
 
     /**
      * Checks a URL to determine if it is blocked according to current configuration.

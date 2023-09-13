@@ -39,7 +39,6 @@ class BlockingExceptionsTest : BaseIntegrationTest() {
 
     @Test
     fun shouldBeAbleToReadAndWriteSmallSet() {
-
         blockingExceptions.readExceptions() shouldHaveSize 0
 
         blockingExceptions.writeExceptions(setOf(toPageException("example.com")))
@@ -51,7 +50,6 @@ class BlockingExceptionsTest : BaseIntegrationTest() {
 
     @Test
     fun shouldBeAbleToReadAndWriteBigSet() {
-
         blockingExceptions.readExceptions() shouldHaveSize 0
 
         val exceptions = mutableSetOf<BlockingException>()

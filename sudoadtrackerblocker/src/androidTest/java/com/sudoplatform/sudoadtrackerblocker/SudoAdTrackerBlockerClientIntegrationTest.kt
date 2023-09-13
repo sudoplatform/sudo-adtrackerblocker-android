@@ -53,6 +53,9 @@ class SudoAdTrackerBlockerClientIntegrationTest : BaseIntegrationTest() {
     }
 
     private fun createClient() = runBlocking<SudoAdTrackerBlockerClient> {
+        storageProvider.deleteFiles()
+        storageProvider.deletePreferences()
+        storageProvider.deleteFileETags()
         adTrackerBlockerClient = SudoAdTrackerBlockerClient.builder()
             .setContext(context)
             .setSudoUserClient(userClient)
@@ -68,7 +71,6 @@ class SudoAdTrackerBlockerClientIntegrationTest : BaseIntegrationTest() {
 
     @Test
     fun shouldThrowIfRequiredItemsNotProvidedToBuilder() {
-
         // Can only run if client config files are present
         assumeTrue(clientConfigFilesPresent())
 
@@ -94,7 +96,6 @@ class SudoAdTrackerBlockerClientIntegrationTest : BaseIntegrationTest() {
 
     @Test
     fun shouldNotThrowIfTheRequiredItemsAreProvidedToBuilder() {
-
         // Can only run if client config files are present
         assumeTrue(clientConfigFilesPresent())
 
@@ -106,7 +107,6 @@ class SudoAdTrackerBlockerClientIntegrationTest : BaseIntegrationTest() {
 
     @Test
     fun shouldBeAbleToActivateRulesets() = runBlocking<Unit> {
-
         // Can only run if client config files are present
         assumeTrue(clientConfigFilesPresent())
         signInAndRegisterUser()
@@ -140,7 +140,8 @@ class SudoAdTrackerBlockerClientIntegrationTest : BaseIntegrationTest() {
         }
         client.updateRulesets(Ruleset.Type.PRIVACY)
         storageProvider.listFiles() shouldContainExactlyInAnyOrder listOf(
-            "easylist.txt", "easyprivacy.txt"
+            "easylist.txt",
+            "easyprivacy.txt"
         )
 
         val socialRuleset = rulesets.find { it.type == Ruleset.Type.SOCIAL }
@@ -153,7 +154,9 @@ class SudoAdTrackerBlockerClientIntegrationTest : BaseIntegrationTest() {
         }
         client.updateRulesets(Ruleset.Type.SOCIAL)
         storageProvider.listFiles() shouldContainExactlyInAnyOrder listOf(
-            "easylist.txt", "easyprivacy.txt", "fanboy-social.txt"
+            "easylist.txt",
+            "easyprivacy.txt",
+            "fanboy-social.txt"
         )
 
         client.clearStorage()
@@ -169,7 +172,6 @@ class SudoAdTrackerBlockerClientIntegrationTest : BaseIntegrationTest() {
      */
     @Test
     fun completeFlowShouldSucceed() = runBlocking<Unit> {
-
         // Can only run if client config files are present
         assumeTrue(clientConfigFilesPresent())
         signInAndRegisterUser()
@@ -194,6 +196,7 @@ class SudoAdTrackerBlockerClientIntegrationTest : BaseIntegrationTest() {
         // Add the host of the current URL to the exception list and verify they are no longer blocked
         client.removeAllExceptions()
         client.addExceptions(toHostException(currentUrl))
+
         for (testCase in PRIVACY_VIOLATORS.keys) {
             isBlocked(testCase.toUrl(), currentUrl) shouldBe false
         }
@@ -253,7 +256,6 @@ class SudoAdTrackerBlockerClientIntegrationTest : BaseIntegrationTest() {
 
     @Test
     fun checkActiveRulesets() = runBlocking<Unit> {
-
         // Can only run if client config files are present
         assumeTrue(clientConfigFilesPresent())
         signInAndRegisterUser()
@@ -274,7 +276,6 @@ class SudoAdTrackerBlockerClientIntegrationTest : BaseIntegrationTest() {
     }
 
     fun shouldNotBeAbleToAddDuplicateExceptions() = runBlocking<Unit> {
-
         // Can only run if client config files are present
         assumeTrue(clientConfigFilesPresent())
         signInAndRegisterUser()
@@ -296,7 +297,6 @@ class SudoAdTrackerBlockerClientIntegrationTest : BaseIntegrationTest() {
 
     @Test
     fun checkExceptionListHandling() = runBlocking<Unit> {
-
         // Can only run if client config files are present
         assumeTrue(clientConfigFilesPresent())
         signInAndRegisterUser()

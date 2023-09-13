@@ -6,12 +6,6 @@
 
 package com.sudoplatform.sudoadtrackerblocker
 
-import org.mockito.kotlin.any
-import org.mockito.kotlin.doThrow
-import org.mockito.kotlin.stub
-import org.mockito.kotlin.times
-import org.mockito.kotlin.verify
-import org.mockito.kotlin.verifyNoMoreInteractions
 import com.sudoplatform.sudoadtrackerblocker.types.Ruleset
 import com.sudoplatform.sudoadtrackerblocker.types.allRulesets
 import com.sudoplatform.sudoadtrackerblocker.types.noRulesets
@@ -20,6 +14,12 @@ import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.kotlin.any
+import org.mockito.kotlin.doThrow
+import org.mockito.kotlin.stub
+import org.mockito.kotlin.times
+import org.mockito.kotlin.verify
+import org.mockito.kotlin.verifyNoMoreInteractions
 import org.robolectric.RobolectricTestRunner
 import java.io.IOException
 import java.util.concurrent.CancellationException
@@ -58,7 +58,6 @@ internal class SudoAdTrackerBlockerClientSetActiveRulesetsTest : BaseTests() {
 
     @Test
     fun `setActiveRulesets() with no args should call storage provider`() = runBlocking<Unit> {
-
         adTrackerBlockerClient.setActiveRulesets()
 
         verify(mockStorageProvider).writePreferences(allDisabledPreferences)
@@ -67,7 +66,6 @@ internal class SudoAdTrackerBlockerClientSetActiveRulesetsTest : BaseTests() {
 
     @Test
     fun `setActiveRulesets() with no rulesets should call storage provider`() = runBlocking<Unit> {
-
         adTrackerBlockerClient.setActiveRulesets(noRulesets())
 
         verify(mockStorageProvider).writePreferences(allDisabledPreferences)
@@ -76,7 +74,6 @@ internal class SudoAdTrackerBlockerClientSetActiveRulesetsTest : BaseTests() {
 
     @Test
     fun `setActiveRulesets() with all rulesets should call storage provider`() = runBlocking<Unit> {
-
         adTrackerBlockerClient.setActiveRulesets(allRulesets())
 
         verify(mockStorageProvider).writePreferences(allEnabledPreferences)
@@ -85,7 +82,6 @@ internal class SudoAdTrackerBlockerClientSetActiveRulesetsTest : BaseTests() {
 
     @Test
     fun `setActiveRulesets() with one ruleset should call storage provider`() = runBlocking<Unit> {
-
         adTrackerBlockerClient.setActiveRulesets(Ruleset.Type.AD_BLOCKING)
 
         verify(mockStorageProvider).writePreferences(mapOf(Ruleset.Type.AD_BLOCKING.name to "true"))
@@ -94,7 +90,6 @@ internal class SudoAdTrackerBlockerClientSetActiveRulesetsTest : BaseTests() {
 
     @Test
     fun `setActiveRulesets() should throw when storage provider throws`() = runBlocking<Unit> {
-
         mockStorageProvider.stub {
             onBlocking { writePreferences(any()) } doThrow IOException("mock")
         }
@@ -108,7 +103,6 @@ internal class SudoAdTrackerBlockerClientSetActiveRulesetsTest : BaseTests() {
 
     @Test
     fun `setActiveRulesets() should not block coroutine cancellation exception`() = runBlocking<Unit> {
-
         mockStorageProvider.stub {
             onBlocking { writePreferences(any()) } doThrow CancellationException("Mock")
         }

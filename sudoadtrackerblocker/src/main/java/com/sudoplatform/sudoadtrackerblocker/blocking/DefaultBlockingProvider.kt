@@ -6,8 +6,7 @@
 
 package com.sudoplatform.sudoadtrackerblocker.blocking
 
-import android.net.Uri
-import com.sudoplatform.sudoadtrackerblocker.blocking.adblock.AdBlockEngine
+import com.sudoplatform.sudoadtrackerblocker.FilterEngine
 import com.sudoplatform.sudologging.Logger
 import java.util.concurrent.CancellationException
 
@@ -16,33 +15,18 @@ import java.util.concurrent.CancellationException
  */
 internal class DefaultBlockingProvider(private val logger: Logger) : BlockingProvider {
 
-    private val adBlockEngines = mutableListOf<AdBlockEngine>()
-    private var exceptionEngine: AdBlockEngine? = null
-    private var adBlockEngineError: Throwable? = null
+    private var filterEngine: FilterEngine? = null
+    private var exceptionEngine: FilterEngine? = null
 
-    override suspend fun setRules(blockingRules: List<ByteArray>, exceptionRules: ByteArray?) {
+    override suspend fun setRules(blockingRules: List<String>, exceptionRules: String?) {
         try {
             close()
-
-            val newAdBlockEngines = blockingRules.map { rules ->
-                AdBlockEngine().apply {
-                    loadRules(String(rules, Charsets.UTF_8))
-                }
+            filterEngine = FilterEngine(blockingRules)
+            exceptionEngine = exceptionRules?.let {
+                FilterEngine(listOf(it))
             }
 
-            val newExceptionEngine = exceptionRules?.let { rules ->
-                AdBlockEngine().apply {
-                    loadRules(String(rules, Charsets.UTF_8))
-                }
-            }
-
-            synchronized(adBlockEngines) {
-                adBlockEngines.clear()
-                adBlockEngines.addAll(newAdBlockEngines)
-                exceptionEngine = newExceptionEngine
-            }
-
-            logger.info("Blocking provider initialization completed successfully. ${adBlockEngines.size} blocker(s) are active.")
+            logger.info("Blocking provider initialization completed successfully. ${blockingRules.size} blocker(s) are active.")
         } catch (e: CancellationException) {
             // Never suppress this exception it's used by coroutines to cancel outstanding work
             throw e
@@ -53,42 +37,29 @@ internal class DefaultBlockingProvider(private val logger: Logger) : BlockingPro
     }
 
     override fun close() {
-        adBlockEngineError = null
-        synchronized(adBlockEngines) {
-            adBlockEngines.forEach { engine ->
-                engine.close()
-            }
+        synchronized(this) {
             exceptionEngine?.close()
             exceptionEngine = null
-            adBlockEngines.clear()
+            filterEngine?.close()
+            filterEngine = null
         }
     }
 
     override suspend fun checkIsUrlBlocked(url: String, sourceUrl: String?, resourceType: String?): Boolean {
-
-        val requestHost = Uri.parse(url).host ?: ""
-        val sourceHost = sourceUrl?.let { Uri.parse(it).host } ?: ""
-
-        synchronized(adBlockEngines) {
-
+        synchronized(this) {
             if (!sourceUrl.isNullOrBlank() &&
-                isInExceptionList(sourceUrl, resourceType, requestHost, sourceHost)
+                isInExceptionList(sourceUrl, resourceType)
             ) {
                 return false
             }
 
-            adBlockEngines.forEach { blockingEngine ->
-                val isAllowed = blockingEngine.shouldLoad(
-                    url,
-                    sourceUrl ?: "",
-                    resourceType,
-                    requestHost,
-                    sourceHost
-                )
-                if (!isAllowed) {
-                    return true
-                }
-            }
+            // filter engine wants a full url with a scheme
+            val checkURL = "https://" + url.removePrefix("http://").removePrefix("https://")
+            return filterEngine?.checkNetworkUrlsMatched(
+                checkURL,
+                sourceUrl ?: "",
+                resourceType ?: "script"
+            ) ?: false
         }
 
         return false
@@ -96,22 +67,12 @@ internal class DefaultBlockingProvider(private val logger: Logger) : BlockingPro
 
     private fun isInExceptionList(
         currentUrl: String,
-        resourceType: String?,
-        requestHost: String,
-        sourceHost: String
+        resourceType: String?
     ): Boolean {
         val exceptionEngine = this.exceptionEngine
             ?: return false
 
-        // This is negated because we are using rules loaded into the exception engine to
-        // match the exception list. Therefore if the exception engine says it's OK to load
-        // a URL that means the URL is not in the exception list.
-        return !exceptionEngine.shouldLoad(
-            currentUrl,
-            "",
-            resourceType,
-            requestHost,
-            sourceHost
-        )
+        val checkURL = "https://" + currentUrl.removePrefix("http://").removePrefix("https://")
+        return exceptionEngine.checkNetworkUrlsMatched(checkURL, "", resourceType ?: "script")
     }
 }

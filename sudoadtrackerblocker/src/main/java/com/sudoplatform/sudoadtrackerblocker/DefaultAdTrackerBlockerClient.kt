@@ -309,9 +309,9 @@ internal class DefaultAdTrackerBlockerClient(
                 // Create exception rules from the exception list
                 val exceptions = blockingExceptions.readExceptions()
                 logger.info("Loaded exception list with ${exceptions.size} entries.")
-                val exceptionRules = ExceptionsTransformer.toExceptionRules(exceptions)
+                val exceptionRules = ExceptionsTransformer.toExceptionRules(exceptions)?.toString(Charsets.UTF_8)
 
-                blockingProvider.setRules(activeRules, exceptionRules)
+                blockingProvider.setRules(activeRules.map { String(it, Charsets.UTF_8) }, exceptionRules)
                 logger.info("Blocking initialization completed successfully.")
             } else {
                 logger.info("Initialization skipped, there are no active rulesets.")

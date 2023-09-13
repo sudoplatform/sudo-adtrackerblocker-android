@@ -7,6 +7,7 @@
 package com.sudoplatform.sudoadtrackerblocker.blocking.adblock
 
 import com.sudoplatform.sudoadtrackerblocker.BaseIntegrationTest
+import com.sudoplatform.sudoadtrackerblocker.FilterEngine
 import com.sudoplatform.sudoadtrackerblocker.TestData.ADVERTISERS
 import com.sudoplatform.sudoadtrackerblocker.TestData.PRIVACY_VIOLATORS
 import com.sudoplatform.sudoadtrackerblocker.TestData.SHOULD_NOT_BE_BLOCKED
@@ -23,8 +24,6 @@ import timber.log.Timber
  */
 class AdBlockEngineTest : BaseIntegrationTest() {
 
-    private val adBlockEngine = AdBlockEngine()
-
     @Before
     fun setup() {
         Timber.plant(Timber.DebugTree())
@@ -32,61 +31,62 @@ class AdBlockEngineTest : BaseIntegrationTest() {
 
     @After
     fun fini() {
-        adBlockEngine.clearRules()
         Timber.uprootAll()
     }
 
     @Test
     fun shouldBlockPrivacyViolatorUrls() = runBlocking<Unit> {
-        adBlockEngine.loadRules(readTextFile("easyprivacy.txt"))
+        val adBlockEngine = FilterEngine(listOf(readTextFile("easyprivacy.txt")))
 
-        PRIVACY_VIOLATORS.forEach { testCase, requestHost ->
-            adBlockEngine.shouldLoad(
+        PRIVACY_VIOLATORS.forEach { testCase, _ ->
+            adBlockEngine.checkNetworkUrlsMatched(
                 testCase.toUrl(),
                 "http://somehost.eu/contact",
-                "script",
-                requestHost,
-                "somehost.eu"
-            ) shouldBe false
-        }
-    }
-
-    @Test
-    fun shouldBlockAdvertisingUrls() {
-        adBlockEngine.loadRules(readTextFile("easylist.txt"))
-
-        ADVERTISERS.forEach { testCase, requestHost ->
-            adBlockEngine.shouldLoad(
-                testCase.toUrl(),
-                "http://somehost.eu/contact",
-                null,
-                requestHost,
-                "somehost.eu"
-            ) shouldBe false
-        }
-    }
-
-    @Test
-    fun shouldNotBlockGoodUrls() {
-
-        adBlockEngine.loadRules(readTextFile("easyprivacy.txt"))
-        adBlockEngine.loadRules(readTextFile("easylist.txt"))
-
-        SHOULD_NOT_BE_BLOCKED.forEach { testCase, requestHost ->
-            adBlockEngine.shouldLoad(
-                testCase.toUrl(),
-                "http://somehost.eu/contact",
-                null,
-                requestHost,
-                "somehost.eu"
+                "script"
             ) shouldBe true
         }
     }
 
     @Test
-    fun shouldResolveDomains() {
-        (PRIVACY_VIOLATORS + ADVERTISERS + SHOULD_NOT_BE_BLOCKED).forEach { urlString, host ->
-            adBlockEngine.domainResolver(urlString) shouldBe host
+    fun shouldBlockAdvertisingUrls() {
+        val adBlockEngine = FilterEngine(listOf(readTextFile("easylist.txt")))
+        ADVERTISERS.forEach { testCase, _ ->
+            adBlockEngine.checkNetworkUrlsMatched(
+                testCase.toUrl(),
+                "http://somehost.eu/contact",
+                "script"
+            ) shouldBe true
         }
+    }
+
+    @Test
+    fun shouldNotBlockGoodUrls() {
+        val adBlockEngine = FilterEngine(listOf(readTextFile("easylist.txt"), readTextFile("easyprivacy.txt")))
+        SHOULD_NOT_BE_BLOCKED.forEach { testCase, _ ->
+            adBlockEngine.checkNetworkUrlsMatched(
+                testCase.toUrl(),
+                "http://somehost.eu/contact",
+                "script"
+            ) shouldBe false
+        }
+    }
+
+    @Test
+    fun shouldBlockCorrectly() = runBlocking<Unit> {
+        val easyList = readTextFile("easylist.txt")
+        val easyPrivacy = readTextFile("easyprivacy.txt")
+
+        val filterEngine = FilterEngine(listOf(easyList, easyPrivacy))
+        val currentUrl = "http://somehost.eu/contact"
+
+        filterEngine.checkNetworkUrlsMatched("http://ad.doubleclick.net", currentUrl, "script") shouldBe true
+        filterEngine.checkNetworkUrlsMatched("ad.doubleclick.net".toUrl(), currentUrl, "script") shouldBe true
+        filterEngine.checkNetworkUrlsMatched("http://youtube.com/ptracking?", currentUrl, "script") shouldBe true
+
+        filterEngine.checkNetworkUrlsMatched("http://shoesandcoats.com", currentUrl, "script") shouldBe false
+        filterEngine.checkNetworkUrlsMatched("http://www.anonyome.com", currentUrl, "script") shouldBe false
+        filterEngine.checkNetworkUrlsMatched("http://www.anonyome.com/about.js", currentUrl, "script") shouldBe false
+        filterEngine.checkNetworkUrlsMatched("http://www.mysudo.com/", currentUrl, "script") shouldBe false
+        filterEngine.checkNetworkUrlsMatched("http://www.brisbanetimes.com/", currentUrl, "script") shouldBe false
     }
 }

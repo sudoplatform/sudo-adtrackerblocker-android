@@ -17,6 +17,7 @@ data class BlockingException(
     enum class Type {
         /** The entire internet host is exempted from blocking */
         HOST,
+
         /** The page is exempted from blocking */
         PAGE
     }

@@ -32,7 +32,6 @@ class StorageProviderTest {
     @Test
     fun checkReadWriteDelete() = runBlocking<Unit> {
         with(storageProvider) {
-
             read(fileName) shouldBe null
             delete(fileName) shouldBe false
 

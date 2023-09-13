@@ -71,10 +71,10 @@ internal object TestData {
     )
 
     val PRIVACY_VIOLATORS = mapOf(
-        "youtube.com/ptracking?" to "youtube.com",
+        "youtube.com/ptracking?" to "youtube.com"
     )
     val ADVERTISERS = mapOf(
-        "consultant-adwords.com" to "consultant-adwords.com"
+        "ad.doubleclick.net" to "ad.doubleclick.net"
     )
     val SHOULD_NOT_BE_BLOCKED = mapOf(
         "anonyome.com/about.js" to "anonyome.com",

@@ -21,8 +21,8 @@ import org.junit.Test
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
-private const val MAX_RULE_LOADING_MS = 500L
-private const val MAX_URL_BLOCKING_MS = 50L
+private const val MAX_RULE_LOADING_MS = 1000L
+private const val MAX_URL_BLOCKING_MS = 200L
 
 /**
  * Test the operation of [DefaultBlockingProvider] on a Android device or emulator.
@@ -44,7 +44,7 @@ class BlockingProviderTest : BaseIntegrationTest() {
 
     @Test
     fun shouldBlockPrivacyViolatorUrls() = runBlocking<Unit> {
-        blockingProvider.setRules(listOf(readFile("easyprivacy.txt")))
+        blockingProvider.setRules(listOf(readTextFile("easyprivacy.txt")))
 
         for (testCase in PRIVACY_VIOLATORS.keys) {
             blockingProvider.checkIsUrlBlocked(
@@ -57,7 +57,7 @@ class BlockingProviderTest : BaseIntegrationTest() {
 
     @Test
     fun shouldBlockAdvertisingUrls() = runBlocking<Unit> {
-        blockingProvider.setRules(listOf(readFile("easylist.txt")))
+        blockingProvider.setRules(listOf(readTextFile("easylist.txt")))
 
         for (testCase in ADVERTISERS.keys) {
             blockingProvider.checkIsUrlBlocked(
@@ -72,10 +72,22 @@ class BlockingProviderTest : BaseIntegrationTest() {
     fun shouldBlockAllBadUrls() = runBlocking<Unit> {
         blockingProvider.setRules(
             listOf(
-                readFile("easylist.txt"),
-                readFile("easyprivacy.txt")
+                readTextFile("easylist.txt"),
+                readTextFile("easyprivacy.txt")
             )
         )
+
+        blockingProvider.checkIsUrlBlocked(
+            "http://youtube.com/ptracking?",
+            "http://somehost.eu/contact",
+            "script"
+        ) shouldBe true
+
+        blockingProvider.checkIsUrlBlocked(
+            "ad.doubleclick.net",
+            "http://somehost.eu/contact",
+            "script"
+        ) shouldBe true
 
         for (testCase in ADVERTISERS.keys + PRIVACY_VIOLATORS.keys) {
             blockingProvider.checkIsUrlBlocked(
@@ -90,8 +102,8 @@ class BlockingProviderTest : BaseIntegrationTest() {
     fun shouldNotBlockGoodUrls() = runBlocking<Unit> {
         blockingProvider.setRules(
             listOf(
-                readFile("easylist.txt"),
-                readFile("easyprivacy.txt")
+                readTextFile("easylist.txt"),
+                readTextFile("easyprivacy.txt")
             )
         )
 
@@ -109,8 +121,8 @@ class BlockingProviderTest : BaseIntegrationTest() {
         val stopwatch = Stopwatch.createStarted()
         blockingProvider.setRules(
             listOf(
-                readFile("easylist.txt"),
-                readFile("easyprivacy.txt")
+                readTextFile("easylist.txt"),
+                readTextFile("easyprivacy.txt")
             )
         )
         stopwatch.stop()

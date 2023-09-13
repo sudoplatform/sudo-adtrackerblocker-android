@@ -7,7 +7,6 @@
 package com.sudoplatform.sudoadtrackerblocker.samples
 
 import android.content.Context
-import org.mockito.kotlin.mock
 import com.sudoplatform.sudoadtrackerblocker.SudoAdTrackerBlockerClient
 import com.sudoplatform.sudoadtrackerblocker.types.Ruleset
 import com.sudoplatform.sudoadtrackerblocker.types.allRulesets
@@ -24,6 +23,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.kotlin.mock
 import org.robolectric.RobolectricTestRunner
 
 /**

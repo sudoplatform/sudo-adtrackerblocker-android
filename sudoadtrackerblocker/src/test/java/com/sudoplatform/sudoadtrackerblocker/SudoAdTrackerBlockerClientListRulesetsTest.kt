@@ -7,15 +7,6 @@
 package com.sudoplatform.sudoadtrackerblocker
 
 import com.amazonaws.services.cognitoidentity.model.NotAuthorizedException
-import org.mockito.kotlin.any
-import org.mockito.kotlin.atLeastOnce
-import org.mockito.kotlin.doReturn
-import org.mockito.kotlin.doThrow
-import org.mockito.kotlin.eq
-import org.mockito.kotlin.reset
-import org.mockito.kotlin.stub
-import org.mockito.kotlin.verify
-import org.mockito.kotlin.verifyNoMoreInteractions
 import com.sudoplatform.sudoadtrackerblocker.s3.S3Exception
 import com.sudoplatform.sudouser.exceptions.AuthenticationException
 import io.kotlintest.matchers.beInstanceOf
@@ -27,6 +18,15 @@ import org.junit.After
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers.anyString
+import org.mockito.kotlin.any
+import org.mockito.kotlin.atLeastOnce
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.doThrow
+import org.mockito.kotlin.eq
+import org.mockito.kotlin.reset
+import org.mockito.kotlin.stub
+import org.mockito.kotlin.verify
+import org.mockito.kotlin.verifyNoMoreInteractions
 import org.robolectric.RobolectricTestRunner
 import java.util.concurrent.CancellationException
 
@@ -53,7 +53,6 @@ internal class SudoAdTrackerBlockerClientListRulesetsTest : BaseTests() {
 
     @Test
     fun `listRulesets() should call S3 client`() = runBlocking<Unit> {
-
         adTrackerBlockerClient.listRulesets() shouldHaveSize 3
 
         verify(mockS3Client, atLeastOnce()).list(eq(DefaultAdTrackerBlockerClient.S3_TOP_PATH), any())
@@ -61,7 +60,6 @@ internal class SudoAdTrackerBlockerClientListRulesetsTest : BaseTests() {
 
     @Test
     fun `listRulesets() should return none when S3 client does`() = runBlocking<Unit> {
-
         mockS3Client.stub {
             onBlocking { list(anyString(), any()) } doReturn emptyList()
         }
@@ -73,7 +71,6 @@ internal class SudoAdTrackerBlockerClientListRulesetsTest : BaseTests() {
 
     @Test
     fun `listRulesets() should throw when s3 client throws`() = runBlocking<Unit> {
-
         mockS3Client.stub {
             onBlocking { list(anyString(), any()) } doThrow S3Exception.DownloadException("mock")
         }
@@ -87,7 +84,6 @@ internal class SudoAdTrackerBlockerClientListRulesetsTest : BaseTests() {
 
     @Test
     fun `listRulesets() should transform s3 client not authorized exception`() = runBlocking<Unit> {
-
         // SudoUser NotAuthorizedException should be transformed.
         reset(mockS3Client)
         mockS3Client.stub {
@@ -123,7 +119,6 @@ internal class SudoAdTrackerBlockerClientListRulesetsTest : BaseTests() {
 
     @Test
     fun `listRulesets() should throw when s3 client gets bad metadata`() = runBlocking<Unit> {
-
         mockS3Client.stub {
             onBlocking { list(anyString(), any()) } doThrow S3Exception.MetadataException("mock")
         }
@@ -137,7 +132,6 @@ internal class SudoAdTrackerBlockerClientListRulesetsTest : BaseTests() {
 
     @Test
     fun `listRulesets() should not block coroutine cancellation exception`() = runBlocking<Unit> {
-
         mockS3Client.stub {
             onBlocking { list(anyString(), any()) } doThrow CancellationException("Mock")
         }
