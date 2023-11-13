@@ -1,3 +1,9 @@
+### 3.0.1
+
+### Fixed 
+
+- Add proguard rules to preserve jni library on release.
+
 ### 3.0.0
 
 ### New

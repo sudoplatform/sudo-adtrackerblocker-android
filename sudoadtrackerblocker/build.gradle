@@ -72,8 +72,10 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
     implementation "androidx.core:core-ktx:1.8.0"
-    // For adblock rust library built with uniffi
+
+    // For adblock rust library built with uniffi. 
     implementation "net.java.dev.jna:jna:5.13.0@aar"
+
 
     // AWS
     //
