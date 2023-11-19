@@ -1,3 +1,9 @@
+### 3.0.2
+
+### Fixed
+
+- Require downstream users to include `compileOnly "net.java.dev.jna:jna:5.13.0@aar"` in build.gradle as a fix to including the library here.
+
 ### 3.0.1
 
 ### Fixed 
