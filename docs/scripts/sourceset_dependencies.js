@@ -1,1 +1,1 @@
-sourceset_dependencies='{":sudoadtrackerblocker:dokkaHtml/androidTestRelease":[],":sudoadtrackerblocker:dokkaHtml/debug":[],":sudoadtrackerblocker:dokkaHtml/main":[],":sudoadtrackerblocker:dokkaHtml/release":[],":sudoadtrackerblocker:dokkaHtml/testFixtures":[],":sudoadtrackerblocker:dokkaHtml/testFixturesDebug":[],":sudoadtrackerblocker:dokkaHtml/testFixturesRelease":[]}'
+sourceset_dependencies='{":sudoadtrackerblocker:dokkaHtml/debug":[],":sudoadtrackerblocker:dokkaHtml/main":[],":sudoadtrackerblocker:dokkaHtml/release":[]}'

@@ -49,7 +49,7 @@ internal class SudoAdTrackerBlockerClientSetActiveRulesetsTest : BaseTests() {
             mockUserClient,
             mockS3Client,
             mockStorageProvider,
-            mockBlockingProvider
+            mockBlockingProvider,
         )
         runBlocking {
             adTrackerBlockerClient.clearStorage()

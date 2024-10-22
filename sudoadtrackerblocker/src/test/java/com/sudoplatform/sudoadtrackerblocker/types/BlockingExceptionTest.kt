@@ -27,7 +27,7 @@ class BlockingExceptionTest {
             "example.com/foo" to "example.com",
             "http://example.com/foo/bar?query=text" to "example.com",
             "https://example.com/foo/bar?query=text" to "example.com",
-            "google-analytics.com/analytics.js" to "google-analytics.com"
+            "google-analytics.com/analytics.js" to "google-analytics.com",
         )
         for ((testCase, expectedSource) in testCases) {
             with(toHostException(testCase)) {
@@ -43,7 +43,7 @@ class BlockingExceptionTest {
             "",
             "/bar/foo",
             " /bar/foo ",
-            " ?&^^%*^^(*&&*(^*^%^$%#^%&(*)*)"
+            " ?&^^%*^^(*&&*(^*^%^$%#^%&(*)*)",
         )
         for (testCase in testCases) {
             shouldThrow<SudoAdTrackerBlockerException.UrlFormatException> {
@@ -65,7 +65,7 @@ class BlockingExceptionTest {
             "http://example.com/foo/bar?query=text" to "example.com/foo/bar",
             "https://example.com/foo/bar?query=text" to "example.com/foo/bar",
             "https://example.com/foo/bar/?query=text" to "example.com/foo/bar",
-            "google-analytics.com/analytics.js" to "google-analytics.com/analytics.js"
+            "google-analytics.com/analytics.js" to "google-analytics.com/analytics.js",
         )
         for ((testCase, expectedSource) in testCases) {
             with(toPageException(testCase)) {

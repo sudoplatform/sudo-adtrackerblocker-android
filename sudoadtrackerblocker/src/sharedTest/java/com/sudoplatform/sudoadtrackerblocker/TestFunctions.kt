@@ -10,7 +10,6 @@ import io.kotlintest.matchers.numerics.shouldBeGreaterThan
 import io.kotlintest.matchers.string.shouldContain
 import io.kotlintest.matchers.string.shouldStartWith
 import io.kotlintest.shouldBe
-import io.kotlintest.shouldNotBe
 import org.awaitility.Awaitility
 import java.util.concurrent.TimeUnit
 
@@ -18,9 +17,8 @@ import java.util.concurrent.TimeUnit
  * Test functions.
  */
 fun checkEasyList(easyListBytes: ByteArray?) {
-    easyListBytes shouldNotBe null
     easyListBytes!!.size shouldBeGreaterThan 10_000
-    val easyList = String(easyListBytes)
+    val easyList = String(easyListBytes.copyOf(512)) // Use subset of list to avoid out of memory errors on CI emulators
     easyList shouldStartWith "[Adblock Plus 2.0]"
     easyList shouldContain "! Title: EasyList"
     easyList shouldContain "! Homepage: https://easylist.to/"
@@ -35,7 +33,8 @@ fun waitForClientInitToComplete(client: SudoAdTrackerBlockerClient) {
             when (client.status) {
                 SudoAdTrackerBlockerClient.FilterEngineStatus.UNKNOWN,
                 SudoAdTrackerBlockerClient.FilterEngineStatus.READY,
-                SudoAdTrackerBlockerClient.FilterEngineStatus.ERROR -> true
+                SudoAdTrackerBlockerClient.FilterEngineStatus.ERROR,
+                -> true
                 SudoAdTrackerBlockerClient.FilterEngineStatus.PREPARING -> false
             }
         }

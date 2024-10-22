@@ -24,12 +24,12 @@ data class Ruleset(
     /** The eTag that is used to detect out of date rulesets */
     val eTag: String,
     /** When this ruleset was last updated */
-    val updatedAt: Date
+    val updatedAt: Date,
 ) : Parcelable {
     enum class Type {
         AD_BLOCKING,
         PRIVACY,
         SOCIAL,
-        UNKNOWN
+        UNKNOWN,
     }
 }

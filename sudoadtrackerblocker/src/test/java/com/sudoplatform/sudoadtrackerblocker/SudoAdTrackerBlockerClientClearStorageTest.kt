@@ -32,7 +32,7 @@ internal class SudoAdTrackerBlockerClientClearStorageTest : BaseTests() {
             mockUserClient,
             mockS3Client,
             mockStorageProvider,
-            mockBlockingProvider
+            mockBlockingProvider,
         )
     }
 

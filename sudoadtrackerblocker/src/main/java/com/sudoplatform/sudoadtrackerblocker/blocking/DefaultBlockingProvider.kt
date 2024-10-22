@@ -58,7 +58,7 @@ internal class DefaultBlockingProvider(private val logger: Logger) : BlockingPro
             return filterEngine?.checkNetworkUrlsMatched(
                 checkURL,
                 sourceUrl ?: "",
-                resourceType ?: "script"
+                resourceType ?: "script",
             ) ?: false
         }
 
@@ -67,7 +67,7 @@ internal class DefaultBlockingProvider(private val logger: Logger) : BlockingPro
 
     private fun isInExceptionList(
         currentUrl: String,
-        resourceType: String?
+        resourceType: String?,
     ): Boolean {
         val exceptionEngine = this.exceptionEngine
             ?: return false

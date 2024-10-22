@@ -8,7 +8,7 @@ package com.sudoplatform.sudoadtrackerblocker
 
 import com.amazonaws.services.cognitoidentity.model.NotAuthorizedException
 import com.sudoplatform.sudoadtrackerblocker.s3.S3Exception
-import com.sudoplatform.sudouser.exceptions.AuthenticationException
+import com.sudoplatform.sudouser.exceptions.SudoUserException
 import io.kotlintest.matchers.beInstanceOf
 import io.kotlintest.matchers.collections.shouldHaveSize
 import io.kotlintest.should
@@ -44,7 +44,7 @@ internal class SudoAdTrackerBlockerClientListRulesetsTest : BaseTests() {
             mockUserClient,
             mockS3Client,
             mockStorageProvider,
-            mockBlockingProvider
+            mockBlockingProvider,
         )
         runBlocking {
             adTrackerBlockerClient.clearStorage()
@@ -87,15 +87,15 @@ internal class SudoAdTrackerBlockerClientListRulesetsTest : BaseTests() {
         // SudoUser NotAuthorizedException should be transformed.
         reset(mockS3Client)
         mockS3Client.stub {
-            onBlocking { list(anyString(), any()) } doThrow AuthenticationException.NotAuthorizedException("mock")
+            onBlocking { list(anyString(), any()) } doThrow SudoUserException.NotAuthorizedException("mock")
         }
 
         with(
             shouldThrow<SudoAdTrackerBlockerException.UnauthorizedUserException> {
                 adTrackerBlockerClient.listRulesets()
-            }
+            },
         ) {
-            cause should beInstanceOf<AuthenticationException.NotAuthorizedException>()
+            cause should beInstanceOf<SudoUserException.NotAuthorizedException>()
         }
 
         verify(mockS3Client, atLeastOnce()).list(eq(DefaultAdTrackerBlockerClient.S3_TOP_PATH), any())
@@ -109,7 +109,7 @@ internal class SudoAdTrackerBlockerClientListRulesetsTest : BaseTests() {
         with(
             shouldThrow<SudoAdTrackerBlockerException.UnauthorizedUserException> {
                 adTrackerBlockerClient.listRulesets()
-            }
+            },
         ) {
             cause should beInstanceOf<NotAuthorizedException>()
         }

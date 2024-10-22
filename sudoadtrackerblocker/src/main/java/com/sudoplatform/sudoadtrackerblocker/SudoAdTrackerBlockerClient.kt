@@ -94,7 +94,7 @@ interface SudoAdTrackerBlockerClient : AutoCloseable {
                 logger = logger,
                 region = region,
                 bucket = bucket,
-                storageProvider = storageProvider ?: DefaultStorageProvider(context!!)
+                storageProvider = storageProvider ?: DefaultStorageProvider(context!!),
             )
         }
     }
@@ -130,7 +130,7 @@ interface SudoAdTrackerBlockerClient : AutoCloseable {
     @Throws(SudoAdTrackerBlockerException::class)
     suspend fun setActiveRulesets(
         activeRuleset: Ruleset.Type,
-        vararg moreActiveRulesets: Ruleset.Type = emptyArray()
+        vararg moreActiveRulesets: Ruleset.Type = emptyArray(),
     )
 
     /**
@@ -206,7 +206,7 @@ interface SudoAdTrackerBlockerClient : AutoCloseable {
 
         /** The filter engine failed to update or initialize correctly */
         ERROR,
-        UNKNOWN
+        UNKNOWN,
     }
 
     /** The status of the filter engine. */
@@ -217,7 +217,7 @@ interface SudoAdTrackerBlockerClient : AutoCloseable {
         BLOCKED,
 
         /** The URL is not blocked and should be used or loaded. */
-        ALLOWED
+        ALLOWED,
     }
 
     /**
@@ -234,7 +234,7 @@ interface SudoAdTrackerBlockerClient : AutoCloseable {
     suspend fun checkUrl(
         url: String,
         sourceUrl: String? = null,
-        resourceType: String? = null
+        resourceType: String? = null,
     ): CheckUrlResult
 
     /**

@@ -42,7 +42,7 @@ internal class SudoAdTrackerBlockerClientGetActiveRulesetsTest : BaseTests() {
             mockUserClient,
             mockS3Client,
             mockStorageProvider,
-            mockBlockingProvider
+            mockBlockingProvider,
         )
         runBlocking {
             adTrackerBlockerClient.clearStorage()
@@ -78,7 +78,7 @@ internal class SudoAdTrackerBlockerClientGetActiveRulesetsTest : BaseTests() {
                 Ruleset.Type.AD_BLOCKING.name to "true",
                 Ruleset.Type.PRIVACY.name to "true",
                 Ruleset.Type.SOCIAL.name to "true",
-                Ruleset.Type.UNKNOWN.name to "false"
+                Ruleset.Type.UNKNOWN.name to "false",
             )
         }
 

@@ -42,7 +42,7 @@ class AdBlockEngineTest : BaseIntegrationTest() {
             adBlockEngine.checkNetworkUrlsMatched(
                 testCase.toUrl(),
                 "http://somehost.eu/contact",
-                "script"
+                "script",
             ) shouldBe true
         }
     }
@@ -54,7 +54,7 @@ class AdBlockEngineTest : BaseIntegrationTest() {
             adBlockEngine.checkNetworkUrlsMatched(
                 testCase.toUrl(),
                 "http://somehost.eu/contact",
-                "script"
+                "script",
             ) shouldBe true
         }
     }
@@ -66,7 +66,7 @@ class AdBlockEngineTest : BaseIntegrationTest() {
             adBlockEngine.checkNetworkUrlsMatched(
                 testCase.toUrl(),
                 "http://somehost.eu/contact",
-                "script"
+                "script",
             ) shouldBe false
         }
     }

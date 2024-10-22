@@ -46,14 +46,14 @@ abstract class BaseIntegrationTest {
         userClient.isRegistered() shouldBe false
 
         val privateKey = readArgument("REGISTER_KEY", "register_key.private")
-        val keyId = readTextFile("register_key.id")
+        val keyId = readArgument("REGISTER_KEY_ID", "register_key.id")
 
         val authProvider = TESTAuthenticationProvider(
             name = "atb-client-test",
             privateKey = privateKey,
             publicKey = null,
             keyManager = keyManager,
-            keyId = keyId
+            keyId = keyId,
         )
 
         userClient.registerWithAuthenticationProvider(authProvider, "atb-client-test")

@@ -12,13 +12,13 @@ package com.sudoplatform.sudoadtrackerblocker.types
  */
 data class BlockingException(
     val source: String,
-    val type: Type
+    val type: Type,
 ) {
     enum class Type {
         /** The entire internet host is exempted from blocking */
         HOST,
 
         /** The page is exempted from blocking */
-        PAGE
+        PAGE,
     }
 }

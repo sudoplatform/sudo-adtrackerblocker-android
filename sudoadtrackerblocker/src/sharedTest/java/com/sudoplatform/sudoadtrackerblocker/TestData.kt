@@ -34,19 +34,19 @@ internal object TestData {
         RulesetTransformer.METADATA_BLOB to """{
             "${RulesetTransformer.METADATA_TYPE}": "${RulesetTransformer.METADATA_CATEGORY_AD}"
         }
-        """
+        """,
     )
     private val S3_PRIVACY_OBJECT_USER_METADATA = mapOf(
         RulesetTransformer.METADATA_BLOB to """{
             "${RulesetTransformer.METADATA_TYPE}": "${RulesetTransformer.METADATA_CATEGORY_PRIVACY}"
         }
-        """
+        """,
     )
     private val S3_SOCIAL_OBJECT_USER_METADATA = mapOf(
         RulesetTransformer.METADATA_BLOB to """{
             "${RulesetTransformer.METADATA_TYPE}": "${RulesetTransformer.METADATA_CATEGORY_SOCIAL}"
         }
-        """
+        """,
     )
 
     val S3_OBJECTS = listOf(
@@ -54,31 +54,31 @@ internal object TestData {
             key = "ad",
             eTag = "etag1",
             lastModified = Date(1L),
-            userMetadata = S3_AD_OBJECT_USER_METADATA
+            userMetadata = S3_AD_OBJECT_USER_METADATA,
         ),
         S3Client.S3ObjectInfo(
             key = "privacy",
             eTag = "etag2",
             lastModified = Date(1L),
-            userMetadata = S3_PRIVACY_OBJECT_USER_METADATA
+            userMetadata = S3_PRIVACY_OBJECT_USER_METADATA,
         ),
         S3Client.S3ObjectInfo(
             key = "social",
             eTag = "etag3",
             lastModified = Date(1L),
-            userMetadata = S3_SOCIAL_OBJECT_USER_METADATA
-        )
+            userMetadata = S3_SOCIAL_OBJECT_USER_METADATA,
+        ),
     )
 
     val PRIVACY_VIOLATORS = mapOf(
-        "youtube.com/ptracking?" to "youtube.com"
+        "youtube.com/ptracking?" to "youtube.com",
     )
     val ADVERTISERS = mapOf(
-        "ad.doubleclick.net" to "ad.doubleclick.net"
+        "ad.doubleclick.net" to "ad.doubleclick.net",
     )
     val SHOULD_NOT_BE_BLOCKED = mapOf(
         "anonyome.com/about.js" to "anonyome.com",
         "mysudo.com/support/foo.js" to "mysudo.com",
-        "brisbanetimes.com.au" to "brisbanetimes.com.au"
+        "brisbanetimes.com.au" to "brisbanetimes.com.au",
     )
 }

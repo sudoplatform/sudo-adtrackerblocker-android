@@ -40,3 +40,7 @@
 -dontwarn java.awt.*
 -keep class com.sun.jna.* { *; }
 -keepclassmembers class * extends com.sun.jna.* { public *; }
+
+### Ad Tracker Blocker SDK. Stop the JNA classes from being renamed or removed.
+-keep class com.sun.jna.** { *; }
+-keep class * implements com.sun.jna.** { *; }

@@ -25,7 +25,7 @@ internal class ExceptionsTransformerTest {
             "foo.com" to "|http://foo.com^\n|https://foo.com^\n",
             "foo.bar.com" to "|http://foo.bar.com^\n|https://foo.bar.com^\n",
             "http://foo.com" to "|http://foo.com^\n|https://foo.com^\n",
-            "https://foo.com" to "|http://foo.com^\n|https://foo.com^\n"
+            "https://foo.com" to "|http://foo.com^\n|https://foo.com^\n",
         )
         for ((url, result) in testCases) {
             val exc = toHostException(url)
@@ -41,8 +41,7 @@ internal class ExceptionsTransformerTest {
             "foo.bar.com/contact/external?type=phone" to "|http://foo.bar.com/contact/external^\n|https://foo.bar.com/contact/external^\n",
             "http://foo.com/about-us" to "|http://foo.com/about-us^\n|https://foo.com/about-us^\n",
             "https://foo.bar.com/contact/external?type=phone"
-                to
-                    "|http://foo.bar.com/contact/external^\n|https://foo.bar.com/contact/external^\n"
+                to "|http://foo.bar.com/contact/external^\n|https://foo.bar.com/contact/external^\n",
         )
         for ((url, result) in testCases) {
             val exc = toPageException(url)

@@ -23,7 +23,7 @@ import com.sudoplatform.sudoadtrackerblocker.types.Ruleset
 import com.sudoplatform.sudoadtrackerblocker.types.allRulesets
 import com.sudoplatform.sudologging.Logger
 import com.sudoplatform.sudouser.SudoUserClient
-import com.sudoplatform.sudouser.exceptions.AuthenticationException
+import com.sudoplatform.sudouser.exceptions.SudoUserException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -45,11 +45,11 @@ internal class DefaultAdTrackerBlockerClient(
     private val region: String,
     private val bucket: String,
     private val storageProvider: StorageProvider,
-    @VisibleForTesting
+    @get:VisibleForTesting
     private val s3Client: S3Client = DefaultS3Client(context, sudoUserClient, region, bucket, logger),
-    @VisibleForTesting
+    @get:VisibleForTesting
     private val blockingProvider: BlockingProvider = DefaultBlockingProvider(logger),
-    override val ENTITLEMENT_NAME: String = "sudoplatform.atb.atbUserEntitled"
+    override val ENTITLEMENT_NAME: String = "sudoplatform.atb.atbUserEntitled",
 ) : SudoAdTrackerBlockerClient, CoroutineScope {
 
     companion object {
@@ -104,7 +104,7 @@ internal class DefaultAdTrackerBlockerClient(
     override suspend fun listRulesets(): List<Ruleset> {
         try {
             return RulesetTransformer.toRulesetList(
-                s3Client.list(path = S3_TOP_PATH)
+                s3Client.list(path = S3_TOP_PATH),
             )
         } catch (e: Throwable) {
             logger.debug("Error $e")
@@ -337,7 +337,7 @@ internal class DefaultAdTrackerBlockerClient(
             }
         return storageProvider.read(fileName)
             ?: throw SudoAdTrackerBlockerException.NoSuchRulesetException(
-                "Ruleset $rulesetType has not been downloaded, please call updateRulesets first."
+                "Ruleset $rulesetType has not been downloaded, please call updateRulesets first.",
             )
     }
 
@@ -363,10 +363,11 @@ internal class DefaultAdTrackerBlockerClient(
     private fun interpretException(exception: Throwable): Throwable {
         return when (exception) {
             is CancellationException, // Never wrap or reinterpret Kotlin coroutines cancellation exception
-            is SudoAdTrackerBlockerException -> exception
+            is SudoAdTrackerBlockerException,
+            -> exception
             is S3Exception.MetadataException -> SudoAdTrackerBlockerException.DataFormatException(cause = exception)
             is S3Exception -> throw SudoAdTrackerBlockerException.FailedException(cause = exception)
-            is NotAuthorizedException, is AuthenticationException.NotAuthorizedException ->
+            is NotAuthorizedException, is SudoUserException.NotAuthorizedException ->
                 throw SudoAdTrackerBlockerException.UnauthorizedUserException(cause = exception)
             is IOException -> throw SudoAdTrackerBlockerException.FailedException(cause = exception)
             else -> SudoAdTrackerBlockerException.UnknownException(exception)

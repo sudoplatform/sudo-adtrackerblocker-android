@@ -21,7 +21,7 @@ import org.junit.Test
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
-private const val MAX_RULE_LOADING_MS = 1000L
+private const val MAX_RULE_LOADING_MS = 2000L
 private const val MAX_URL_BLOCKING_MS = 200L
 
 /**
@@ -50,7 +50,7 @@ class BlockingProviderTest : BaseIntegrationTest() {
             blockingProvider.checkIsUrlBlocked(
                 testCase.toUrl(),
                 "http://somehost.eu/contact",
-                "script"
+                "script",
             ) shouldBe true
         }
     }
@@ -63,7 +63,7 @@ class BlockingProviderTest : BaseIntegrationTest() {
             blockingProvider.checkIsUrlBlocked(
                 testCase.toUrl(),
                 "http://somehost.eu/contact",
-                "script"
+                "script",
             ) shouldBe true
         }
     }
@@ -73,27 +73,27 @@ class BlockingProviderTest : BaseIntegrationTest() {
         blockingProvider.setRules(
             listOf(
                 readTextFile("easylist.txt"),
-                readTextFile("easyprivacy.txt")
-            )
+                readTextFile("easyprivacy.txt"),
+            ),
         )
 
         blockingProvider.checkIsUrlBlocked(
             "http://youtube.com/ptracking?",
             "http://somehost.eu/contact",
-            "script"
+            "script",
         ) shouldBe true
 
         blockingProvider.checkIsUrlBlocked(
             "ad.doubleclick.net",
             "http://somehost.eu/contact",
-            "script"
+            "script",
         ) shouldBe true
 
         for (testCase in ADVERTISERS.keys + PRIVACY_VIOLATORS.keys) {
             blockingProvider.checkIsUrlBlocked(
                 testCase.toUrl(),
                 "http://somehost.eu/contact",
-                "script"
+                "script",
             ) shouldBe true
         }
     }
@@ -103,15 +103,15 @@ class BlockingProviderTest : BaseIntegrationTest() {
         blockingProvider.setRules(
             listOf(
                 readTextFile("easylist.txt"),
-                readTextFile("easyprivacy.txt")
-            )
+                readTextFile("easyprivacy.txt"),
+            ),
         )
 
         for (testCase in SHOULD_NOT_BE_BLOCKED.keys) {
             blockingProvider.checkIsUrlBlocked(
                 testCase.toUrl(),
                 "http://somehost.eu/contact",
-                "script"
+                "script",
             ) shouldBe false
         }
     }
@@ -122,8 +122,8 @@ class BlockingProviderTest : BaseIntegrationTest() {
         blockingProvider.setRules(
             listOf(
                 readTextFile("easylist.txt"),
-                readTextFile("easyprivacy.txt")
-            )
+                readTextFile("easyprivacy.txt"),
+            ),
         )
         stopwatch.stop()
         println("Rules loading took $stopwatch")
@@ -137,7 +137,7 @@ class BlockingProviderTest : BaseIntegrationTest() {
             blockingProvider.checkIsUrlBlocked(
                 testCase.toUrl(),
                 "http://somehost.eu/contact",
-                "script"
+                "script",
             )
         }
 

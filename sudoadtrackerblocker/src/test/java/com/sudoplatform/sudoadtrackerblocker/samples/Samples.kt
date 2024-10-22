@@ -66,7 +66,7 @@ class Samples {
     // This function hides the GlobalScope from the code used in the documentation. The use
     // of GlobalScope is not something that should be recommended in the code samples.
     private fun launch(
-        block: suspend CoroutineScope.() -> Unit
+        block: suspend CoroutineScope.() -> Unit,
     ) = GlobalScope.launch { block.invoke(GlobalScope) }
 
     fun listRulesets() {
@@ -87,7 +87,7 @@ class Samples {
                 // For example, if only interested in ads and privacy blocking
                 client.updateRulesets(
                     Ruleset.Type.AD_BLOCKING,
-                    Ruleset.Type.PRIVACY
+                    Ruleset.Type.PRIVACY,
                 )
             }
         }
@@ -108,7 +108,7 @@ class Samples {
                 // For example, if only interested in ads and privacy blocking
                 client.setActiveRulesets(
                     Ruleset.Type.AD_BLOCKING,
-                    Ruleset.Type.PRIVACY
+                    Ruleset.Type.PRIVACY,
                 )
                 // Or if interested in all the rulesets
                 client.setActiveRulesets(allRulesets())
@@ -124,7 +124,7 @@ class Samples {
             withContext(Dispatchers.IO) {
                 val urlStatus = client.checkUrl(
                     url = "http://somehost.com/somewhere/ad?type=banner",
-                    sourceUrl = "http://somehost.com/about-us"
+                    sourceUrl = "http://somehost.com/about-us",
                 )
                 if (urlStatus == SudoAdTrackerBlockerClient.CheckUrlResult.BLOCKED) {
                     // URL should not be loaded
@@ -138,7 +138,7 @@ class Samples {
             withContext(Dispatchers.IO) {
                 client.addExceptions(
                     toHostException("http://somehost.com"),
-                    toPageException("http://myfavourite.domain.eu/homepage")
+                    toPageException("http://myfavourite.domain.eu/homepage"),
                 )
             }
         }
@@ -149,7 +149,7 @@ class Samples {
             withContext(Dispatchers.IO) {
                 client.removeExceptions(
                     toHostException("http://somehost.com"),
-                    toPageException("http://myfavourite.domain.eu/homepage")
+                    toPageException("http://myfavourite.domain.eu/homepage"),
                 )
             }
         }

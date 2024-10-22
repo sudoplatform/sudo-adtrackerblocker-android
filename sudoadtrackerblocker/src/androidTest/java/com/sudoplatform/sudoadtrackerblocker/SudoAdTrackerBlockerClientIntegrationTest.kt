@@ -127,7 +127,7 @@ class SudoAdTrackerBlockerClientIntegrationTest : BaseIntegrationTest() {
         }
         client.updateRulesets(Ruleset.Type.AD_BLOCKING)
         storageProvider.listFiles() shouldContainExactlyInAnyOrder listOf(
-            "easylist.txt"
+            "easylist.txt",
         )
 
         val privacyRuleset = rulesets.find { it.type == Ruleset.Type.PRIVACY }
@@ -141,7 +141,7 @@ class SudoAdTrackerBlockerClientIntegrationTest : BaseIntegrationTest() {
         client.updateRulesets(Ruleset.Type.PRIVACY)
         storageProvider.listFiles() shouldContainExactlyInAnyOrder listOf(
             "easylist.txt",
-            "easyprivacy.txt"
+            "easyprivacy.txt",
         )
 
         val socialRuleset = rulesets.find { it.type == Ruleset.Type.SOCIAL }
@@ -156,7 +156,7 @@ class SudoAdTrackerBlockerClientIntegrationTest : BaseIntegrationTest() {
         storageProvider.listFiles() shouldContainExactlyInAnyOrder listOf(
             "easylist.txt",
             "easyprivacy.txt",
-            "fanboy-social.txt"
+            "fanboy-social.txt",
         )
 
         client.clearStorage()
@@ -250,7 +250,7 @@ class SudoAdTrackerBlockerClientIntegrationTest : BaseIntegrationTest() {
         return adTrackerBlockerClient!!.checkUrl(
             url,
             currentUrl,
-            "script"
+            "script",
         ) == SudoAdTrackerBlockerClient.CheckUrlResult.BLOCKED
     }
 

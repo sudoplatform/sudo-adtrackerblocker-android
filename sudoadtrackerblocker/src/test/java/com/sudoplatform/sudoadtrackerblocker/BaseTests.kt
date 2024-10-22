@@ -93,7 +93,7 @@ internal abstract class BaseTests : PropertyResetter by ActualPropertyResetter()
             bucket = "bucket",
             s3Client = mockS3Client,
             storageProvider = mockStorageProvider,
-            blockingProvider = mockBlockingProvider
+            blockingProvider = mockBlockingProvider,
         ).apply {
             waitForClientInitToComplete(this)
         }

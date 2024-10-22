@@ -51,7 +51,7 @@ internal object RulesetTransformer {
             id = objectInfo.key,
             eTag = objectInfo.eTag,
             type = extractRulesetTypeFromMetadata(objectInfo.userMetadata),
-            updatedAt = objectInfo.lastModified
+            updatedAt = objectInfo.lastModified,
         )
     }
 
