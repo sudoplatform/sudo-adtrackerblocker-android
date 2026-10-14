@@ -28,7 +28,6 @@ private const val MAX_URL_BLOCKING_MS = 200L
  * Test the operation of [DefaultBlockingProvider] on a Android device or emulator.
  */
 class BlockingProviderTest : BaseIntegrationTest() {
-
     private val blockingProvider = DefaultBlockingProvider(logger)
 
     @Before
@@ -43,106 +42,111 @@ class BlockingProviderTest : BaseIntegrationTest() {
     }
 
     @Test
-    fun shouldBlockPrivacyViolatorUrls() = runBlocking<Unit> {
-        blockingProvider.setRules(listOf(readTextFile("easyprivacy.txt")))
+    fun shouldBlockPrivacyViolatorUrls() =
+        runBlocking<Unit> {
+            blockingProvider.setRules(listOf(readTextFile("easyprivacy.txt")))
 
-        for (testCase in PRIVACY_VIOLATORS.keys) {
-            blockingProvider.checkIsUrlBlocked(
-                testCase.toUrl(),
-                "http://somehost.eu/contact",
-                "script",
-            ) shouldBe true
+            for (testCase in PRIVACY_VIOLATORS.keys) {
+                blockingProvider.checkIsUrlBlocked(
+                    testCase.toUrl(),
+                    "http://somehost.eu/contact",
+                    "script",
+                ) shouldBe true
+            }
         }
-    }
 
     @Test
-    fun shouldBlockAdvertisingUrls() = runBlocking<Unit> {
-        blockingProvider.setRules(listOf(readTextFile("easylist.txt")))
+    fun shouldBlockAdvertisingUrls() =
+        runBlocking<Unit> {
+            blockingProvider.setRules(listOf(readTextFile("easylist.txt")))
 
-        for (testCase in ADVERTISERS.keys) {
-            blockingProvider.checkIsUrlBlocked(
-                testCase.toUrl(),
-                "http://somehost.eu/contact",
-                "script",
-            ) shouldBe true
+            for (testCase in ADVERTISERS.keys) {
+                blockingProvider.checkIsUrlBlocked(
+                    testCase.toUrl(),
+                    "http://somehost.eu/contact",
+                    "script",
+                ) shouldBe true
+            }
         }
-    }
 
     @Test
-    fun shouldBlockAllBadUrls() = runBlocking<Unit> {
-        blockingProvider.setRules(
-            listOf(
-                readTextFile("easylist.txt"),
-                readTextFile("easyprivacy.txt"),
-            ),
-        )
-
-        blockingProvider.checkIsUrlBlocked(
-            "http://youtube.com/ptracking?",
-            "http://somehost.eu/contact",
-            "script",
-        ) shouldBe true
-
-        blockingProvider.checkIsUrlBlocked(
-            "ad.doubleclick.net",
-            "http://somehost.eu/contact",
-            "script",
-        ) shouldBe true
-
-        for (testCase in ADVERTISERS.keys + PRIVACY_VIOLATORS.keys) {
-            blockingProvider.checkIsUrlBlocked(
-                testCase.toUrl(),
-                "http://somehost.eu/contact",
-                "script",
-            ) shouldBe true
-        }
-    }
-
-    @Test
-    fun shouldNotBlockGoodUrls() = runBlocking<Unit> {
-        blockingProvider.setRules(
-            listOf(
-                readTextFile("easylist.txt"),
-                readTextFile("easyprivacy.txt"),
-            ),
-        )
-
-        for (testCase in SHOULD_NOT_BE_BLOCKED.keys) {
-            blockingProvider.checkIsUrlBlocked(
-                testCase.toUrl(),
-                "http://somehost.eu/contact",
-                "script",
-            ) shouldBe false
-        }
-    }
-
-    @Test
-    fun timingTest() = runBlocking<Unit> {
-        val stopwatch = Stopwatch.createStarted()
-        blockingProvider.setRules(
-            listOf(
-                readTextFile("easylist.txt"),
-                readTextFile("easyprivacy.txt"),
-            ),
-        )
-        stopwatch.stop()
-        println("Rules loading took $stopwatch")
-        stopwatch.elapsed(TimeUnit.MILLISECONDS) shouldBeLessThan MAX_RULE_LOADING_MS
-
-        stopwatch.reset()
-        stopwatch.start()
-
-        val allTestCases = PRIVACY_VIOLATORS.keys + ADVERTISERS.keys + SHOULD_NOT_BE_BLOCKED.keys
-        for (testCase in allTestCases) {
-            blockingProvider.checkIsUrlBlocked(
-                testCase.toUrl(),
-                "http://somehost.eu/contact",
-                "script",
+    fun shouldBlockAllBadUrls() =
+        runBlocking<Unit> {
+            blockingProvider.setRules(
+                listOf(
+                    readTextFile("easylist.txt"),
+                    readTextFile("easyprivacy.txt"),
+                ),
             )
+
+            blockingProvider.checkIsUrlBlocked(
+                "http://youtube.com/analytics/visit.jsp",
+                "http://somehost.eu/contact",
+                "script",
+            ) shouldBe true
+
+            blockingProvider.checkIsUrlBlocked(
+                "ad.doubleclick.net",
+                "http://somehost.eu/contact",
+                "script",
+            ) shouldBe true
+
+            for (testCase in ADVERTISERS.keys + PRIVACY_VIOLATORS.keys) {
+                blockingProvider.checkIsUrlBlocked(
+                    testCase.toUrl(),
+                    "http://somehost.eu/contact",
+                    "script",
+                ) shouldBe true
+            }
         }
 
-        stopwatch.stop()
-        println("Testing ${allTestCases.size} URLs took $stopwatch")
-        stopwatch.elapsed(TimeUnit.MILLISECONDS) shouldBeLessThan MAX_URL_BLOCKING_MS
-    }
+    @Test
+    fun shouldNotBlockGoodUrls() =
+        runBlocking<Unit> {
+            blockingProvider.setRules(
+                listOf(
+                    readTextFile("easylist.txt"),
+                    readTextFile("easyprivacy.txt"),
+                ),
+            )
+
+            for (testCase in SHOULD_NOT_BE_BLOCKED.keys) {
+                blockingProvider.checkIsUrlBlocked(
+                    testCase.toUrl(),
+                    "http://somehost.eu/contact",
+                    "script",
+                ) shouldBe false
+            }
+        }
+
+    @Test
+    fun timingTest() =
+        runBlocking<Unit> {
+            val stopwatch = Stopwatch.createStarted()
+            blockingProvider.setRules(
+                listOf(
+                    readTextFile("easylist.txt"),
+                    readTextFile("easyprivacy.txt"),
+                ),
+            )
+            stopwatch.stop()
+            println("Rules loading took $stopwatch")
+            stopwatch.elapsed(TimeUnit.MILLISECONDS) shouldBeLessThan MAX_RULE_LOADING_MS
+
+            stopwatch.reset()
+            stopwatch.start()
+
+            val allTestCases = PRIVACY_VIOLATORS.keys + ADVERTISERS.keys + SHOULD_NOT_BE_BLOCKED.keys
+            for (testCase in allTestCases) {
+                blockingProvider.checkIsUrlBlocked(
+                    testCase.toUrl(),
+                    "http://somehost.eu/contact",
+                    "script",
+                )
+            }
+
+            stopwatch.stop()
+            println("Testing ${allTestCases.size} URLs took $stopwatch")
+            stopwatch.elapsed(TimeUnit.MILLISECONDS) shouldBeLessThan MAX_URL_BLOCKING_MS
+        }
 }

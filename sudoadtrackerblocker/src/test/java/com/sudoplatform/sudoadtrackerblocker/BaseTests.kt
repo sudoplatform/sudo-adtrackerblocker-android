@@ -99,10 +99,11 @@ internal abstract class BaseTests : PropertyResetter by ActualPropertyResetter()
         }
     }
 
-    protected fun verifyMocksUsedInClientInit() = runBlocking<Unit> {
-        if (adTrackerBlockerClient.status == SudoAdTrackerBlockerClient.FilterEngineStatus.READY) {
-            verify(mockStorageProvider, atLeastOnce()).readPreferences()
-            verify(mockBlockingProvider, atLeastOnce()).close()
+    protected fun verifyMocksUsedInClientInit() =
+        runBlocking<Unit> {
+            if (adTrackerBlockerClient.status == SudoAdTrackerBlockerClient.FilterEngineStatus.READY) {
+                verify(mockStorageProvider, atLeastOnce()).readPreferences()
+                verify(mockBlockingProvider, atLeastOnce()).close()
+            }
         }
-    }
 }

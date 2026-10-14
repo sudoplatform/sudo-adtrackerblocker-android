@@ -23,7 +23,6 @@ import timber.log.Timber
  * Test the operation of [AdBlockEngine] on a Android device or emulator.
  */
 class AdBlockEngineTest : BaseIntegrationTest() {
-
     @Before
     fun setup() {
         Timber.plant(Timber.DebugTree())
@@ -35,17 +34,18 @@ class AdBlockEngineTest : BaseIntegrationTest() {
     }
 
     @Test
-    fun shouldBlockPrivacyViolatorUrls() = runBlocking<Unit> {
-        val adBlockEngine = FilterEngine(listOf(readTextFile("easyprivacy.txt")))
+    fun shouldBlockPrivacyViolatorUrls() =
+        runBlocking<Unit> {
+            val adBlockEngine = FilterEngine(listOf(readTextFile("easyprivacy.txt")))
 
-        PRIVACY_VIOLATORS.forEach { testCase, _ ->
-            adBlockEngine.checkNetworkUrlsMatched(
-                testCase.toUrl(),
-                "http://somehost.eu/contact",
-                "script",
-            ) shouldBe true
+            PRIVACY_VIOLATORS.forEach { testCase, _ ->
+                adBlockEngine.checkNetworkUrlsMatched(
+                    testCase.toUrl(),
+                    "http://somehost.eu/contact",
+                    "script",
+                ) shouldBe true
+            }
         }
-    }
 
     @Test
     fun shouldBlockAdvertisingUrls() {
@@ -72,21 +72,22 @@ class AdBlockEngineTest : BaseIntegrationTest() {
     }
 
     @Test
-    fun shouldBlockCorrectly() = runBlocking<Unit> {
-        val easyList = readTextFile("easylist.txt")
-        val easyPrivacy = readTextFile("easyprivacy.txt")
+    fun shouldBlockCorrectly() =
+        runBlocking<Unit> {
+            val easyList = readTextFile("easylist.txt")
+            val easyPrivacy = readTextFile("easyprivacy.txt")
 
-        val filterEngine = FilterEngine(listOf(easyList, easyPrivacy))
-        val currentUrl = "http://somehost.eu/contact"
+            val filterEngine = FilterEngine(listOf(easyList, easyPrivacy))
+            val currentUrl = "http://somehost.eu/contact"
 
-        filterEngine.checkNetworkUrlsMatched("http://ad.doubleclick.net", currentUrl, "script") shouldBe true
-        filterEngine.checkNetworkUrlsMatched("ad.doubleclick.net".toUrl(), currentUrl, "script") shouldBe true
-        filterEngine.checkNetworkUrlsMatched("http://youtube.com/ptracking?", currentUrl, "script") shouldBe true
+            filterEngine.checkNetworkUrlsMatched("http://ad.doubleclick.net", currentUrl, "script") shouldBe true
+            filterEngine.checkNetworkUrlsMatched("ad.doubleclick.net".toUrl(), currentUrl, "script") shouldBe true
+            filterEngine.checkNetworkUrlsMatched("http://youtube.com/analytics/visit.jsp", currentUrl, "script") shouldBe true
 
-        filterEngine.checkNetworkUrlsMatched("http://shoesandcoats.com", currentUrl, "script") shouldBe false
-        filterEngine.checkNetworkUrlsMatched("http://www.anonyome.com", currentUrl, "script") shouldBe false
-        filterEngine.checkNetworkUrlsMatched("http://www.anonyome.com/about.js", currentUrl, "script") shouldBe false
-        filterEngine.checkNetworkUrlsMatched("http://www.mysudo.com/", currentUrl, "script") shouldBe false
-        filterEngine.checkNetworkUrlsMatched("http://www.brisbanetimes.com/", currentUrl, "script") shouldBe false
-    }
+            filterEngine.checkNetworkUrlsMatched("http://shoesandcoats.com", currentUrl, "script") shouldBe false
+            filterEngine.checkNetworkUrlsMatched("http://www.anonyome.com", currentUrl, "script") shouldBe false
+            filterEngine.checkNetworkUrlsMatched("http://www.anonyome.com/about.js", currentUrl, "script") shouldBe false
+            filterEngine.checkNetworkUrlsMatched("http://www.mysudo.com/", currentUrl, "script") shouldBe false
+            filterEngine.checkNetworkUrlsMatched("http://www.brisbanetimes.com/", currentUrl, "script") shouldBe false
+        }
 }

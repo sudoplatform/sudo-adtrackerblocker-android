@@ -29,7 +29,6 @@ import java.util.concurrent.CancellationException
  */
 @RunWith(RobolectricTestRunner::class)
 internal class SudoAdTrackerBlockerClientSetActiveRulesetsTest : BaseTests() {
-
     private val allDisabledPreferences = emptyMap<String, String>()
     private val allEnabledPreferences: Map<String, String>
 
@@ -57,60 +56,66 @@ internal class SudoAdTrackerBlockerClientSetActiveRulesetsTest : BaseTests() {
     }
 
     @Test
-    fun `setActiveRulesets() with no args should call storage provider`() = runBlocking<Unit> {
-        adTrackerBlockerClient.setActiveRulesets()
-
-        verify(mockStorageProvider).writePreferences(allDisabledPreferences)
-        verify(mockBlockingProvider, times(2)).close()
-    }
-
-    @Test
-    fun `setActiveRulesets() with no rulesets should call storage provider`() = runBlocking<Unit> {
-        adTrackerBlockerClient.setActiveRulesets(noRulesets())
-
-        verify(mockStorageProvider).writePreferences(allDisabledPreferences)
-        verify(mockBlockingProvider, times(2)).close()
-    }
-
-    @Test
-    fun `setActiveRulesets() with all rulesets should call storage provider`() = runBlocking<Unit> {
-        adTrackerBlockerClient.setActiveRulesets(allRulesets())
-
-        verify(mockStorageProvider).writePreferences(allEnabledPreferences)
-        verify(mockBlockingProvider, times(2)).close()
-    }
-
-    @Test
-    fun `setActiveRulesets() with one ruleset should call storage provider`() = runBlocking<Unit> {
-        adTrackerBlockerClient.setActiveRulesets(Ruleset.Type.AD_BLOCKING)
-
-        verify(mockStorageProvider).writePreferences(mapOf(Ruleset.Type.AD_BLOCKING.name to "true"))
-        verify(mockBlockingProvider, times(2)).close()
-    }
-
-    @Test
-    fun `setActiveRulesets() should throw when storage provider throws`() = runBlocking<Unit> {
-        mockStorageProvider.stub {
-            onBlocking { writePreferences(any()) } doThrow IOException("mock")
-        }
-
-        shouldThrow<SudoAdTrackerBlockerException.FailedException> {
+    fun `setActiveRulesets() with no args should call storage provider`() =
+        runBlocking<Unit> {
             adTrackerBlockerClient.setActiveRulesets()
-        }
 
-        verify(mockStorageProvider).writePreferences(any())
-    }
+            verify(mockStorageProvider).writePreferences(allDisabledPreferences)
+            verify(mockBlockingProvider, times(2)).close()
+        }
 
     @Test
-    fun `setActiveRulesets() should not block coroutine cancellation exception`() = runBlocking<Unit> {
-        mockStorageProvider.stub {
-            onBlocking { writePreferences(any()) } doThrow CancellationException("Mock")
+    fun `setActiveRulesets() with no rulesets should call storage provider`() =
+        runBlocking<Unit> {
+            adTrackerBlockerClient.setActiveRulesets(noRulesets())
+
+            verify(mockStorageProvider).writePreferences(allDisabledPreferences)
+            verify(mockBlockingProvider, times(2)).close()
         }
 
-        shouldThrow<CancellationException> {
-            adTrackerBlockerClient.setActiveRulesets()
+    @Test
+    fun `setActiveRulesets() with all rulesets should call storage provider`() =
+        runBlocking<Unit> {
+            adTrackerBlockerClient.setActiveRulesets(allRulesets())
+
+            verify(mockStorageProvider).writePreferences(allEnabledPreferences)
+            verify(mockBlockingProvider, times(2)).close()
         }
 
-        verify(mockStorageProvider).writePreferences(any())
-    }
+    @Test
+    fun `setActiveRulesets() with one ruleset should call storage provider`() =
+        runBlocking<Unit> {
+            adTrackerBlockerClient.setActiveRulesets(Ruleset.Type.AD_BLOCKING)
+
+            verify(mockStorageProvider).writePreferences(mapOf(Ruleset.Type.AD_BLOCKING.name to "true"))
+            verify(mockBlockingProvider, times(2)).close()
+        }
+
+    @Test
+    fun `setActiveRulesets() should throw when storage provider throws`() =
+        runBlocking<Unit> {
+            mockStorageProvider.stub {
+                onBlocking { writePreferences(any()) } doThrow IOException("mock")
+            }
+
+            shouldThrow<SudoAdTrackerBlockerException.FailedException> {
+                adTrackerBlockerClient.setActiveRulesets()
+            }
+
+            verify(mockStorageProvider).writePreferences(any())
+        }
+
+    @Test
+    fun `setActiveRulesets() should not block coroutine cancellation exception`() =
+        runBlocking<Unit> {
+            mockStorageProvider.stub {
+                onBlocking { writePreferences(any()) } doThrow CancellationException("Mock")
+            }
+
+            shouldThrow<CancellationException> {
+                adTrackerBlockerClient.setActiveRulesets()
+            }
+
+            verify(mockStorageProvider).writePreferences(any())
+        }
 }

@@ -34,24 +34,27 @@ internal fun readS3Configuration(
     val preamble = "sudoplatformconfig.json does not contain"
     val postamble = "the $CONFIG_AD_TRACKER_BLOCKER_SERVICE stanza"
 
-    val identityConfig = try {
-        configManager.getConfigSet(CONFIG_AD_TRACKER_BLOCKER_SERVICE)
-    } catch (e: JSONException) {
-        throw SudoAdTrackerBlockerException.ConfigurationException("$preamble $postamble", e)
-    }
+    val identityConfig =
+        try {
+            configManager.getConfigSet(CONFIG_AD_TRACKER_BLOCKER_SERVICE)
+        } catch (e: JSONException) {
+            throw SudoAdTrackerBlockerException.ConfigurationException("$preamble $postamble", e)
+        }
     identityConfig ?: throw SudoAdTrackerBlockerException.ConfigurationException("$preamble $postamble")
 
-    val region = try {
-        identityConfig.getString(CONFIG_REGION)
-    } catch (e: JSONException) {
-        throw SudoAdTrackerBlockerException.ConfigurationException("$preamble $CONFIG_REGION in $postamble", e)
-    }
+    val region =
+        try {
+            identityConfig.getString(CONFIG_REGION)
+        } catch (e: JSONException) {
+            throw SudoAdTrackerBlockerException.ConfigurationException("$preamble $CONFIG_REGION in $postamble", e)
+        }
 
-    val bucket = try {
-        identityConfig.getString(CONFIG_STATIC_DATA_BUCKET)
-    } catch (e: JSONException) {
-        throw SudoAdTrackerBlockerException.ConfigurationException("$preamble $CONFIG_STATIC_DATA_BUCKET in $postamble", e)
-    }
+    val bucket =
+        try {
+            identityConfig.getString(CONFIG_STATIC_DATA_BUCKET)
+        } catch (e: JSONException) {
+            throw SudoAdTrackerBlockerException.ConfigurationException("$preamble $CONFIG_STATIC_DATA_BUCKET in $postamble", e)
+        }
 
     return S3Configuration(region, bucket)
 }

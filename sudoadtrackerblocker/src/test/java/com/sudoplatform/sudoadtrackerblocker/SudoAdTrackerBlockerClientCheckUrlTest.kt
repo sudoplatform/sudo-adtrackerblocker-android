@@ -40,48 +40,52 @@ internal class SudoAdTrackerBlockerClientCheckUrlTest : BaseTests() {
     }
 
     @Test
-    fun `checkUrl() should call blocking provider`() = runBlocking<Unit> {
-        adTrackerBlockerClient.checkUrl("a", "b", "c")
-        verify(mockBlockingProvider).checkIsUrlBlocked(anyString(), anyString(), anyString())
-    }
+    fun `checkUrl() should call blocking provider`() =
+        runBlocking<Unit> {
+            adTrackerBlockerClient.checkUrl("a", "b", "c")
+            verify(mockBlockingProvider).checkIsUrlBlocked(anyString(), anyString(), anyString())
+        }
 
     @Test
-    fun `checkUrl() should throw when blocking provider not ready`() = runBlocking<Unit> {
-        adTrackerBlockerClient.actualStatus = SudoAdTrackerBlockerClient.FilterEngineStatus.PREPARING
+    fun `checkUrl() should throw when blocking provider not ready`() =
+        runBlocking<Unit> {
+            adTrackerBlockerClient.actualStatus = SudoAdTrackerBlockerClient.FilterEngineStatus.PREPARING
 
-        shouldThrow<SudoAdTrackerBlockerException.FilterEngineNotReadyException> {
-            adTrackerBlockerClient.checkUrl("a", "b", "c")
+            shouldThrow<SudoAdTrackerBlockerException.FilterEngineNotReadyException> {
+                adTrackerBlockerClient.checkUrl("a", "b", "c")
+            }
+
+            verify(mockStorageProvider).readPreferences()
+            verify(mockBlockingProvider).close()
         }
-
-        verify(mockStorageProvider).readPreferences()
-        verify(mockBlockingProvider).close()
-    }
 
     @Test
-    fun `checkUrl() should throw when blocking provider throws`() = runBlocking<Unit> {
-        mockBlockingProvider.stub {
-            onBlocking {
-                checkIsUrlBlocked(anyString(), anyString(), anyString())
-            } doThrow SudoAdTrackerBlockerException.DataFormatException("mock")
-        }
+    fun `checkUrl() should throw when blocking provider throws`() =
+        runBlocking<Unit> {
+            mockBlockingProvider.stub {
+                onBlocking {
+                    checkIsUrlBlocked(anyString(), anyString(), anyString())
+                } doThrow SudoAdTrackerBlockerException.DataFormatException("mock")
+            }
 
-        shouldThrow<SudoAdTrackerBlockerException.DataFormatException> {
-            adTrackerBlockerClient.checkUrl("a", "b", "c")
-        }
+            shouldThrow<SudoAdTrackerBlockerException.DataFormatException> {
+                adTrackerBlockerClient.checkUrl("a", "b", "c")
+            }
 
-        verify(mockBlockingProvider).checkIsUrlBlocked(anyString(), anyString(), anyString())
-    }
+            verify(mockBlockingProvider).checkIsUrlBlocked(anyString(), anyString(), anyString())
+        }
 
     @Test
-    fun `checkUrl() should not block coroutine cancellation exception`() = runBlocking<Unit> {
-        mockBlockingProvider.stub {
-            onBlocking { checkIsUrlBlocked(anyString(), anyString(), anyString()) } doThrow CancellationException("mock")
-        }
+    fun `checkUrl() should not block coroutine cancellation exception`() =
+        runBlocking<Unit> {
+            mockBlockingProvider.stub {
+                onBlocking { checkIsUrlBlocked(anyString(), anyString(), anyString()) } doThrow CancellationException("mock")
+            }
 
-        shouldThrow<CancellationException> {
-            adTrackerBlockerClient.checkUrl("a", "b", "c")
-        }
+            shouldThrow<CancellationException> {
+                adTrackerBlockerClient.checkUrl("a", "b", "c")
+            }
 
-        verify(mockBlockingProvider).checkIsUrlBlocked(anyString(), anyString(), anyString())
-    }
+            verify(mockBlockingProvider).checkIsUrlBlocked(anyString(), anyString(), anyString())
+        }
 }

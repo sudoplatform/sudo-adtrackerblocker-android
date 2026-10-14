@@ -25,7 +25,8 @@ fun checkEasyList(easyListBytes: ByteArray?) {
 }
 
 fun waitForClientInitToComplete(client: SudoAdTrackerBlockerClient) {
-    Awaitility.await()
+    Awaitility
+        .await()
         .atLeast(100, TimeUnit.MILLISECONDS)
         .atMost(10, TimeUnit.SECONDS)
         .pollInterval(100, TimeUnit.MILLISECONDS)
@@ -35,6 +36,7 @@ fun waitForClientInitToComplete(client: SudoAdTrackerBlockerClient) {
                 SudoAdTrackerBlockerClient.FilterEngineStatus.READY,
                 SudoAdTrackerBlockerClient.FilterEngineStatus.ERROR,
                 -> true
+
                 SudoAdTrackerBlockerClient.FilterEngineStatus.PREPARING -> false
             }
         }

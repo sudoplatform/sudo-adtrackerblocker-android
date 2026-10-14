@@ -12,22 +12,47 @@ package com.sudoplatform.sudoadtrackerblocker
  * @property message [String] Accompanying message for the exception.
  * @property cause [Throwable] The cause for the exception.
  */
-sealed class SudoAdTrackerBlockerException(message: String? = null, cause: Throwable? = null) : RuntimeException(message, cause) {
+sealed class SudoAdTrackerBlockerException(
+    message: String? = null,
+    cause: Throwable? = null,
+) : RuntimeException(message, cause) {
     /** A configuration item that is needed is missing */
-    class ConfigurationException(message: String? = null, cause: Throwable? = null) :
-        SudoAdTrackerBlockerException(message = message, cause = cause)
-    class FilterEngineNotReadyException(message: String? = null, cause: Throwable? = null) :
-        SudoAdTrackerBlockerException(message = message, cause = cause)
-    class DataFormatException(message: String? = null, cause: Throwable? = null) :
-        SudoAdTrackerBlockerException(message = message, cause = cause)
-    class UrlFormatException(message: String? = null, cause: Throwable? = null) :
-        SudoAdTrackerBlockerException(message = message, cause = cause)
-    class UnauthorizedUserException(message: String? = null, cause: Throwable? = null) :
-        SudoAdTrackerBlockerException(message = message, cause = cause)
-    class NoSuchRulesetException(message: String? = null, cause: Throwable? = null) :
-        SudoAdTrackerBlockerException(message = message, cause = cause)
-    class FailedException(message: String? = null, cause: Throwable? = null) :
-        SudoAdTrackerBlockerException(message = message, cause = cause)
-    class UnknownException(cause: Throwable) :
-        SudoAdTrackerBlockerException(cause = cause)
+    class ConfigurationException(
+        message: String? = null,
+        cause: Throwable? = null,
+    ) : SudoAdTrackerBlockerException(message = message, cause = cause)
+
+    class FilterEngineNotReadyException(
+        message: String? = null,
+        cause: Throwable? = null,
+    ) : SudoAdTrackerBlockerException(message = message, cause = cause)
+
+    class DataFormatException(
+        message: String? = null,
+        cause: Throwable? = null,
+    ) : SudoAdTrackerBlockerException(message = message, cause = cause)
+
+    class UrlFormatException(
+        message: String? = null,
+        cause: Throwable? = null,
+    ) : SudoAdTrackerBlockerException(message = message, cause = cause)
+
+    class UnauthorizedUserException(
+        message: String? = null,
+        cause: Throwable? = null,
+    ) : SudoAdTrackerBlockerException(message = message, cause = cause)
+
+    class NoSuchRulesetException(
+        message: String? = null,
+        cause: Throwable? = null,
+    ) : SudoAdTrackerBlockerException(message = message, cause = cause)
+
+    class FailedException(
+        message: String? = null,
+        cause: Throwable? = null,
+    ) : SudoAdTrackerBlockerException(message = message, cause = cause)
+
+    class UnknownException(
+        cause: Throwable,
+    ) : SudoAdTrackerBlockerException(cause = cause)
 }

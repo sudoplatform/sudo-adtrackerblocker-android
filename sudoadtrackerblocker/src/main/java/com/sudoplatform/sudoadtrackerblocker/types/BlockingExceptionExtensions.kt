@@ -9,7 +9,7 @@ package com.sudoplatform.sudoadtrackerblocker.types
 import android.net.Uri
 import com.sudoplatform.sudoadtrackerblocker.SudoAdTrackerBlockerException
 
-/**
+/*
  * Extension functions to make the API that deal with [BlockingException]s easier to use.
  */
 
@@ -46,5 +46,11 @@ private fun parse(url: String): Pair<String, String> {
     if (uri.host.isNullOrBlank()) {
         throw SudoAdTrackerBlockerException.UrlFormatException("URL does not contain a host")
     }
-    return Pair(uri.host.toString().trim(), uri.path.toString().trim().removeSuffix("/"))
+    return Pair(
+        uri.host.toString().trim(),
+        uri.path
+            .toString()
+            .trim()
+            .removeSuffix("/"),
+    )
 }

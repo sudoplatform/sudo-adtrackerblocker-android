@@ -25,7 +25,6 @@ import java.util.concurrent.CancellationException
  */
 @RunWith(RobolectricTestRunner::class)
 internal class SudoAdTrackerBlockerClientCloseTest : BaseTests() {
-
     @After
     fun fini() {
         verifyMocksUsedInClientInit()
@@ -39,33 +38,36 @@ internal class SudoAdTrackerBlockerClientCloseTest : BaseTests() {
     }
 
     @Test
-    fun `close() should call blocking provider`() = runBlocking<Unit> {
-        adTrackerBlockerClient.close()
-
-        verify(mockBlockingProvider, times(2)).close()
-    }
-
-    @Test
-    fun `close() should suppress when blocking provider throws`() = runBlocking<Unit> {
-        mockBlockingProvider.stub {
-            on { close() } doThrow IOException("mock")
-        }
-
-        adTrackerBlockerClient.close()
-
-        verify(mockBlockingProvider, times(2)).close()
-    }
-
-    @Test
-    fun `close() should not block coroutine cancellation exception`() = runBlocking<Unit> {
-        mockBlockingProvider.stub {
-            on { close() } doThrow CancellationException("mock")
-        }
-
-        shouldThrow<CancellationException> {
+    fun `close() should call blocking provider`() =
+        runBlocking<Unit> {
             adTrackerBlockerClient.close()
+
+            verify(mockBlockingProvider, times(2)).close()
         }
 
-        verify(mockBlockingProvider, times(2)).close()
-    }
+    @Test
+    fun `close() should suppress when blocking provider throws`() =
+        runBlocking<Unit> {
+            mockBlockingProvider.stub {
+                on { close() } doThrow IOException("mock")
+            }
+
+            adTrackerBlockerClient.close()
+
+            verify(mockBlockingProvider, times(2)).close()
+        }
+
+    @Test
+    fun `close() should not block coroutine cancellation exception`() =
+        runBlocking<Unit> {
+            mockBlockingProvider.stub {
+                on { close() } doThrow CancellationException("mock")
+            }
+
+            shouldThrow<CancellationException> {
+                adTrackerBlockerClient.close()
+            }
+
+            verify(mockBlockingProvider, times(2)).close()
+        }
 }

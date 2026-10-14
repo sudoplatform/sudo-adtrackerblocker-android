@@ -30,7 +30,6 @@ import java.util.concurrent.CancellationException
  */
 @RunWith(RobolectricTestRunner::class)
 internal class SudoAdTrackerBlockerClientExceptionsTest : BaseTests() {
-
     @After
     fun fini() {
         verifyMocksUsedInClientInit()
@@ -58,149 +57,161 @@ internal class SudoAdTrackerBlockerClientExceptionsTest : BaseTests() {
     //
 
     @Test
-    fun `addExceptions() should call storage and blocking provider`() = runBlocking<Unit> {
-        adTrackerBlockerClient.addExceptions(hostException)
+    fun `addExceptions() should call storage and blocking provider`() =
+        runBlocking<Unit> {
+            adTrackerBlockerClient.addExceptions(hostException)
 
-        verifyReadAndWriteOfExceptionsFile()
-        verify(mockBlockingProvider, times(2)).close()
-    }
+            verifyReadAndWriteOfExceptionsFile()
+            verify(mockBlockingProvider, times(2)).close()
+        }
 
     @Test
-    fun `addExceptions() should throw when storage provider throws`() = runBlocking<Unit> {
-        mockStorageProvider.stub {
-            onBlocking { write(anyString(), any()) } doThrow IOException("mock")
-        }
+    fun `addExceptions() should throw when storage provider throws`() =
+        runBlocking<Unit> {
+            mockStorageProvider.stub {
+                onBlocking { write(anyString(), any()) } doThrow IOException("mock")
+            }
 
-        shouldThrow<SudoAdTrackerBlockerException.FailedException> {
-            adTrackerBlockerClient.addExceptions(hostException)
-        }
+            shouldThrow<SudoAdTrackerBlockerException.FailedException> {
+                adTrackerBlockerClient.addExceptions(hostException)
+            }
 
-        verifyReadAndWriteOfExceptionsFile()
-    }
+            verifyReadAndWriteOfExceptionsFile()
+        }
 
     @Test
-    fun `addExceptions() should not block coroutine cancellation exception`() = runBlocking<Unit> {
-        mockStorageProvider.stub {
-            onBlocking { read(anyString()) } doThrow CancellationException("Mock")
-        }
+    fun `addExceptions() should not block coroutine cancellation exception`() =
+        runBlocking<Unit> {
+            mockStorageProvider.stub {
+                onBlocking { read(anyString()) } doThrow CancellationException("Mock")
+            }
 
-        shouldThrow<CancellationException> {
-            adTrackerBlockerClient.addExceptions(hostException)
-        }
+            shouldThrow<CancellationException> {
+                adTrackerBlockerClient.addExceptions(hostException)
+            }
 
-        verify(mockStorageProvider).read(BlockingExceptions.EXCEPTIONS_FILE)
-    }
+            verify(mockStorageProvider).read(BlockingExceptions.EXCEPTIONS_FILE)
+        }
 
     //
     // removeExceptions
     //
 
     @Test
-    fun `removeExceptions() should call storage and blocking provider`() = runBlocking<Unit> {
-        adTrackerBlockerClient.removeExceptions(hostException)
+    fun `removeExceptions() should call storage and blocking provider`() =
+        runBlocking<Unit> {
+            adTrackerBlockerClient.removeExceptions(hostException)
 
-        verifyReadAndWriteOfExceptionsFile()
-        verify(mockBlockingProvider, times(2)).close()
-    }
+            verifyReadAndWriteOfExceptionsFile()
+            verify(mockBlockingProvider, times(2)).close()
+        }
 
     @Test
-    fun `removeExceptions() should throw when storage provider throws`() = runBlocking<Unit> {
-        mockStorageProvider.stub {
-            onBlocking { write(anyString(), any()) } doThrow IOException("mock")
-        }
+    fun `removeExceptions() should throw when storage provider throws`() =
+        runBlocking<Unit> {
+            mockStorageProvider.stub {
+                onBlocking { write(anyString(), any()) } doThrow IOException("mock")
+            }
 
-        shouldThrow<SudoAdTrackerBlockerException.FailedException> {
-            adTrackerBlockerClient.removeExceptions(hostException)
-        }
+            shouldThrow<SudoAdTrackerBlockerException.FailedException> {
+                adTrackerBlockerClient.removeExceptions(hostException)
+            }
 
-        verifyReadAndWriteOfExceptionsFile()
-    }
+            verifyReadAndWriteOfExceptionsFile()
+        }
 
     @Test
-    fun `removeExceptions() should not block coroutine cancellation exception`() = runBlocking<Unit> {
-        mockStorageProvider.stub {
-            onBlocking { read(anyString()) } doThrow CancellationException("Mock")
-        }
+    fun `removeExceptions() should not block coroutine cancellation exception`() =
+        runBlocking<Unit> {
+            mockStorageProvider.stub {
+                onBlocking { read(anyString()) } doThrow CancellationException("Mock")
+            }
 
-        shouldThrow<CancellationException> {
-            adTrackerBlockerClient.removeExceptions(hostException)
-        }
+            shouldThrow<CancellationException> {
+                adTrackerBlockerClient.removeExceptions(hostException)
+            }
 
-        verify(mockStorageProvider).read(BlockingExceptions.EXCEPTIONS_FILE)
-    }
+            verify(mockStorageProvider).read(BlockingExceptions.EXCEPTIONS_FILE)
+        }
 
     //
     // removeAllExceptions
     //
 
     @Test
-    fun `removeAllExceptions() should call storage and blocking provider`() = runBlocking<Unit> {
-        adTrackerBlockerClient.removeAllExceptions()
+    fun `removeAllExceptions() should call storage and blocking provider`() =
+        runBlocking<Unit> {
+            adTrackerBlockerClient.removeAllExceptions()
 
-        verify(mockStorageProvider).delete(BlockingExceptions.EXCEPTIONS_FILE)
-        verify(mockBlockingProvider, times(2)).close()
-    }
+            verify(mockStorageProvider).delete(BlockingExceptions.EXCEPTIONS_FILE)
+            verify(mockBlockingProvider, times(2)).close()
+        }
 
     @Test
-    fun `removeAllExceptions() should throw when storage provider throws`() = runBlocking<Unit> {
-        mockStorageProvider.stub {
-            onBlocking { delete(anyString()) } doThrow IOException("mock")
-        }
+    fun `removeAllExceptions() should throw when storage provider throws`() =
+        runBlocking<Unit> {
+            mockStorageProvider.stub {
+                onBlocking { delete(anyString()) } doThrow IOException("mock")
+            }
 
-        shouldThrow<SudoAdTrackerBlockerException.FailedException> {
-            adTrackerBlockerClient.removeAllExceptions()
-        }
+            shouldThrow<SudoAdTrackerBlockerException.FailedException> {
+                adTrackerBlockerClient.removeAllExceptions()
+            }
 
-        verify(mockStorageProvider).delete(BlockingExceptions.EXCEPTIONS_FILE)
-    }
+            verify(mockStorageProvider).delete(BlockingExceptions.EXCEPTIONS_FILE)
+        }
 
     @Test
-    fun `removeAllExceptions() should not block coroutine cancellation exception`() = runBlocking<Unit> {
-        mockStorageProvider.stub {
-            onBlocking { delete(anyString()) } doThrow CancellationException("Mock")
-        }
+    fun `removeAllExceptions() should not block coroutine cancellation exception`() =
+        runBlocking<Unit> {
+            mockStorageProvider.stub {
+                onBlocking { delete(anyString()) } doThrow CancellationException("Mock")
+            }
 
-        shouldThrow<CancellationException> {
-            adTrackerBlockerClient.removeAllExceptions()
-        }
+            shouldThrow<CancellationException> {
+                adTrackerBlockerClient.removeAllExceptions()
+            }
 
-        verify(mockStorageProvider).delete(BlockingExceptions.EXCEPTIONS_FILE)
-    }
+            verify(mockStorageProvider).delete(BlockingExceptions.EXCEPTIONS_FILE)
+        }
 
     //
     // getExceptions
     //
 
     @Test
-    fun `getExceptions() should call storage and blocking provider`() = runBlocking<Unit> {
-        adTrackerBlockerClient.getExceptions()
+    fun `getExceptions() should call storage and blocking provider`() =
+        runBlocking<Unit> {
+            adTrackerBlockerClient.getExceptions()
 
-        verify(mockStorageProvider).read(BlockingExceptions.EXCEPTIONS_FILE)
-    }
+            verify(mockStorageProvider).read(BlockingExceptions.EXCEPTIONS_FILE)
+        }
 
     @Test
-    fun `getExceptions() should throw when storage provider throws`() = runBlocking<Unit> {
-        mockStorageProvider.stub {
-            onBlocking { read(anyString()) } doThrow IOException("mock")
-        }
+    fun `getExceptions() should throw when storage provider throws`() =
+        runBlocking<Unit> {
+            mockStorageProvider.stub {
+                onBlocking { read(anyString()) } doThrow IOException("mock")
+            }
 
-        shouldThrow<SudoAdTrackerBlockerException.FailedException> {
-            adTrackerBlockerClient.getExceptions()
-        }
+            shouldThrow<SudoAdTrackerBlockerException.FailedException> {
+                adTrackerBlockerClient.getExceptions()
+            }
 
-        verify(mockStorageProvider).read(BlockingExceptions.EXCEPTIONS_FILE)
-    }
+            verify(mockStorageProvider).read(BlockingExceptions.EXCEPTIONS_FILE)
+        }
 
     @Test
-    fun `getExceptions() should not block coroutine cancellation exception`() = runBlocking<Unit> {
-        mockStorageProvider.stub {
-            onBlocking { read(anyString()) } doThrow CancellationException("Mock")
-        }
+    fun `getExceptions() should not block coroutine cancellation exception`() =
+        runBlocking<Unit> {
+            mockStorageProvider.stub {
+                onBlocking { read(anyString()) } doThrow CancellationException("Mock")
+            }
 
-        shouldThrow<CancellationException> {
-            adTrackerBlockerClient.getExceptions()
-        }
+            shouldThrow<CancellationException> {
+                adTrackerBlockerClient.getExceptions()
+            }
 
-        verify(mockStorageProvider).read(BlockingExceptions.EXCEPTIONS_FILE)
-    }
+            verify(mockStorageProvider).read(BlockingExceptions.EXCEPTIONS_FILE)
+        }
 }

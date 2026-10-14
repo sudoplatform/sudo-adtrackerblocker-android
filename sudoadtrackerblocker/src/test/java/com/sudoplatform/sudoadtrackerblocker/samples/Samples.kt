@@ -33,7 +33,6 @@ import org.robolectric.RobolectricTestRunner
 @RunWith(RobolectricTestRunner::class)
 @Suppress("UNUSED_VARIABLE")
 class Samples {
-
     @Test
     fun mockTest() {
         // Just to keep junit happy
@@ -48,36 +47,40 @@ class Samples {
         val logger = Logger("MyApplication", AndroidUtilsLogDriver(LogLevel.INFO))
 
         // Create an instance of SudoUserClient to perform registration and sign in.
-        val sudoUserClient = SudoUserClient.builder(context)
-            .setNamespace("com.mycompany.myapplication")
-            .setLogger(logger)
-            .build()
+        val sudoUserClient =
+            SudoUserClient
+                .builder(context)
+                .setNamespace("com.mycompany.myapplication")
+                .setLogger(logger)
+                .build()
 
         // Create an instance of SudoAdTrackerBlockerClient block advertisers and trackers
-        val sudoAdTrackerBlocker = SudoAdTrackerBlockerClient.builder()
-            .setContext(context)
-            .setSudoUserClient(sudoUserClient)
-            .setLogger(logger)
-            .build()
+        val sudoAdTrackerBlocker =
+            SudoAdTrackerBlockerClient
+                .builder()
+                .setContext(context)
+                .setSudoUserClient(sudoUserClient)
+                .setLogger(logger)
+                .build()
     }
 
     private lateinit var client: SudoAdTrackerBlockerClient
 
     // This function hides the GlobalScope from the code used in the documentation. The use
     // of GlobalScope is not something that should be recommended in the code samples.
-    private fun launch(
-        block: suspend CoroutineScope.() -> Unit,
-    ) = GlobalScope.launch { block.invoke(GlobalScope) }
+    private fun launch(block: suspend CoroutineScope.() -> Unit) = GlobalScope.launch { block.invoke(GlobalScope) }
 
     fun listRulesets() {
         launch {
-            val rulesets = withContext(Dispatchers.IO) {
-                client.listRulesets()
-            }
+            val rulesets =
+                withContext(Dispatchers.IO) {
+                    client.listRulesets()
+                }
             // Find the advertising blocking ruleset
-            val adBlockRuleset = rulesets.find { ruleset ->
-                ruleset.type == Ruleset.Type.AD_BLOCKING
-            }
+            val adBlockRuleset =
+                rulesets.find { ruleset ->
+                    ruleset.type == Ruleset.Type.AD_BLOCKING
+                }
         }
     }
 
@@ -95,9 +98,10 @@ class Samples {
 
     fun getActiveRulesets() {
         launch {
-            val activeRulesets = withContext(Dispatchers.IO) {
-                client.getActiveRulesets()
-            }
+            val activeRulesets =
+                withContext(Dispatchers.IO) {
+                    client.getActiveRulesets()
+                }
             println("Active rulesets: $activeRulesets")
         }
     }
@@ -122,10 +126,11 @@ class Samples {
                 return@launch
             }
             withContext(Dispatchers.IO) {
-                val urlStatus = client.checkUrl(
-                    url = "http://somehost.com/somewhere/ad?type=banner",
-                    sourceUrl = "http://somehost.com/about-us",
-                )
+                val urlStatus =
+                    client.checkUrl(
+                        url = "http://somehost.com/somewhere/ad?type=banner",
+                        sourceUrl = "http://somehost.com/about-us",
+                    )
                 if (urlStatus == SudoAdTrackerBlockerClient.CheckUrlResult.BLOCKED) {
                     // URL should not be loaded
                 }
@@ -165,11 +170,12 @@ class Samples {
 
     fun getExceptions() {
         launch {
-            val isMySiteExcepted = withContext(Dispatchers.IO) {
-                client.getExceptions().firstOrNull { exc ->
-                    exc.source.contains("http://myfavourite.domain.eu")
-                }
-            } ?: false
+            val isMySiteExcepted =
+                withContext(Dispatchers.IO) {
+                    client.getExceptions().firstOrNull { exc ->
+                        exc.source.contains("http://myfavourite.domain.eu")
+                    }
+                } ?: false
         }
     }
 }

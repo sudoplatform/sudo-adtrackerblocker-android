@@ -8,16 +8,14 @@ package com.sudoplatform.sudoadtrackerblocker.types
 
 import java.util.EnumSet
 
-/**
+/*
  * [Ruleset] extensions.
  */
 
 /**
  * Returns an [Array] of all the [Ruleset.Type]s except for the catchall [Ruleset.Type.UNKNOWN].
  */
-fun allRulesets(): Array<Ruleset.Type> {
-    return EnumSet.complementOf(EnumSet.of(Ruleset.Type.UNKNOWN)).toTypedArray()
-}
+fun allRulesets(): Array<Ruleset.Type> = EnumSet.complementOf(EnumSet.of(Ruleset.Type.UNKNOWN)).toTypedArray()
 
 /**
  * Returns an empty [Array] of [Ruleset.Type]s.

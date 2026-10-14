@@ -37,66 +37,71 @@ internal class SudoAdTrackerBlockerClientClearStorageTest : BaseTests() {
     }
 
     @Test
-    fun `reset() should call storage provider`() = runBlocking<Unit> {
-        adTrackerBlockerClient.clearStorage()
+    fun `reset() should call storage provider`() =
+        runBlocking<Unit> {
+            adTrackerBlockerClient.clearStorage()
 
-        verify(mockStorageProvider).deleteFiles()
-        verify(mockStorageProvider).deleteFileETags()
-        verify(mockStorageProvider).deletePreferences()
-    }
+            verify(mockStorageProvider).deleteFiles()
+            verify(mockStorageProvider).deleteFileETags()
+            verify(mockStorageProvider).deletePreferences()
+        }
 
     @Test
-    fun `reset() should throw when storage provider throws`() = runBlocking<Unit> {
-        mockStorageProvider.stub {
-            onBlocking { deleteFiles() } doThrow IOException("mock")
-        }
+    fun `reset() should throw when storage provider throws`() =
+        runBlocking<Unit> {
+            mockStorageProvider.stub {
+                onBlocking { deleteFiles() } doThrow IOException("mock")
+            }
 
-        shouldThrow<SudoAdTrackerBlockerException.FailedException> {
-            adTrackerBlockerClient.clearStorage()
-        }
+            shouldThrow<SudoAdTrackerBlockerException.FailedException> {
+                adTrackerBlockerClient.clearStorage()
+            }
 
-        verify(mockStorageProvider).deleteFiles()
-    }
+            verify(mockStorageProvider).deleteFiles()
+        }
 
     @Test
-    fun `reset() should throw when storage provider throws from eTags`() = runBlocking<Unit> {
-        mockStorageProvider.stub {
-            onBlocking { deleteFileETags() } doThrow IOException("mock")
-        }
+    fun `reset() should throw when storage provider throws from eTags`() =
+        runBlocking<Unit> {
+            mockStorageProvider.stub {
+                onBlocking { deleteFileETags() } doThrow IOException("mock")
+            }
 
-        shouldThrow<SudoAdTrackerBlockerException.FailedException> {
-            adTrackerBlockerClient.clearStorage()
-        }
+            shouldThrow<SudoAdTrackerBlockerException.FailedException> {
+                adTrackerBlockerClient.clearStorage()
+            }
 
-        verify(mockStorageProvider).deleteFiles()
-        verify(mockStorageProvider).deleteFileETags()
-    }
+            verify(mockStorageProvider).deleteFiles()
+            verify(mockStorageProvider).deleteFileETags()
+        }
 
     @Test
-    fun `reset() should throw when storage provider throws from preferences`() = runBlocking<Unit> {
-        mockStorageProvider.stub {
-            onBlocking { deletePreferences() } doThrow IOException("mock")
-        }
+    fun `reset() should throw when storage provider throws from preferences`() =
+        runBlocking<Unit> {
+            mockStorageProvider.stub {
+                onBlocking { deletePreferences() } doThrow IOException("mock")
+            }
 
-        shouldThrow<SudoAdTrackerBlockerException.FailedException> {
-            adTrackerBlockerClient.clearStorage()
-        }
+            shouldThrow<SudoAdTrackerBlockerException.FailedException> {
+                adTrackerBlockerClient.clearStorage()
+            }
 
-        verify(mockStorageProvider).deleteFiles()
-        verify(mockStorageProvider).deleteFileETags()
-        verify(mockStorageProvider).deletePreferences()
-    }
+            verify(mockStorageProvider).deleteFiles()
+            verify(mockStorageProvider).deleteFileETags()
+            verify(mockStorageProvider).deletePreferences()
+        }
 
     @Test
-    fun `reset() should not block coroutine cancellation exception`() = runBlocking<Unit> {
-        mockStorageProvider.stub {
-            onBlocking { deleteFiles() } doThrow CancellationException("mock")
-        }
+    fun `reset() should not block coroutine cancellation exception`() =
+        runBlocking<Unit> {
+            mockStorageProvider.stub {
+                onBlocking { deleteFiles() } doThrow CancellationException("mock")
+            }
 
-        shouldThrow<CancellationException> {
-            adTrackerBlockerClient.clearStorage()
-        }
+            shouldThrow<CancellationException> {
+                adTrackerBlockerClient.clearStorage()
+            }
 
-        verify(mockStorageProvider).deleteFiles()
-    }
+            verify(mockStorageProvider).deleteFiles()
+        }
 }

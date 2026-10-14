@@ -22,7 +22,6 @@ import com.sudoplatform.sudoadtrackerblocker.types.BlockingException
  * https://adblockplus.org/en/filter-cheatsheet
  */
 internal object ExceptionsTransformer {
-
     fun toExceptionRules(exceptions: Set<BlockingException>): ByteArray? {
         if (exceptions.isEmpty()) {
             return null

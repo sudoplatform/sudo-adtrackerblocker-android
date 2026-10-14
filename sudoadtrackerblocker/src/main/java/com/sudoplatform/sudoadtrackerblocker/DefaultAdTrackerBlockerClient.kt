@@ -50,8 +50,8 @@ internal class DefaultAdTrackerBlockerClient(
     @get:VisibleForTesting
     private val blockingProvider: BlockingProvider = DefaultBlockingProvider(logger),
     override val ENTITLEMENT_NAME: String = "sudoplatform.atb.atbUserEntitled",
-) : SudoAdTrackerBlockerClient, CoroutineScope {
-
+) : SudoAdTrackerBlockerClient,
+    CoroutineScope {
     companion object {
         /** Deny lists file names and paths */
         @VisibleForTesting
@@ -93,9 +93,10 @@ internal class DefaultAdTrackerBlockerClient(
     private val deferredSetup: Deferred<Unit>
 
     init {
-        deferredSetup = async {
-            setupBlockingProvider()
-        }
+        deferredSetup =
+            async {
+                setupBlockingProvider()
+            }
     }
 
     override val status: SudoAdTrackerBlockerClient.FilterEngineStatus
@@ -112,32 +113,36 @@ internal class DefaultAdTrackerBlockerClient(
         }
     }
 
-    private fun Ruleset.Type.toPathAndFileName(): Pair<String, String>? {
-        return when (this) {
+    private fun Ruleset.Type.toPathAndFileName(): Pair<String, String>? =
+        when (this) {
             Ruleset.Type.AD_BLOCKING -> Pair(ADS_SUBPATH, ADS_FILE)
             Ruleset.Type.PRIVACY -> Pair(PRIVACY_SUBPATH, PRIVACY_FILE)
             Ruleset.Type.SOCIAL -> Pair(SOCIAL_SUBPATH, SOCIAL_FILE)
             else -> null
         }
-    }
 
-    private fun makeS3Path(path: String, fileName: String): String {
-        return "$S3_TOP_PATH/$path/$fileName"
-    }
+    private fun makeS3Path(
+        path: String,
+        fileName: String,
+    ): String = "$S3_TOP_PATH/$path/$fileName"
 
     override suspend fun getActiveRulesets(): Array<Ruleset.Type> {
         try {
             val preferences = storageProvider.readPreferences()
-            return allRulesets().filter {
-                true.toString() == preferences[it.name]
-            }.toTypedArray()
+            return allRulesets()
+                .filter {
+                    true.toString() == preferences[it.name]
+                }.toTypedArray()
         } catch (e: Throwable) {
             logger.debug("Error $e")
             throw interpretException(e)
         }
     }
 
-    override suspend fun setActiveRulesets(activeRuleset: Ruleset.Type, vararg moreActiveRulesets: Ruleset.Type) {
+    override suspend fun setActiveRulesets(
+        activeRuleset: Ruleset.Type,
+        vararg moreActiveRulesets: Ruleset.Type,
+    ) {
         setActiveRulesets(arrayOf(activeRuleset, *moreActiveRulesets))
     }
 
@@ -220,25 +225,27 @@ internal class DefaultAdTrackerBlockerClient(
             if (supportedRulesets.isEmpty()) {
                 return
             }
-            listRulesets().filter { ruleset ->
-                ruleset.type in supportedRulesets
-            }.forEach { ruleset ->
-                val (subPath, fileName) = ruleset.type.toPathAndFileName()
-                    ?: run {
-                        logger.debug("Unsupported ruleset ${ruleset.type} requested")
-                        return@forEach
-                    }
-                val localETag = storageProvider.readFileETag(fileName)
-                if (ruleset.eTag != localETag) {
-                    // eTag from the service is different to what we have locally, this
-                    // means the rules have been updated on the backend
-                    val s3Path = makeS3Path(subPath, fileName)
-                    s3Client.download(s3Path).also { rulesetBytes ->
-                        storageProvider.write(fileName, rulesetBytes)
-                        storageProvider.writeFileETag(fileName, ruleset.eTag)
+            listRulesets()
+                .filter { ruleset ->
+                    ruleset.type in supportedRulesets
+                }.forEach { ruleset ->
+                    val (subPath, fileName) =
+                        ruleset.type.toPathAndFileName()
+                            ?: run {
+                                logger.debug("Unsupported ruleset ${ruleset.type} requested")
+                                return@forEach
+                            }
+                    val localETag = storageProvider.readFileETag(fileName)
+                    if (ruleset.eTag != localETag) {
+                        // eTag from the service is different to what we have locally, this
+                        // means the rules have been updated on the backend
+                        val s3Path = makeS3Path(subPath, fileName)
+                        s3Client.download(s3Path).also { rulesetBytes ->
+                            storageProvider.write(fileName, rulesetBytes)
+                            storageProvider.writeFileETag(fileName, ruleset.eTag)
+                        }
                     }
                 }
-            }
         } catch (e: S3Exception.DownloadException) {
             logger.debug("Ruleset not found $e")
         } catch (e: Throwable) {
@@ -274,7 +281,11 @@ internal class DefaultAdTrackerBlockerClient(
         }
     }
 
-    override suspend fun checkUrl(url: String, sourceUrl: String?, resourceType: String?): SudoAdTrackerBlockerClient.CheckUrlResult {
+    override suspend fun checkUrl(
+        url: String,
+        sourceUrl: String?,
+        resourceType: String?,
+    ): SudoAdTrackerBlockerClient.CheckUrlResult {
         if (status != SudoAdTrackerBlockerClient.FilterEngineStatus.READY) {
             throw SudoAdTrackerBlockerException.FilterEngineNotReadyException("Filtering engine not ready, status is $status")
         }
@@ -302,9 +313,10 @@ internal class DefaultAdTrackerBlockerClient(
                 val activeRulesetTypes = activeRulesets.map { it.type.name }
                 logger.info("Initializing blocking for $activeRulesetTypes.")
 
-                val activeRules = activeRulesets.mapNotNull { ruleset ->
-                    getRules(ruleset.type)
-                }
+                val activeRules =
+                    activeRulesets.mapNotNull { ruleset ->
+                        getRules(ruleset.type)
+                    }
 
                 // Create exception rules from the exception list
                 val exceptions = blockingExceptions.readExceptions()
@@ -330,11 +342,12 @@ internal class DefaultAdTrackerBlockerClient(
     }
 
     private fun getRules(rulesetType: Ruleset.Type): ByteArray? {
-        val (_, fileName) = rulesetType.toPathAndFileName()
-            ?: run {
-                logger.debug("Unsupported ruleset $rulesetType requested")
-                return null
-            }
+        val (_, fileName) =
+            rulesetType.toPathAndFileName()
+                ?: run {
+                    logger.debug("Unsupported ruleset $rulesetType requested")
+                    return null
+                }
         return storageProvider.read(fileName)
             ?: throw SudoAdTrackerBlockerException.NoSuchRulesetException(
                 "Ruleset $rulesetType has not been downloaded, please call updateRulesets first.",
@@ -360,17 +373,32 @@ internal class DefaultAdTrackerBlockerClient(
      * @return The exception mapped to [SudoAdTrackerBlockerException]
      * or [CancellationException]
      */
-    private fun interpretException(exception: Throwable): Throwable {
-        return when (exception) {
+    private fun interpretException(exception: Throwable): Throwable =
+        when (exception) {
             is CancellationException, // Never wrap or reinterpret Kotlin coroutines cancellation exception
             is SudoAdTrackerBlockerException,
-            -> exception
-            is S3Exception.MetadataException -> SudoAdTrackerBlockerException.DataFormatException(cause = exception)
-            is S3Exception -> throw SudoAdTrackerBlockerException.FailedException(cause = exception)
-            is NotAuthorizedException, is SudoUserException.NotAuthorizedException ->
+            -> {
+                exception
+            }
+
+            is S3Exception.MetadataException -> {
+                SudoAdTrackerBlockerException.DataFormatException(cause = exception)
+            }
+
+            is S3Exception -> {
+                throw SudoAdTrackerBlockerException.FailedException(cause = exception)
+            }
+
+            is NotAuthorizedException, is SudoUserException.NotAuthorizedException -> {
                 throw SudoAdTrackerBlockerException.UnauthorizedUserException(cause = exception)
-            is IOException -> throw SudoAdTrackerBlockerException.FailedException(cause = exception)
-            else -> SudoAdTrackerBlockerException.UnknownException(exception)
+            }
+
+            is IOException -> {
+                throw SudoAdTrackerBlockerException.FailedException(cause = exception)
+            }
+
+            else -> {
+                SudoAdTrackerBlockerException.UnknownException(exception)
+            }
         }
-    }
 }

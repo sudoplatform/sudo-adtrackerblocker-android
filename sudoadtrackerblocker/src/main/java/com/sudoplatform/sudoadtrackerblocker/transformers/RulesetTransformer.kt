@@ -16,7 +16,6 @@ import org.json.JSONObject
  * Transform from S3 types to publicly exposed [Ruleset]s and vice-versa.
  */
 internal object RulesetTransformer {
-
     // S3 metadata items. This is what the user metadata in the S3 object looks like.
     // {sudoplatformblob={"categoryEnum":"AD","name.en":"EasyList"}}
     @VisibleForTesting
@@ -37,40 +36,37 @@ internal object RulesetTransformer {
     @VisibleForTesting
     const val APPLE_PATH = "/apple/"
 
-    fun toRulesetList(s3ObjectInfoList: List<S3Client.S3ObjectInfo>): List<Ruleset> {
-        return s3ObjectInfoList.filter {
-            !it.key.contains(APPLE_PATH) &&
-                extractRulesetTypeFromMetadata(it.userMetadata) != Ruleset.Type.UNKNOWN
-        }.map {
-            toRuleset(it)
-        }
-    }
+    fun toRulesetList(s3ObjectInfoList: List<S3Client.S3ObjectInfo>): List<Ruleset> =
+        s3ObjectInfoList
+            .filter {
+                !it.key.contains(APPLE_PATH) &&
+                    extractRulesetTypeFromMetadata(it.userMetadata) != Ruleset.Type.UNKNOWN
+            }.map {
+                toRuleset(it)
+            }
 
-    fun toRuleset(objectInfo: S3Client.S3ObjectInfo): Ruleset {
-        return Ruleset(
+    fun toRuleset(objectInfo: S3Client.S3ObjectInfo): Ruleset =
+        Ruleset(
             id = objectInfo.key,
             eTag = objectInfo.eTag,
             type = extractRulesetTypeFromMetadata(objectInfo.userMetadata),
             updatedAt = objectInfo.lastModified,
         )
-    }
 
-    private fun extractRulesetTypeFromMetadata(userMetadata: Map<String, String>): Ruleset.Type {
-        return userMetadata[METADATA_BLOB]?.let { blob ->
+    private fun extractRulesetTypeFromMetadata(userMetadata: Map<String, String>): Ruleset.Type =
+        userMetadata[METADATA_BLOB]?.let { blob ->
             try {
                 JSONObject(blob).getString(METADATA_TYPE).toRulesetType()
             } catch (e: JSONException) {
                 null
             }
         } ?: Ruleset.Type.UNKNOWN
-    }
 
-    fun String?.toRulesetType(): Ruleset.Type {
-        return when (this?.trim()) {
+    fun String?.toRulesetType(): Ruleset.Type =
+        when (this?.trim()) {
             METADATA_CATEGORY_AD -> Ruleset.Type.AD_BLOCKING
             METADATA_CATEGORY_PRIVACY -> Ruleset.Type.PRIVACY
             METADATA_CATEGORY_SOCIAL -> Ruleset.Type.SOCIAL
             else -> Ruleset.Type.UNKNOWN
         }
-    }
 }

@@ -15,8 +15,9 @@ import java.io.ByteArrayOutputStream
 /**
  * Exceptions to the blocking rules are maintained in a set which is stored in a file.
  */
-internal class BlockingExceptions(private val storageProvider: StorageProvider) {
-
+internal class BlockingExceptions(
+    private val storageProvider: StorageProvider,
+) {
     companion object {
         @VisibleForTesting
         internal const val EXCEPTIONS_FILE = "exceptions.txt"
@@ -26,14 +27,17 @@ internal class BlockingExceptions(private val storageProvider: StorageProvider) 
     }
 
     fun readExceptions(): Set<BlockingException> {
-        val exceptionsBytes = storageProvider.read(EXCEPTIONS_FILE)
-            ?: return emptySet()
+        val exceptionsBytes =
+            storageProvider.read(EXCEPTIONS_FILE)
+                ?: return emptySet()
         val ins = ByteArrayInputStream(exceptionsBytes)
-        return ins.bufferedReader().use { reader ->
-            reader.readLines().map { line ->
-                parseBlockingException(line)
-            }
-        }.toSet()
+        return ins
+            .bufferedReader()
+            .use { reader ->
+                reader.readLines().map { line ->
+                    parseBlockingException(line)
+                }
+            }.toSet()
     }
 
     private fun parseBlockingException(s: String): BlockingException {

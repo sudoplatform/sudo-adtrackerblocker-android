@@ -14,7 +14,5 @@ import java.util.UUID
  * Generates unique identifiers for S3 objects
  */
 internal class DefaultIdGenerator : IdGenerator {
-    override fun generateId(): String {
-        return UUID.randomUUID().toString().uppercase(Locale.ROOT)
-    }
+    override fun generateId(): String = UUID.randomUUID().toString().uppercase(Locale.ROOT)
 }

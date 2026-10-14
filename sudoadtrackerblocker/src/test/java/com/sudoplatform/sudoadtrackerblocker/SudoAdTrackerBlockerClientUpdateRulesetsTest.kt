@@ -36,7 +36,6 @@ import java.util.concurrent.CancellationException
  */
 @RunWith(RobolectricTestRunner::class)
 internal class SudoAdTrackerBlockerClientUpdateRulesetsTest : BaseTests() {
-
     @After
     fun fini() {
         verifyMocksUsedInClientInit()
@@ -53,71 +52,76 @@ internal class SudoAdTrackerBlockerClientUpdateRulesetsTest : BaseTests() {
     }
 
     @Test
-    fun `updateRulesets() should call S3 client`() = runBlocking<Unit> {
-        adTrackerBlockerClient.updateRulesets()
-
-        verify(mockS3Client).list(eq(S3_TOP_PATH), anyInt())
-        verify(mockStorageProvider).readFileETag(ADS_FILE)
-        verify(mockS3Client).download(eq(S3_PATH_ADS))
-        verify(mockStorageProvider).write(eq(ADS_FILE), any())
-        verify(mockStorageProvider).writeFileETag(eq(ADS_FILE), any())
-
-        verify(mockStorageProvider).readFileETag(PRIVACY_FILE)
-        verify(mockS3Client).download(eq(S3_PATH_PRIVACY))
-        verify(mockStorageProvider).write(eq(PRIVACY_FILE), any())
-        verify(mockStorageProvider).writeFileETag(eq(PRIVACY_FILE), any())
-
-        verify(mockStorageProvider).readFileETag(SOCIAL_FILE)
-        verify(mockS3Client).download(eq(S3_PATH_SOCIAL))
-        verify(mockStorageProvider).write(eq(SOCIAL_FILE), any())
-        verify(mockStorageProvider).writeFileETag(eq(SOCIAL_FILE), any())
-    }
-
-    @Test
-    fun `updateRulesets() should return none when unsupported ruleset type is passed`() = runBlocking<Unit> {
-        adTrackerBlockerClient.updateRulesets(Ruleset.Type.UNKNOWN)
-    }
-
-    @Test
-    fun `updateRulesets() should return null when s3 client download fails`() = runBlocking<Unit> {
-        mockS3Client.stub {
-            onBlocking { download(anyString()) } doThrow S3Exception.DownloadException("mock")
-        }
-
-        adTrackerBlockerClient.updateRulesets()
-
-        verify(mockStorageProvider).readFileETag(anyString())
-        verify(mockS3Client).list(anyString(), anyInt())
-        verify(mockS3Client).download(anyString())
-    }
-
-    @Test
-    fun `updateRulesets() should throw when s3 client throws`() = runBlocking<Unit> {
-        mockS3Client.stub {
-            onBlocking { download(anyString()) } doThrow IllegalStateException("mock")
-        }
-
-        shouldThrow<SudoAdTrackerBlockerException.UnknownException> {
+    fun `updateRulesets() should call S3 client`() =
+        runBlocking<Unit> {
             adTrackerBlockerClient.updateRulesets()
-        }
 
-        verify(mockStorageProvider).readFileETag(anyString())
-        verify(mockS3Client).list(anyString(), anyInt())
-        verify(mockS3Client).download(anyString())
-    }
+            verify(mockS3Client).list(eq(S3_TOP_PATH), anyInt())
+            verify(mockStorageProvider).readFileETag(ADS_FILE)
+            verify(mockS3Client).download(eq(S3_PATH_ADS))
+            verify(mockStorageProvider).write(eq(ADS_FILE), any())
+            verify(mockStorageProvider).writeFileETag(eq(ADS_FILE), any())
+
+            verify(mockStorageProvider).readFileETag(PRIVACY_FILE)
+            verify(mockS3Client).download(eq(S3_PATH_PRIVACY))
+            verify(mockStorageProvider).write(eq(PRIVACY_FILE), any())
+            verify(mockStorageProvider).writeFileETag(eq(PRIVACY_FILE), any())
+
+            verify(mockStorageProvider).readFileETag(SOCIAL_FILE)
+            verify(mockS3Client).download(eq(S3_PATH_SOCIAL))
+            verify(mockStorageProvider).write(eq(SOCIAL_FILE), any())
+            verify(mockStorageProvider).writeFileETag(eq(SOCIAL_FILE), any())
+        }
 
     @Test
-    fun `updateRulesets() should not block coroutine cancellation exception`() = runBlocking<Unit> {
-        mockS3Client.stub {
-            onBlocking { download(anyString()) } doThrow CancellationException("Mock")
+    fun `updateRulesets() should return none when unsupported ruleset type is passed`() =
+        runBlocking<Unit> {
+            adTrackerBlockerClient.updateRulesets(Ruleset.Type.UNKNOWN)
         }
 
-        shouldThrow<CancellationException> {
+    @Test
+    fun `updateRulesets() should return null when s3 client download fails`() =
+        runBlocking<Unit> {
+            mockS3Client.stub {
+                onBlocking { download(anyString()) } doThrow S3Exception.DownloadException("mock")
+            }
+
             adTrackerBlockerClient.updateRulesets()
+
+            verify(mockStorageProvider).readFileETag(anyString())
+            verify(mockS3Client).list(anyString(), anyInt())
+            verify(mockS3Client).download(anyString())
         }
 
-        verify(mockStorageProvider).readFileETag(anyString())
-        verify(mockS3Client).list(anyString(), anyInt())
-        verify(mockS3Client).download(anyString())
-    }
+    @Test
+    fun `updateRulesets() should throw when s3 client throws`() =
+        runBlocking<Unit> {
+            mockS3Client.stub {
+                onBlocking { download(anyString()) } doThrow IllegalStateException("mock")
+            }
+
+            shouldThrow<SudoAdTrackerBlockerException.UnknownException> {
+                adTrackerBlockerClient.updateRulesets()
+            }
+
+            verify(mockStorageProvider).readFileETag(anyString())
+            verify(mockS3Client).list(anyString(), anyInt())
+            verify(mockS3Client).download(anyString())
+        }
+
+    @Test
+    fun `updateRulesets() should not block coroutine cancellation exception`() =
+        runBlocking<Unit> {
+            mockS3Client.stub {
+                onBlocking { download(anyString()) } doThrow CancellationException("Mock")
+            }
+
+            shouldThrow<CancellationException> {
+                adTrackerBlockerClient.updateRulesets()
+            }
+
+            verify(mockStorageProvider).readFileETag(anyString())
+            verify(mockS3Client).list(anyString(), anyInt())
+            verify(mockS3Client).download(anyString())
+        }
 }

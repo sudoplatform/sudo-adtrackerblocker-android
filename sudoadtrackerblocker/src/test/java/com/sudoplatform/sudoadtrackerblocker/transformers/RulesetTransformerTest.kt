@@ -19,14 +19,14 @@ import java.util.Date
  * Test the operation of [RulesetTransformer].
  */
 class RulesetTransformerTest {
-
     @Test
     fun `transformer should convert all Ruleset types`() {
-        val testCases = listOf(
-            "AD",
-            "PRIVACY",
-            "UNKNOWN",
-        )
+        val testCases =
+            listOf(
+                "AD",
+                "PRIVACY",
+                "UNKNOWN",
+            )
         val types = Ruleset.Type.values().toList()
         testCases.forEach { testCase ->
             testCase.toRulesetType() shouldBeOneOf types
@@ -37,13 +37,14 @@ class RulesetTransformerTest {
 
     @Test
     fun `transformer should convert bad Ruleset types to unknown`() {
-        val testCases = listOf(
-            "xAD",
-            "PRIVACYx",
-            "UNKNOWN",
-            "UNKNOWNs",
-            "",
-        )
+        val testCases =
+            listOf(
+                "xAD",
+                "PRIVACYx",
+                "UNKNOWN",
+                "UNKNOWNs",
+                "",
+            )
         testCases.forEach { testCase ->
             testCase.toRulesetType() shouldBe Ruleset.Type.UNKNOWN
             testCase.lowercase().toRulesetType() shouldBe Ruleset.Type.UNKNOWN
@@ -53,38 +54,42 @@ class RulesetTransformerTest {
 
     @Test
     fun `transformer should convert S3 data to Ruleset`() {
-        val s3ObjectInfo = listOf(
-            S3Client.S3ObjectInfo(
-                key = "key",
-                eTag = "42",
-                lastModified = Date(1L),
-                userMetadata = mapOf(
-                    RulesetTransformer.METADATA_BLOB to """{
+        val s3ObjectInfo =
+            listOf(
+                S3Client.S3ObjectInfo(
+                    key = "key",
+                    eTag = "42",
+                    lastModified = Date(1L),
+                    userMetadata =
+                        mapOf(
+                            RulesetTransformer.METADATA_BLOB to """{
                         "${RulesetTransformer.METADATA_TYPE}": "AD"
                     }
                     """,
+                        ),
                 ),
-            ),
-            S3Client.S3ObjectInfo(
-                key = "key2",
-                eTag = "43",
-                lastModified = Date(1L),
-                userMetadata = mapOf(
-                    RulesetTransformer.METADATA_BLOB to """{
+                S3Client.S3ObjectInfo(
+                    key = "key2",
+                    eTag = "43",
+                    lastModified = Date(1L),
+                    userMetadata =
+                        mapOf(
+                            RulesetTransformer.METADATA_BLOB to """{
                         "${RulesetTransformer.METADATA_TYPE}": "unsupported"
                     }
                     """,
+                        ),
                 ),
-            ),
-            S3Client.S3ObjectInfo(
-                key = "key3",
-                eTag = "44",
-                lastModified = Date(1L),
-                userMetadata = mapOf(
-                    RulesetTransformer.METADATA_BLOB to "{",
+                S3Client.S3ObjectInfo(
+                    key = "key3",
+                    eTag = "44",
+                    lastModified = Date(1L),
+                    userMetadata =
+                        mapOf(
+                            RulesetTransformer.METADATA_BLOB to "{",
+                        ),
                 ),
-            ),
-        )
+            )
         val rulesetList = RulesetTransformer.toRulesetList(s3ObjectInfo)
         rulesetList shouldHaveSize 1
         with(rulesetList[0]) {

@@ -12,14 +12,16 @@ import com.sudoplatform.sudoadtrackerblocker.SudoAdTrackerBlockerException
  * Provide ad and tracker detection and blocking.
  */
 interface BlockingProvider : AutoCloseable {
-
     /**
      * Set the rules the blocking service should use to determine if a URL should be blocked.
      *
      * @param blockingRules The sets of blocking rules to use.
      * @param exceptionRules The exceptions to the blocking rules.
      */
-    suspend fun setRules(blockingRules: List<String>, exceptionRules: String? = null)
+    suspend fun setRules(
+        blockingRules: List<String>,
+        exceptionRules: String? = null,
+    )
 
     /**
      * Checks a URL to determine if it is blocked according to current configuration.
@@ -30,5 +32,9 @@ interface BlockingProvider : AutoCloseable {
      * @return true if the URL is blocked, false if it can be loaded
      */
     @Throws(SudoAdTrackerBlockerException::class)
-    suspend fun checkIsUrlBlocked(url: String, sourceUrl: String?, resourceType: String?): Boolean
+    suspend fun checkIsUrlBlocked(
+        url: String,
+        sourceUrl: String?,
+        resourceType: String?,
+    ): Boolean
 }

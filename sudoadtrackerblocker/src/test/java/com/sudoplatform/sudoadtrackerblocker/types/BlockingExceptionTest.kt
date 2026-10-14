@@ -18,17 +18,17 @@ import org.robolectric.RobolectricTestRunner
  */
 @RunWith(RobolectricTestRunner::class)
 class BlockingExceptionTest {
-
     @Test
     fun `url with host only should create host exception`() {
-        val testCases = mapOf(
-            "example.com" to "example.com",
-            " example.com " to "example.com",
-            "example.com/foo" to "example.com",
-            "http://example.com/foo/bar?query=text" to "example.com",
-            "https://example.com/foo/bar?query=text" to "example.com",
-            "google-analytics.com/analytics.js" to "google-analytics.com",
-        )
+        val testCases =
+            mapOf(
+                "example.com" to "example.com",
+                " example.com " to "example.com",
+                "example.com/foo" to "example.com",
+                "http://example.com/foo/bar?query=text" to "example.com",
+                "https://example.com/foo/bar?query=text" to "example.com",
+                "google-analytics.com/analytics.js" to "google-analytics.com",
+            )
         for ((testCase, expectedSource) in testCases) {
             with(toHostException(testCase)) {
                 type shouldBe BlockingException.Type.HOST
@@ -39,12 +39,13 @@ class BlockingExceptionTest {
 
     @Test
     fun `should throw if url without host supplied`() {
-        val testCases = arrayOf(
-            "",
-            "/bar/foo",
-            " /bar/foo ",
-            " ?&^^%*^^(*&&*(^*^%^$%#^%&(*)*)",
-        )
+        val testCases =
+            arrayOf(
+                "",
+                "/bar/foo",
+                " /bar/foo ",
+                " ?&^^%*^^(*&&*(^*^%^$%#^%&(*)*)",
+            )
         for (testCase in testCases) {
             shouldThrow<SudoAdTrackerBlockerException.UrlFormatException> {
                 toHostException(testCase)
@@ -57,16 +58,17 @@ class BlockingExceptionTest {
 
     @Test
     fun `url with path should create page exception`() {
-        val testCases = mapOf(
-            "example.com/about" to "example.com/about",
-            " example.com/about " to "example.com/about",
-            " example.com/about/ " to "example.com/about",
-            "example.com/foo" to "example.com/foo",
-            "http://example.com/foo/bar?query=text" to "example.com/foo/bar",
-            "https://example.com/foo/bar?query=text" to "example.com/foo/bar",
-            "https://example.com/foo/bar/?query=text" to "example.com/foo/bar",
-            "google-analytics.com/analytics.js" to "google-analytics.com/analytics.js",
-        )
+        val testCases =
+            mapOf(
+                "example.com/about" to "example.com/about",
+                " example.com/about " to "example.com/about",
+                " example.com/about/ " to "example.com/about",
+                "example.com/foo" to "example.com/foo",
+                "http://example.com/foo/bar?query=text" to "example.com/foo/bar",
+                "https://example.com/foo/bar?query=text" to "example.com/foo/bar",
+                "https://example.com/foo/bar/?query=text" to "example.com/foo/bar",
+                "google-analytics.com/analytics.js" to "google-analytics.com/analytics.js",
+            )
         for ((testCase, expectedSource) in testCases) {
             with(toPageException(testCase)) {
                 type shouldBe BlockingException.Type.PAGE

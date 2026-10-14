@@ -22,7 +22,6 @@ import timber.log.Timber
  * Test the operation of the [DefaultS3Client].
  */
 class S3ClientIntegrationTest : BaseIntegrationTest() {
-
     private lateinit var s3Client: S3Client
 
     @Before
@@ -31,13 +30,14 @@ class S3ClientIntegrationTest : BaseIntegrationTest() {
 
         if (clientConfigFilesPresent()) {
             val config = readS3Configuration(context, logger)
-            s3Client = DefaultS3Client(
-                context = context,
-                sudoUserClient = userClient,
-                logger = logger,
-                bucket = config.bucket,
-                region = config.region,
-            )
+            s3Client =
+                DefaultS3Client(
+                    context = context,
+                    sudoUserClient = userClient,
+                    logger = logger,
+                    bucket = config.bucket,
+                    region = config.region,
+                )
         }
     }
 
@@ -47,21 +47,23 @@ class S3ClientIntegrationTest : BaseIntegrationTest() {
     }
 
     @Test
-    fun listShouldReturnObjectInfo() = runBlocking<Unit> {
-        assumeTrue(clientConfigFilesPresent())
+    fun listShouldReturnObjectInfo() =
+        runBlocking<Unit> {
+            assumeTrue(clientConfigFilesPresent())
 
-        signInAndRegisterUser()
+            signInAndRegisterUser()
 
-        val objects = s3Client.list(DefaultAdTrackerBlockerClient.S3_TOP_PATH)
-        objects shouldHaveAtLeastSize 1
-    }
+            val objects = s3Client.list(DefaultAdTrackerBlockerClient.S3_TOP_PATH)
+            objects shouldHaveAtLeastSize 1
+        }
 
     @Test
-    fun downloadShouldGetObject() = runBlocking<Unit> {
-        assumeTrue(clientConfigFilesPresent())
+    fun downloadShouldGetObject() =
+        runBlocking<Unit> {
+            assumeTrue(clientConfigFilesPresent())
 
-        signInAndRegisterUser()
+            signInAndRegisterUser()
 
-        checkEasyList(s3Client.download(S3_PATH_ADS))
-    }
+            checkEasyList(s3Client.download(S3_PATH_ADS))
+        }
 }

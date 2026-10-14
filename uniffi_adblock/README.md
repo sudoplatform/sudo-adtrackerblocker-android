@@ -33,7 +33,9 @@ If changes are needed, the `FilterEngine` struct and impl are the first places t
     - Fish users `set -U fish_user_paths $HOME/.cargo/bin $fish_user_paths`
     - Verify toolchain, `cargo --version`
 
-- Install NDK > 25 in Android Studio SDK Manager.
+- Install NDK r27 or newer in Android Studio SDK Manager. NDK r27+ aligns native `.so` LOAD
+  segments to 16 KB by default, which is required for Android 15+ devices with 16 KB page sizes.
+  The build is currently pinned to NDK `30.0.15729638` (see `ndkVersion` in `sudoadtrackerblocker/build.gradle`).
 - Android architecutres installed, or use cross https://github.com/cross-rs/cross. 
     - `rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android`
 

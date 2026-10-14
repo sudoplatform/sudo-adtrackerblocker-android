@@ -14,7 +14,6 @@ import java.util.Date
  * the contents of an S3 bucket.
  */
 internal interface S3Client {
-
     companion object {
         private const val DEFAULT_LIMIT = 50
     }
@@ -52,5 +51,8 @@ internal interface S3Client {
      * @return List of the objects information
      */
     @Throws(S3Exception::class)
-    suspend fun list(path: String, limit: Int = DEFAULT_LIMIT): List<S3ObjectInfo>
+    suspend fun list(
+        path: String,
+        limit: Int = DEFAULT_LIMIT,
+    ): List<S3ObjectInfo>
 }

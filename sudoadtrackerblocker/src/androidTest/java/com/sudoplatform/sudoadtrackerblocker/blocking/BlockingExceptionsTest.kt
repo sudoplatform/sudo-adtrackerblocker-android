@@ -22,7 +22,6 @@ import timber.log.Timber
  * Test the operation of [BlockingExceptions] on a Android device or emulator.
  */
 class BlockingExceptionsTest : BaseIntegrationTest() {
-
     private val storageProvider = DefaultStorageProvider(context)
     private val blockingExceptions = BlockingExceptions(storageProvider)
 

@@ -3,7 +3,7 @@
 
 @file:Suppress("NAME_SHADOWING")
 
-package com.sudoplatform.sudoadtrackerblocker
+package com.sudoplatform.sudoadtrackerblocker;
 
 // Common helper code.
 //
@@ -17,11 +17,12 @@ package com.sudoplatform.sudoadtrackerblocker
 // compile the Rust component. The easiest way to ensure this is to bundle the Kotlin
 // helpers directly inline like we're doing here.
 
-import com.sun.jna.IntegerType
 import com.sun.jna.Library
+import com.sun.jna.IntegerType
 import com.sun.jna.Native
 import com.sun.jna.Pointer
 import com.sun.jna.Structure
+import com.sun.jna.Callback
 import com.sun.jna.ptr.*
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
@@ -38,29 +39,24 @@ import java.util.concurrent.atomic.AtomicLong
 @Structure.FieldOrder("capacity", "len", "data")
 internal open class RustBuffer : Structure() {
     @JvmField var capacity: Int = 0
-
     @JvmField var len: Int = 0
-
     @JvmField var data: Pointer? = null
 
-    class ByValue : RustBuffer(), Structure.ByValue
-
-    class ByReference : RustBuffer(), Structure.ByReference
+    class ByValue: RustBuffer(), Structure.ByValue
+    class ByReference: RustBuffer(), Structure.ByReference
 
     companion object {
-        internal fun alloc(size: Int = 0) =
-            rustCall { status ->
-                _UniFFILib.INSTANCE.ffi_filter_engine_rustbuffer_alloc(size, status).also {
-                    if (it.data == null) {
-                        throw RuntimeException("RustBuffer.alloc() returned null data pointer (size=$size)")
-                    }
-                }
+        internal fun alloc(size: Int = 0) = rustCall() { status ->
+            _UniFFILib.INSTANCE.ffi_filter_engine_rustbuffer_alloc(size, status).also {
+                if(it.data == null) {
+                   throw RuntimeException("RustBuffer.alloc() returned null data pointer (size=${size})")
+               }
             }
+        }
 
-        internal fun free(buf: RustBuffer.ByValue) =
-            rustCall { status ->
-                _UniFFILib.INSTANCE.ffi_filter_engine_rustbuffer_free(buf, status)
-            }
+        internal fun free(buf: RustBuffer.ByValue) = rustCall() { status ->
+            _UniFFILib.INSTANCE.ffi_filter_engine_rustbuffer_free(buf, status)
+        }
     }
 
     @Suppress("TooGenericExceptionThrown")
@@ -111,12 +107,10 @@ internal class RustBufferByReference : ByReference(16) {
 @Structure.FieldOrder("len", "data")
 internal open class ForeignBytes : Structure() {
     @JvmField var len: Int = 0
-
     @JvmField var data: Pointer? = null
 
     class ByValue : ForeignBytes(), Structure.ByValue
 }
-
 // The FfiConverter interface handles converter types to and from the FFI
 //
 // All implementing objects should be public to support external types.  When a
@@ -142,10 +136,7 @@ internal interface FfiConverter<KotlinType, FfiType> {
     fun allocationSize(value: KotlinType): Int
 
     // Write a Kotlin type to a `ByteBuffer`
-    fun write(
-        value: KotlinType,
-        buf: ByteBuffer,
-    )
+    fun write(value: KotlinType, buf: ByteBuffer)
 
     // Lower a value into a `RustBuffer`
     //
@@ -156,10 +147,9 @@ internal interface FfiConverter<KotlinType, FfiType> {
     fun lowerIntoRustBuffer(value: KotlinType): RustBuffer.ByValue {
         val rbuf = RustBuffer.alloc(allocationSize(value))
         try {
-            val bbuf =
-                rbuf.data!!.getByteBuffer(0, rbuf.capacity.toLong()).also {
-                    it.order(ByteOrder.BIG_ENDIAN)
-                }
+            val bbuf = rbuf.data!!.getByteBuffer(0, rbuf.capacity.toLong()).also {
+                it.order(ByteOrder.BIG_ENDIAN)
+            }
             write(value, bbuf)
             rbuf.writeField("len", bbuf.position())
             return rbuf
@@ -176,11 +166,11 @@ internal interface FfiConverter<KotlinType, FfiType> {
     fun liftFromRustBuffer(rbuf: RustBuffer.ByValue): KotlinType {
         val byteBuf = rbuf.asByteBuffer()!!
         try {
-            val item = read(byteBuf)
-            if (byteBuf.hasRemaining()) {
-                throw RuntimeException("junk remaining in buffer after lifting, something is very wrong!!")
-            }
-            return item
+           val item = read(byteBuf)
+           if (byteBuf.hasRemaining()) {
+               throw RuntimeException("junk remaining in buffer after lifting, something is very wrong!!")
+           }
+           return item
         } finally {
             RustBuffer.free(rbuf)
         }
@@ -188,22 +178,19 @@ internal interface FfiConverter<KotlinType, FfiType> {
 }
 
 // FfiConverter that uses `RustBuffer` as the FfiType
-internal interface FfiConverterRustBuffer<KotlinType> : FfiConverter<KotlinType, RustBuffer.ByValue> {
+internal interface FfiConverterRustBuffer<KotlinType>: FfiConverter<KotlinType, RustBuffer.ByValue> {
     override fun lift(value: RustBuffer.ByValue) = liftFromRustBuffer(value)
-
     override fun lower(value: KotlinType) = lowerIntoRustBuffer(value)
 }
-
 // A handful of classes and functions to support the generated data structures.
 // This would be a good candidate for isolating in its own ffi-support lib.
 // Error runtime.
 @Structure.FieldOrder("code", "error_buf")
 internal open class RustCallStatus : Structure() {
     @JvmField var code: Byte = 0
-
     @JvmField var error_buf: RustBuffer.ByValue = RustBuffer.ByValue()
 
-    class ByValue : RustCallStatus(), Structure.ByValue
+    class ByValue: RustCallStatus(), Structure.ByValue
 
     fun isSuccess(): Boolean {
         return code == 0.toByte()
@@ -222,7 +209,7 @@ internal class InternalException(message: String) : Exception(message)
 
 // Each top-level error class has a companion object that can lift the error from the call status's rust buffer
 internal interface CallStatusErrorHandler<E> {
-    fun lift(error_buf: RustBuffer.ByValue): E
+    fun lift(error_buf: RustBuffer.ByValue): E;
 }
 
 // Helpers for calling Rust
@@ -230,21 +217,15 @@ internal interface CallStatusErrorHandler<E> {
 // synchronize itself
 
 // Call a rust function that returns a Result<>.  Pass in the Error class companion that corresponds to the Err
-private inline fun <U, E : Exception> rustCallWithError(
-    errorHandler: CallStatusErrorHandler<E>,
-    callback: (RustCallStatus) -> U,
-): U {
-    var status = RustCallStatus()
+private inline fun <U, E: Exception> rustCallWithError(errorHandler: CallStatusErrorHandler<E>, callback: (RustCallStatus) -> U): U {
+    var status = RustCallStatus();
     val return_value = callback(status)
     checkCallStatus(errorHandler, status)
     return return_value
 }
 
 // Check RustCallStatus and throw an error if the call wasn't successful
-private fun <E : Exception> checkCallStatus(
-    errorHandler: CallStatusErrorHandler<E>,
-    status: RustCallStatus,
-) {
+private fun<E: Exception> checkCallStatus(errorHandler: CallStatusErrorHandler<E>, status: RustCallStatus) {
     if (status.isSuccess()) {
         return
     } else if (status.isError()) {
@@ -264,7 +245,7 @@ private fun <E : Exception> checkCallStatus(
 }
 
 // CallStatusErrorHandler implementation for times when we don't expect a CALL_ERROR
-internal object NullCallStatusErrorHandler : CallStatusErrorHandler<InternalException> {
+internal object NullCallStatusErrorHandler: CallStatusErrorHandler<InternalException> {
     override fun lift(error_buf: RustBuffer.ByValue): InternalException {
         RustBuffer.free(error_buf)
         return InternalException("Unexpected CALL_ERROR")
@@ -273,18 +254,16 @@ internal object NullCallStatusErrorHandler : CallStatusErrorHandler<InternalExce
 
 // Call a rust function that returns a plain value
 private inline fun <U> rustCall(callback: (RustCallStatus) -> U): U {
-    return rustCallWithError(NullCallStatusErrorHandler, callback)
+    return rustCallWithError(NullCallStatusErrorHandler, callback);
 }
 
 // IntegerType that matches Rust's `usize` / C's `size_t`
 internal class USize(value: Long = 0) : IntegerType(Native.SIZE_T_SIZE, value, true) {
     // This is needed to fill in the gaps of IntegerType's implementation of Number for Kotlin.
     override fun toByte() = toInt().toByte()
-
     // Needed until https://youtrack.jetbrains.com/issue/KT-47902 is fixed.
     @Deprecated("`toInt().toChar()` is deprecated")
     override fun toChar() = toInt().toChar()
-
     override fun toShort() = toInt().toShort()
 
     fun writeToBuffer(buf: ByteBuffer) {
@@ -306,7 +285,7 @@ internal class USize(value: Long = 0) : IntegerType(Native.SIZE_T_SIZE, value, t
         val size: Int
             get() = Native.SIZE_T_SIZE
 
-        fun readFromBuffer(buf: ByteBuffer): USize {
+        fun readFromBuffer(buf: ByteBuffer) : USize {
             // Make sure we always read usize integers using native byte-order, since they may be
             // casted from pointer values
             buf.order(ByteOrder.nativeOrder())
@@ -323,6 +302,7 @@ internal class USize(value: Long = 0) : IntegerType(Native.SIZE_T_SIZE, value, t
     }
 }
 
+
 // Map handles to objects
 //
 // This is used when the Rust code expects an opaque pointer to represent some foreign object.
@@ -333,9 +313,8 @@ internal class USize(value: Long = 0) : IntegerType(Native.SIZE_T_SIZE, value, t
 // Rust when it needs an opaque pointer.
 //
 // TODO: refactor callbacks to use this class
-internal class UniFfiHandleMap<T : Any> {
+internal class UniFfiHandleMap<T: Any> {
     private val map = ConcurrentHashMap<USize, T>()
-
     // Use AtomicInteger for our counter, since we may be on a 32-bit system.  4 billion possible
     // values seems like enough. If somehow we generate 4 billion handles, then this will wrap
     // around back to zero and we can assume the first handle generated will have been dropped by
@@ -371,7 +350,9 @@ private fun findLibraryName(componentName: String): String {
     return "filter_engine"
 }
 
-private inline fun <reified Lib : Library> loadIndirect(componentName: String): Lib {
+private inline fun <reified Lib : Library> loadIndirect(
+    componentName: String
+): Lib {
     return Native.load<Lib>(findLibraryName(componentName), Lib::class.java)
 }
 
@@ -382,57 +363,34 @@ internal interface _UniFFILib : Library {
     companion object {
         internal val INSTANCE: _UniFFILib by lazy {
             loadIndirect<_UniFFILib>(componentName = "filter_engine")
-                .also { lib: _UniFFILib ->
-                    uniffiCheckContractApiVersion(lib)
-                    uniffiCheckApiChecksums(lib)
+            .also { lib: _UniFFILib ->
+                uniffiCheckContractApiVersion(lib)
+                uniffiCheckApiChecksums(lib)
                 }
         }
     }
 
-    fun uniffi_filter_engine_fn_free_filterengine(
-        `ptr`: Pointer,
-        _uniffi_out_err: RustCallStatus,
+    fun uniffi_filter_engine_fn_free_filterengine(`ptr`: Pointer,_uniffi_out_err: RustCallStatus, 
     ): Unit
-
-    fun uniffi_filter_engine_fn_constructor_filterengine_new(
-        `rules`: RustBuffer.ByValue,
-        _uniffi_out_err: RustCallStatus,
+    fun uniffi_filter_engine_fn_constructor_filterengine_new(`rules`: RustBuffer.ByValue,_uniffi_out_err: RustCallStatus, 
     ): Pointer
-
-    fun uniffi_filter_engine_fn_method_filterengine_check_network_urls_matched(
-        `ptr`: Pointer,
-        `url`: RustBuffer.ByValue,
-        `sourceUrl`: RustBuffer.ByValue,
-        `requestType`: RustBuffer.ByValue,
-        _uniffi_out_err: RustCallStatus,
+    fun uniffi_filter_engine_fn_method_filterengine_check_network_urls_matched(`ptr`: Pointer,`url`: RustBuffer.ByValue,`sourceUrl`: RustBuffer.ByValue,`requestType`: RustBuffer.ByValue,_uniffi_out_err: RustCallStatus, 
     ): Byte
-
-    fun ffi_filter_engine_rustbuffer_alloc(
-        `size`: Int,
-        _uniffi_out_err: RustCallStatus,
+    fun ffi_filter_engine_rustbuffer_alloc(`size`: Int,_uniffi_out_err: RustCallStatus, 
     ): RustBuffer.ByValue
-
-    fun ffi_filter_engine_rustbuffer_from_bytes(
-        `bytes`: ForeignBytes.ByValue,
-        _uniffi_out_err: RustCallStatus,
+    fun ffi_filter_engine_rustbuffer_from_bytes(`bytes`: ForeignBytes.ByValue,_uniffi_out_err: RustCallStatus, 
     ): RustBuffer.ByValue
-
-    fun ffi_filter_engine_rustbuffer_free(
-        `buf`: RustBuffer.ByValue,
-        _uniffi_out_err: RustCallStatus,
+    fun ffi_filter_engine_rustbuffer_free(`buf`: RustBuffer.ByValue,_uniffi_out_err: RustCallStatus, 
     ): Unit
-
-    fun ffi_filter_engine_rustbuffer_reserve(
-        `buf`: RustBuffer.ByValue,
-        `additional`: Int,
-        _uniffi_out_err: RustCallStatus,
+    fun ffi_filter_engine_rustbuffer_reserve(`buf`: RustBuffer.ByValue,`additional`: Int,_uniffi_out_err: RustCallStatus, 
     ): RustBuffer.ByValue
-
-    fun uniffi_filter_engine_checksum_method_filterengine_check_network_urls_matched(): Short
-
-    fun uniffi_filter_engine_checksum_constructor_filterengine_new(): Short
-
-    fun ffi_filter_engine_uniffi_contract_version(): Int
+    fun uniffi_filter_engine_checksum_method_filterengine_check_network_urls_matched(
+    ): Short
+    fun uniffi_filter_engine_checksum_constructor_filterengine_new(
+    ): Short
+    fun ffi_filter_engine_uniffi_contract_version(
+    ): Int
+    
 }
 
 private fun uniffiCheckContractApiVersion(lib: _UniFFILib) {
@@ -457,7 +415,8 @@ private fun uniffiCheckApiChecksums(lib: _UniFFILib) {
 
 // Public interface members begin here.
 
-internal object FfiConverterBoolean : FfiConverter<Boolean, Byte> {
+
+internal object FfiConverterBoolean: FfiConverter<Boolean, Byte> {
     override fun lift(value: Byte): Boolean {
         return value.toInt() != 0
     }
@@ -472,15 +431,12 @@ internal object FfiConverterBoolean : FfiConverter<Boolean, Byte> {
 
     override fun allocationSize(value: Boolean) = 1
 
-    override fun write(
-        value: Boolean,
-        buf: ByteBuffer,
-    ) {
+    override fun write(value: Boolean, buf: ByteBuffer) {
         buf.put(lower(value))
     }
 }
 
-internal object FfiConverterString : FfiConverter<String, RustBuffer.ByValue> {
+internal object FfiConverterString: FfiConverter<String, RustBuffer.ByValue> {
     // Note: we don't inherit from FfiConverterRustBuffer, because we use a
     // special encoding when lowering/lifting.  We can use `RustBuffer.len` to
     // store our length and avoid writing it out to the buffer.
@@ -527,15 +483,13 @@ internal object FfiConverterString : FfiConverter<String, RustBuffer.ByValue> {
         return sizeForLength + sizeForString
     }
 
-    override fun write(
-        value: String,
-        buf: ByteBuffer,
-    ) {
+    override fun write(value: String, buf: ByteBuffer) {
         val byteBuf = toUtf8(value)
         buf.putInt(byteBuf.limit())
         buf.put(byteBuf)
     }
 }
+
 
 // Interface implemented by anything that can contain an object reference.
 //
@@ -649,12 +603,13 @@ internal inline fun <T : Disposable?, R> T.use(block: (T) -> R) =
 // [1] https://stackoverflow.com/questions/24376768/can-java-finalize-an-object-when-it-is-still-in-scope/24380219
 //
 internal abstract class FFIObject(
-    protected val pointer: Pointer,
-) : Disposable, AutoCloseable {
+    protected val pointer: Pointer
+): Disposable, AutoCloseable {
+
     private val wasDestroyed = AtomicBoolean(false)
     private val callCounter = AtomicLong(1)
 
-    protected open fun freeRustArcPtr() {
+    open protected fun freeRustArcPtr() {
         // To be overridden in subclasses.
     }
 
@@ -685,7 +640,7 @@ internal abstract class FFIObject(
             if (c == Long.MAX_VALUE) {
                 throw IllegalStateException("${this.javaClass.simpleName} call counter would overflow")
             }
-        } while (!this.callCounter.compareAndSet(c, c + 1L))
+        } while (! this.callCounter.compareAndSet(c, c + 1L))
         // Now we can safely do the method call without the pointer being freed concurrently.
         try {
             return block(this.pointer)
@@ -699,22 +654,18 @@ internal abstract class FFIObject(
 }
 
 internal interface FilterEngineInterface {
-    fun `checkNetworkUrlsMatched`(
-        `url`: String,
-        `sourceUrl`: String,
-        `requestType`: String,
-    ): Boolean
+    
+    fun `checkNetworkUrlsMatched`(`url`: String, `sourceUrl`: String, `requestType`: String): Boolean
 }
 
 internal class FilterEngine(
-    pointer: Pointer,
+    pointer: Pointer
 ) : FFIObject(pointer), FilterEngineInterface {
     constructor(`rules`: List<String>) :
         this(
-            rustCall { _status ->
-                _UniFFILib.INSTANCE.uniffi_filter_engine_fn_constructor_filterengine_new(FfiConverterSequenceString.lower(`rules`), _status)
-            },
-        )
+    rustCall() { _status ->
+    _UniFFILib.INSTANCE.uniffi_filter_engine_fn_constructor_filterengine_new(FfiConverterSequenceString.lower(`rules`),_status)
+})
 
     /**
      * Disconnect the object from the underlying Rust object.
@@ -724,33 +675,29 @@ internal class FilterEngine(
      *
      * Clients **must** call this method once done with the object, or cause a memory leak.
      */
-    protected override fun freeRustArcPtr() {
-        rustCall { status ->
+    override protected fun freeRustArcPtr() {
+        rustCall() { status ->
             _UniFFILib.INSTANCE.uniffi_filter_engine_fn_free_filterengine(this.pointer, status)
         }
     }
 
-    override fun `checkNetworkUrlsMatched`(
-        `url`: String,
-        `sourceUrl`: String,
-        `requestType`: String,
-    ): Boolean =
+    override fun `checkNetworkUrlsMatched`(`url`: String, `sourceUrl`: String, `requestType`: String): Boolean =
         callWithPointer {
-            rustCall { _status ->
-                _UniFFILib.INSTANCE.uniffi_filter_engine_fn_method_filterengine_check_network_urls_matched(
-                    it,
-                    FfiConverterString.lower(`url`),
-                    FfiConverterString.lower(`sourceUrl`),
-                    FfiConverterString.lower(`requestType`),
-                    _status,
-                )
-            }
+    rustCall() { _status ->
+    _UniFFILib.INSTANCE.uniffi_filter_engine_fn_method_filterengine_check_network_urls_matched(it,
+        FfiConverterString.lower(`url`),FfiConverterString.lower(`sourceUrl`),FfiConverterString.lower(`requestType`),
+        _status)
+}
         }.let {
             FfiConverterBoolean.lift(it)
         }
+    
+    
+
+    
 }
 
-internal object FfiConverterTypeFilterEngine : FfiConverter<FilterEngine, Pointer> {
+internal object FfiConverterTypeFilterEngine: FfiConverter<FilterEngine, Pointer> {
     override fun lower(value: FilterEngine): Pointer = value.callWithPointer { it }
 
     override fun lift(value: Pointer): FilterEngine {
@@ -765,17 +712,17 @@ internal object FfiConverterTypeFilterEngine : FfiConverter<FilterEngine, Pointe
 
     override fun allocationSize(value: FilterEngine) = 8
 
-    override fun write(
-        value: FilterEngine,
-        buf: ByteBuffer,
-    ) {
+    override fun write(value: FilterEngine, buf: ByteBuffer) {
         // The Rust code always expects pointers written as 8 bytes,
         // and will fail to compile if they don't fit.
         buf.putLong(Pointer.nativeValue(lower(value)))
     }
 }
 
-internal object FfiConverterSequenceString : FfiConverterRustBuffer<List<String>> {
+
+
+
+internal object FfiConverterSequenceString: FfiConverterRustBuffer<List<String>> {
     override fun read(buf: ByteBuffer): List<String> {
         val len = buf.getInt()
         return List<String>(len) {
@@ -789,13 +736,11 @@ internal object FfiConverterSequenceString : FfiConverterRustBuffer<List<String>
         return sizeForLength + sizeForItems
     }
 
-    override fun write(
-        value: List<String>,
-        buf: ByteBuffer,
-    ) {
+    override fun write(value: List<String>, buf: ByteBuffer) {
         buf.putInt(value.size)
         value.forEach {
             FfiConverterString.write(it, buf)
         }
     }
 }
+
